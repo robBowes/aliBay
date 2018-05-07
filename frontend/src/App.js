@@ -67,7 +67,7 @@ class App extends Component {
           {this.state.loggedIn?<Login />:null }
           {this.state.register?<AccountCreation />:null }
           <div className="itemContainer">
-           {}
+           {this.state.items.map(renderAllItems)}
           </div>
           <Footer className='footer'/>
         <BrowserRouter>
