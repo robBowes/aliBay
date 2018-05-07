@@ -1,0 +1,11 @@
+.mainContainer {
+  display: grid;
+  grid-template-rows: [navTop] 50px [navBottom] 20px [searchBottom mainTop] auto [mainBottom footerTop] 50px [footerBottom];
+  grid-template-columns: [leftSide] 15% [endUser] auto [rightColumn] 10%;
+  grid-template-areas: 
+    "nav nav nav"
+    "user search search"
+    "user main sidebar"
+    "foot foot foot";
+
+}
