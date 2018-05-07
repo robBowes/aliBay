@@ -5,11 +5,6 @@ const app = express();
 
 app.use(bodyParser.raw({ type: "*/*" }));
 
-app.get("/itemsBought", (req, res) => {
-  let uid = req.query.uid;
-  res.send(JSON.stringify(alibay.getItemsBought(uid)));
-});
-
 app.post("/login", (req, res) => {
   let body = req.body.toString();
   let parsedBody = JSON.parse(body);
