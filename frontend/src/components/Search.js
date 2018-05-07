@@ -15,15 +15,22 @@ class Search extends Component {
         this.setState({searchContents: event.target.value});
     }
     handleSubmit = (event)=>{
+        console.log('search')
         event.preventDefault();
-        
+        fetch('/search', {
+            method: 'POST', body: JSON.stringify({query: this.state.searchContents}),
+        })
+        .then((res)=>res.json())
+        .then((data)=>{
+            console.log(data);
+        });
     }
     render() {
         return (
             <div className="search">
-                <form>
-                    <input type='text' value={this.state.searchContents} onChange={this.handleChange}/>
-                    <input type='submit' onSubmit={this.handleSearch}/>
+                <form onSubmit={this.handleSubmit}>
+                    <input type='text' placeholder='Search' value={this.state.searchContents} onChange={this.handleChange}/>
+                    <input type='submit' />
                 </form>
             </div>
         );
