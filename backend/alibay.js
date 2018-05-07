@@ -105,7 +105,7 @@ let search = query => {
     }
 };
 
-let addItem = (itemTitle, itemDescription, quantity, sellerId) => {
+let addItem = (itemName, itemDescription, quantity, sellerId, price) => {
     return {
         status: true,
         reason: 'Item Successfully Listed!',

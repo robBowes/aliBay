@@ -53,13 +53,14 @@ app.post("/search", (req, res) => {
 app.put("/addItem", (req, res) => {
   let body = req.body.toString();
   let parsedBody = JSON.parse(body);
-  let itemTitle = parsedBody.itemTitle;
+  let itemName = parsedBody.itemTitle;
   let itemDescription = parsedBody.itemDescription;
   let quantity = parsedBody.quantity;
   let sellerId = parsedBody.sellerId;
+  let price = parsedBody.price;
   res.send(
     JSON.stringify(
-      alibay.addItem(itemTitle, itemDescription, quantity, sellerId)
+      alibay.addItem(itemName, itemDescription, quantity, sellerId, price)
     )
   );
 });
