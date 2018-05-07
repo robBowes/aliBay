@@ -8,23 +8,28 @@
   grid-template-rows: [navTop] 50px [navBottom] 20px [searchBottom mainTop] 5px [loginTop] 5px [registerTop] auto [registerBottom] 5px [loginBottom] 5px [mainBottom footerTop] 50px [footerBottom];
   grid-template-columns: [leftSide] 15% [endUser] 5px [registerLeft] 5px [loginLeft] auto [loginRight] 5px [registerRight] 5px [rightColumn] 10%;
   grid-template-areas: 
-  "nav  nav    nav    nav    nav    nav    nav    nav"
-  "user search search search search search search search"
-  "user main   main   main   main   main   main   sidebar"
-  "user main   main   main   main   main   main   sidebar"
-  "user main   main   main   main   main   main   sidebar"
-  "user main   main   main   main   main   main   sidebar"
-  "user main   main   main   main   main   main   sidebar"
-  "foot foot   foot   foot   foot   foot   foot   foot";
+  "nav  nav    nav    nav    nav    nav    nav"
+  "user search search search search search  search"
+  "user main   main   main   main   main    sidebar"
+  "user main   main   main   main   main    sidebar"
+  "user main   main   main   main   main    sidebar"
+  "user main   main   main   main   main    sidebar"
+  "user main   main   main   main   main    sidebar"
+  "foot foot   foot   foot   foot   foot    foot";
   height: 100vh;
   width: 100vw;
   justify-content: stretch;
   align-content: stretch;
 }
+.accountCreation {
+  grid-area: registerTop / registerLeft / registerBottom / registerRight;
+  z-index: 4;
+  background-color: grey;
+}
 .login {
   grid-area: loginTop / loginLeft / loginBottom / loginRight;
-  background-color: thistle;
-  z-index: 100;
+  background-color: tomato;
+  z-index: 2;
 }
 .navBar {
   grid-area: nav;

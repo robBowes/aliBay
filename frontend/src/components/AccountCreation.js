@@ -31,7 +31,7 @@ class AccountCreation extends Component {
         document.getElementById("password").value = "";
     }
     render() {
-        return <div>
+        return <div className="accountCreation">
             <div>Register Header</div>
             <form onSubmit={this.handleRegister}>
               LOGIN:<br />

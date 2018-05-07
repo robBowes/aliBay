@@ -46,6 +46,7 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
+      register: false,
     };
   }
   render() {
@@ -54,7 +55,8 @@ class App extends Component {
           <NavBar className="navBar"/>
           <Search className='search' />
           <UserCard className="userCard" />
-          {this.state.loggedIn?null:<Login />}
+          {this.state.loggedIn?<Login />:null }
+          {this.state.register?<AccountCreation />:null }
           <div className="itemContainer">
           Lots of ItemDetails
           </div>
