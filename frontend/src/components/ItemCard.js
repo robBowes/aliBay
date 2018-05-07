@@ -4,6 +4,15 @@
 import React, {Component} from 'react';
 
 class ItemCard extends Component {
+    constructor(){
+        super();
+        this.state={
+            
+        }
+    }
+    handleBuy = () => {
+        //fetch buy endpoint
+    }
     render() {
         return (
             <div>
