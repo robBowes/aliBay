@@ -17,8 +17,8 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <form>
-                    <input onSubmit={this.handleLogin}/>
+                <div>LOG IN HEADER</div>
+                    <form onSubmit={this.handleLogin}>
                     LOGIN:<br/>
                     USERNAME<br/>
                     <input type='text' id='username'/>
