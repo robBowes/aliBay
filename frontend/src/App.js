@@ -37,8 +37,11 @@ renderRegisterUser = () => {
 
 class App extends Component {
   helloWorld = () => {
-    fetch('/helloWorld').then((res)=>res.text()).then((data)=>console.log(data));
-    return '';
+    let ret;
+    fetch('/helloWorld')
+      .then((res)=>res.text())
+      .then((data)=>console.log(ret = data));
+    return ret;
   }
   render() {
     return (

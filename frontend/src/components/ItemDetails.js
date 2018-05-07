@@ -1,10 +1,9 @@
 /**
- * A card to display next to results which holds some basic user information
+ * This holds all item details and a button to buy an item
  */
-
 import React, {Component} from 'react';
 
-class UserCard extends Component {
+class ItemDetails extends Component {
     render() {
         return (
             <div>
@@ -14,4 +13,4 @@ class UserCard extends Component {
     }
 }
 
-export default UserCard;
+export default ItemDetails;

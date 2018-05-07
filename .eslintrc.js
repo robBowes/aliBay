@@ -17,6 +17,7 @@ module.exports = {
     "rules": {
         "semi": ["error", "always"],
         "require-jsdoc" : "off",
-        "linebreak-style":"off"
+        "linebreak-style":"off",
+        "no-unused-vars":"off"
     }
 };
