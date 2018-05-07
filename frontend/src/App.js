@@ -4,12 +4,12 @@ import {Route, BrowserRouter, Link} from 'react-router-dom';
 import './App.css';
 import Login from './components/Login.js';
 import NavBar from './components/Navbar.js';
-import UserCard from './components/UserCard.js'
-import Search from './components/Search.js'
-import ItemDetails from './components/ItemDetails.js'
-import ItemCard from './components/ItemCard.js'
-import AccountCreation from './components/AccountCreation.js'
-import Footer from './components/Footer.js'
+import UserCard from './components/UserCard.js';
+import Search from './components/Search.js';
+import ItemDetails from './components/ItemDetails.js';
+import ItemCard from './components/ItemCard.js';
+import AccountCreation from './components/AccountCreation.js';
+import Footer from './components/Footer.js';
 
 let renderAllItems = () => {
   // This function will render <Item/> components for each Item in item array
@@ -42,12 +42,21 @@ let renderRegisterUser = () => {
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: false,
+    }
+  }
   render() {
     return (
       <div className="App mainContainer">
           <NavBar className="navBar"/>
           <Search className='search' />
           <UserCard className="userCard" />
+          <div className="itemContainer">
+          Lots of ItemDetails
+          </div>
           <Footer className='footer'/>
         <BrowserRouter>
         <div>
