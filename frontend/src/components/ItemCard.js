@@ -4,18 +4,23 @@
 import React, {Component} from 'react';
 
 class ItemCard extends Component {
+    constructor(){
+        super();
+        this.state={
+            
+        }
+    }
+    handleBuy = () => {
+        //fetch buy endpoint
+    }
     render() {
         return (
             <div>
-<<<<<<< HEAD
                 <div>header<button>close pane</button></div>
                 <div>image</div>
                 <div>Details text</div>
                 Other Text/description
                 <button>BUY</button>
-=======
-
->>>>>>> 43f9c98098eb960e12aba3b9dc640939c3e45ea0
             </div>
         );
     }
