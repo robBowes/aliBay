@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
   helloWorld = () => {
-    fetch('/helloWorld').then((res)=>res.json()).then((data)=>console.log(data));
+    fetch('/helloWorld').then((res)=>res.text()).then((data)=>console.log(data));
     return '';
   }
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
         </div>
         <BrowserRouter>
         <div>
-        <Route exact path='/' render={renderAllItems} />
+        {/* <Route exact path='/' render={renderAllItems} /> */}
         </div>
         </BrowserRouter>
       </div>
