@@ -5,12 +5,14 @@ import './App.css';
 
 class App extends Component {
   helloWorld = () => {
-    fetch('/helloWorld').then((res)=>res.json()).then((data)=>console.log(data))
+    fetch('/helloWorld').then((res)=>res.json()).then((data)=>console.log(data));
+    return '';
   }
   render() {
     return (
       <div className="App">
         <div>
+          {this.helloWorld()}
         </div>
         <BrowserRouter>
         <div>
