@@ -22,7 +22,8 @@ class Search extends Component {
         })
         .then((res)=>res.json())
         .then((data)=>{
-            console.log(data);
+            console.log(data.content);
+            this.props.updateItems(data.content);
         });
     }
     render() {

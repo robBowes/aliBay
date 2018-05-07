@@ -47,18 +47,27 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       register: false,
+      items: [],
     };
+  };
+  updateItems = (items) => {
+    let newItems = Object.entries(items).map((el)=>{
+      let item = {...el[1]};
+      item.itemID = el[0];
+      return item;
+    });
+    this.setState({items: newItems});
   }
   render() {
     return (
       <div className="App mainContainer">
           <NavBar className="navBar"/>
-          <Search className='search' />
+          <Search updateItems={this.updateItems} className='search' />
           <UserCard className="userCard" />
           {this.state.loggedIn?<Login />:null }
           {this.state.register?<AccountCreation />:null }
           <div className="itemContainer">
-          Lots of ItemDetails
+           {}
           </div>
           <Footer className='footer'/>
         <BrowserRouter>
