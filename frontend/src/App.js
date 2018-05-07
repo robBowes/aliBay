@@ -11,12 +11,14 @@ import ItemCard from './components/ItemCard.js';
 import AccountCreation from './components/AccountCreation.js';
 import Footer from './components/Footer.js';
 
-let renderAllItems = () => {
-  // This function will render <Item/> components for each Item in item array
+let renderAllItems = (item) => {
+  // This function will render <ItemCard/> components for each Item in item array
+  console.log(item)
+  return <ItemCard item={item} />
 };
 
-let renderItemCard = () => {
-  // This function will render an <Item/> card component when a user
+let renderItemDetails = () => {
+  // This function will render an <ItemDetails/> card component when a user
   // click on a specific item to View
 };
 
@@ -51,10 +53,10 @@ class App extends Component {
     };
   };
   updateItems = (items) => {
-    let newItems = Object.entries(items).map((el)=>{
-      let item = {...el[1]};
-      item.itemID = el[0];
-      return item;
+    let newItems = Object.entries(items).map((item)=>{
+      let newItem = {...item[1]};
+      newItem.itemID = item[0];
+      return newItem;
     });
     this.setState({items: newItems});
   }
