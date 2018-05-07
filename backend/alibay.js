@@ -12,7 +12,7 @@ let login = (username, password) => {
   };
 };
 
-let register = (usename, password) => {
+let register = (username, password) => {
   return {
     status: true,
     sessionId: 000000001,

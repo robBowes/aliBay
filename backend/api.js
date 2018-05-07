@@ -43,7 +43,7 @@ app.post("/buy", (req, res) => {
 app.post("/search", (req, res) => {
   let body = req.body.toString();
   let parsedBody = JSON.parse(body);
-  let query = parsedBody.itemId;
+  let query = parsedBody.query;
   res.send(JSON.stringify(alibay.search(query)));
 });
 
