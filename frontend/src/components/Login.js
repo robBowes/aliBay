@@ -9,10 +9,20 @@ class Login extends Component {
         let password = document.getElementById('password').value;
         fetch('/login', {
             method: 'POST',
-            body: JSON.stringify({username: username, password: password}),
-        });
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
+            body: JSON.stringify({username: username, password: password})
+        })
+        .then(response=>response.text())
+        .then(response=>{
+            let parsedResponse = JSON.parse(response)
+            if (parsedResponse.status === true){
+                alert(parsedResponse.reason)
+            }
+            else {
+                alert(parsedResponse.reason)
+            }
+        })
+        document.getElementById("username").value = ''
+        document.getElementById("password").value = ''
     }
     render() {
         return (
