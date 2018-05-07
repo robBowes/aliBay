@@ -9,5 +9,8 @@
   "foot foot foot";
 }
 .navBar {
-  grid-area: "nav"
+  grid-area: nav
+}
+.root {
+  height: 100%;
 }
