@@ -2,33 +2,33 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import {Route, BrowserRouter, Link} from 'react-router-dom';
 import './App.css';
+import Login from './components/Login.js'
 
-renderAllItems = () => {
+let renderAllItems = () => {
   //This function will render <Item/> components for each Item in item array
 }
 
-renderItemCard = () => {
+let renderItemCard = () => {
   //This function will render an <Item/> card component when a user
   // click on a specific item to View
 }
 
-renderNavBar = () => {
+let renderNavBar = () => {
   //This function is responsible for rendering the navbar at top
   //of screen
 }
-renderFooter = () => {
+let renderFooter = () => {
   //this function renders footer at all times (almost all times?)
 }
 
 
-
-renderLogin = () => {
+let renderLogin = () => {
   //This is the first function that renders when a user lands
   //other than the top anchored navbar
   //on page. Will render <Login/> Component
 }
 
-renderRegisterUser = () => {
+let renderRegisterUser = () => {
   //This function will render the <AccountCreation/> card when a
   //user click the Create Account button on the login page
 }
