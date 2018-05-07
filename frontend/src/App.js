@@ -46,7 +46,7 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-    }
+    };
   }
   render() {
     return (
@@ -54,6 +54,7 @@ class App extends Component {
           <NavBar className="navBar"/>
           <Search className='search' />
           <UserCard className="userCard" />
+          {this.state.loggedIn?null:<Login />}
           <div className="itemContainer">
           Lots of ItemDetails
           </div>
