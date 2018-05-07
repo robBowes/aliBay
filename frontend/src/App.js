@@ -45,8 +45,9 @@ class App extends Component {
   render() {
     return (
       <div className="App mainContainer">
-          <UserCard className="userCard" />
           <NavBar className="navBar"/>
+          <Search className='search' />
+          <UserCard className="userCard" />
           <Footer className='footer'/>
         <BrowserRouter>
         <div>
