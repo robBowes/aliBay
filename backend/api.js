@@ -7,9 +7,9 @@ app.use(bodyParser.raw({ type: "*/*" }));
 
 app.post("/login", (req, res) => {
   let body = req.body.toString();
-  console.log(body)
+  console.log(body);
   let parsedBody = JSON.parse(body);
-  console.log(parsedBody)
+  console.log(parsedBody);
   let username = parsedBody.username;
   let password = parsedBody.password;
   res.send(JSON.stringify(alibay.login(username, password)));
@@ -24,7 +24,6 @@ app.post("/register", (req, res) => {
 });
 
 app.get("/allItems", (req, res) => {
-  console.log("HEY")
   res.send(JSON.stringify(alibay.allItems()));
 });
 
