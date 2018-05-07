@@ -47,6 +47,7 @@ class App extends Component {
       <div className="App mainContainer">
           <UserCard className="userCard" />
           <NavBar className="navBar"/>
+          <Footer className='footer'/>
         <BrowserRouter>
         <div>
         {/* <Route exact path='/' render={renderAllItems} /> */}

@@ -17,3 +17,6 @@
 .userCard {
   grid-area: user;
 }
+.footer {
+  grid-area: foot;
+}
