@@ -5,14 +5,14 @@ import React, {Component} from 'react';
 
 class Login extends Component {
     handleLogin = () => {
-        let username = document.getElementById('username').value
-        let password = document.getElementById('password').value
-        fetch('/login',{
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        fetch('/login', {
             method: 'POST',
-            body: JSON.stringify({username: username, password: password})
-        })
-        document.getElementById("username").value = ''
-        document.getElementById("password").value = ''
+            body: JSON.stringify({username: username, password: password}),
+        });
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
     }
     render() {
         return (
