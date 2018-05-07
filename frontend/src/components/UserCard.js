@@ -8,7 +8,7 @@ class UserCard extends Component {
     render() {
         return (
             <div>
-
+                User Info
             </div>
         );
     }

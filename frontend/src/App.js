@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import {Route, BrowserRouter, Link} from 'react-router-dom';
-import NavBar from './components/Navbar.js';
 import './App.css';
 import Login from './components/Login.js';
+import NavBar from './components/Navbar.js';
+import UserCard from './components/UserCard.js'
+import Search from './components/Search.js'
+import ItemDetails from './components/ItemDetails.js'
+import ItemCard from './components/ItemCard.js'
+import AccountCreation from './components/AccountCreation.js'
+import Footer from './components/Footer.js'
 
 let renderAllItems = () => {
   // This function will render <Item/> components for each Item in item array
@@ -39,9 +45,8 @@ class App extends Component {
   render() {
     return (
       <div className="App mainContainer">
-        <div className="navBar" >
-          <NavBar/>
-        </div>
+          <UserCard className="userCard" />
+          <NavBar className="navBar"/>
         <BrowserRouter>
         <div>
         {/* <Route exact path='/' render={renderAllItems} /> */}
