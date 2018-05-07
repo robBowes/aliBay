@@ -4,7 +4,8 @@
 import React, {Component} from 'react';
 
 class Login extends Component {
-    handleLogin = () => {
+    handleLogin = (event) => {
+        event.preventDefault();
         let username = document.getElementById('username').value;
         let password = document.getElementById('password').value;
         fetch('/login', {

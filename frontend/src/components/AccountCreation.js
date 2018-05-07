@@ -5,7 +5,8 @@
 import React, {Component} from 'react';
 
 class AccountCreation extends Component {
-    handleRegister = () => {
+    handleRegister = (event) => {
+        event.preventDefault();
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
         fetch("/register", {
