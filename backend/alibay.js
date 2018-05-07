@@ -1,3 +1,4 @@
+
 const assert = require("assert");
 
 function genUID() {
@@ -57,7 +58,6 @@ let allItems = () => {
     }
   };
 };
-
 let item = itemId => {
     return {
         itemName: "right shoe",
@@ -71,11 +71,12 @@ let item = itemId => {
     }
 };
 
-let buy = (itemId, quantity) => {};
+let buy = (itemId, quantity) => {;
      return {
          status: true,
          reason: 'purchase successful',
      }
+}
 let search = query => {
     return {
         status: true,
@@ -123,6 +124,7 @@ let user = userId => {
         description: 'Hello I like to sell but also buy'
     }
 };
+
 
 module.exports = {
   genUID,

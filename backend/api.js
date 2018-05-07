@@ -1,4 +1,4 @@
-const alibay = require("./alibay");
+const alibay = require("./alibay.js");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -7,7 +7,9 @@ app.use(bodyParser.raw({ type: "*/*" }));
 
 app.post("/login", (req, res) => {
   let body = req.body.toString();
+  console.log(body)
   let parsedBody = JSON.parse(body);
+  console.log(parsedBody)
   let username = parsedBody.username;
   let password = parsedBody.password;
   res.send(JSON.stringify(alibay.login(username, password)));
@@ -22,6 +24,7 @@ app.post("/register", (req, res) => {
 });
 
 app.get("/allItems", (req, res) => {
+  console.log("HEY")
   res.send(JSON.stringify(alibay.allItems()));
 });
 
