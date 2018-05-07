@@ -14,3 +14,6 @@
 .root {
   height: 100%;
 }
+.userCard {
+  grid-area: user;
+}
