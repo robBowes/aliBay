@@ -11,6 +11,16 @@ class Login extends Component {
             method: 'POST',
             body: JSON.stringify({username: username, password: password})
         })
+        .then(response=>response.text())
+        .then(response=>{
+            let parsedResponse = JSON.parse(response)
+            if (parsedResponse.status === true){
+                alert(parsedResponse.reason)
+            }
+            else {
+                alert(parsedResponse.reason)
+            }
+        })
         document.getElementById("username").value = ''
         document.getElementById("password").value = ''
     }
