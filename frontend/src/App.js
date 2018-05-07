@@ -4,12 +4,16 @@ import {Route, BrowserRouter, Link} from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
+  helloWorld = () => {
+    fetch('/helloWorld').then((res)=>res.json()).then((data)=>console.log(data));
+    return '';
+  }
   render() {
     return (
       <div className="App">
-
-
-
+        <div>
+          {this.helloWorld()}
+        </div>
         <BrowserRouter>
         <div>
         <Route exact path='/' render={renderAllItems} />
