@@ -12,10 +12,10 @@ class UserCard extends Component {
         };
     }
     componentWillReceiveProps = (props) => {
-        console.log(props.userId)
         if (props.userId) this.getUser(props.userId);
     }
     getUser = (userId) => {
+        console.log(userId)
         fetch('/user', {
             method: 'POST',
             credentials: 'same-origin',
@@ -25,12 +25,12 @@ class UserCard extends Component {
         .then((data)=>{
             console.log(data);
             this.setState({...data});
-            console.log(this.state)
         });
     }
     render() {
+        
         return (
-            <div className="userCard">
+            <div className="userCard" style={{"display":this.props.show?'block':'none'}}>
                 <h3>{this.state.username}</h3>
                 <h4>{this.state.description} </h4>
             </div>
