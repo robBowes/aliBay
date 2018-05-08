@@ -11,13 +11,13 @@ import ItemDetails from './components/ItemDetails.js';
 import ItemCard from './components/ItemCard.js';
 import AccountCreation from './components/AccountCreation.js';
 import Footer from './components/Footer.js';
+import SellItems from './components/SellItems.js';
 
 let renderAllItems = (item, index) => {
   // This function will render <ItemCard/> components for each Item
   // in item array
   return <ItemCard item={item} key={'item'+index}/>;
 };
-
 
 
 
@@ -28,12 +28,15 @@ class App extends Component {
       loggedIn: false,
       register: false,
       showLogIn: false,
+      showSellItem: false,
       items: [],
     };
   };
   componentWillMount = () => {
     let items;
-    fetch('/allItems')
+    fetch('/allItems', {
+      credentials: 'same-origin',
+    })
     .then((res)=>res.json())
     .then((data)=>{
       items = data.content;
@@ -51,12 +54,18 @@ class App extends Component {
   updateItems = (items) => {
     this.setState({items: itemsObjToArray(items)});
   };
+  toggleSellItem = () => {
+    this.setState({showSellItem: !this.state.showSellItem});
+  }
   render() {
     return (
       <div>
           <BrowserRouter>
       <div className="App mainContainer">
-          <NavBar className="navBar"/>
+          <NavBar 
+          className="navBar"
+          toggleSellItem={this.toggleSellItem}
+          />
           <Search updateItems={this.updateItems} className='search' />
           <UserCard className="userCard" userId={this.state.userId} />
           {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}/> }
@@ -64,6 +73,7 @@ class App extends Component {
           <div className="itemContainer">
            {this.state.items.map(renderAllItems)}
           </div>
+          {this.state.showSellItem?<SellItems toggleSellItem={this.toggleSellItem} userId={this.state.userId}/>:null}
           <Footer className='footer'/>
           <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
         {/* <Route exact path='/' render={renderAllItems} /> */}

@@ -7,14 +7,15 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            usernameValue: '',
-            passwordValue: '',
+            usernameValue: 'bob',
+            passwordValue: 'test',
         };
     }
     handleSubmit = (event) => {
         event.preventDefault();
         fetch('/login', {
             method: 'POST',
+            credentials: 'same-origin',
             body: JSON.stringify({username: this.state.usernameValue, password: this.state.passwordValue}),
         })
         .then((response)=>response.text())

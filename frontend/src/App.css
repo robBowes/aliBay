@@ -55,3 +55,8 @@
   z-index: 3;
   background:yellow;
 }
+.sellItems {
+  grid-area: registerTop / registerLeft / registerBottom / registerRight;
+  background-color: tomato;
+  z-index: 3;
+}
