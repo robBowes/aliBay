@@ -74,5 +74,16 @@
   grid-area: profileTop / profileLeft / profileBottom / profileRight;
   z-index: 10000;
   background-color: white;
+  display:flex;
+}
+
+.profileItemsContainer{
+  grid-area: registerTop / registerLeft / registerBottom / registerRight;
+  background-color:tan;
+  width: 70vw;
+}
+
+.profileItemsLists{
+  display: flex;
 }
 

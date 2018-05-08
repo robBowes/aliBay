@@ -71,6 +71,7 @@ class App extends Component {
   }
   handleLogout = () => {
     document.cookie='';
+    
     this.setState({
       loggedIn: false,
       register: false,
