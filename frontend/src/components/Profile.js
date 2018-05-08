@@ -28,7 +28,7 @@ class Profile extends Component {
   };
   render() {
       return (
-          <div>
+          <div className='userProfileContainer'>HELLO
               {this.state.userId}
               </div>
       )

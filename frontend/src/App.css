@@ -5,8 +5,8 @@
 }
 .mainContainer {
   display: grid;
-  grid-template-rows: [navTop] 50px [navBottom searchTop] 40px [searchBottom mainTop] 5px [loginTop] 5px [registerTop] auto [registerBottom] 5px [loginBottom] 5px [mainBottom footerTop] 50px [footerBottom];
-  grid-template-columns: [leftSide] 15% [endUser] 5px [registerLeft] 5px [loginLeft] auto [loginRight] 5px [registerRight] 5px [rightColumn] 10%;
+  grid-template-rows: [navTop] 50px [navBottom searchTop profileTop] 40px [searchBottom mainTop] 5px [loginTop] 5px [registerTop] auto [registerBottom] 5px [loginBottom] 5px [mainBottom footerTop profileBottom] 50px [footerBottom];
+  grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] auto [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10%;
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
   "user search search search search search  search"
@@ -68,3 +68,11 @@
   background-color: tomato;
   z-index: 3;
 }
+
+
+.userProfileContainer{
+  grid-area: profileTop / profileLeft / profileBottom / profileRight;
+  z-index: 10000;
+  background-color: white;
+}
+
