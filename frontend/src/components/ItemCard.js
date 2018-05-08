@@ -14,8 +14,8 @@ class ItemCard extends Component {
             <Card className='card border-primary mb2'>
                 <h5 className='card-header'> {this.props.item.itemName} </h5>
                 <h6> {this.props.item.itemDescription} </h6>
-                <h7>Price $ {this.props.item.price} </h7>
-                <h7>Left in stock: {this.props.item.quantity} </h7>
+                <p>Price $ {this.props.item.price} </p>
+                <p>Left in stock: {this.props.item.quantity} </p>
             </Card>
         );
     }
