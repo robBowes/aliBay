@@ -7,5 +7,10 @@ let itemsObjToArray = (items) => {
     return newItems;
 };
 
+let getItemById = (items,x) => {
+    return items.filter((item)=>{
+        return item.itemId === x
+    })[0]
+}
 
-export {itemsObjToArray};
+export {itemsObjToArray, getItemById};
