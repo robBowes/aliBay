@@ -20,6 +20,7 @@ class Navbar extends Component {
         <button onClick={this.props.toggleSellItem}>Sell Item</button>
       </Link>
       <button style={{'display':!this.props.loggedIn?'none':'block'}}onClick={this.props.handleLogout}>Log out</button>
+      <Link to='/profile'><button>My Profile</button></Link>
       </div>
     );
   }
