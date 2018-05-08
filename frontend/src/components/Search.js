@@ -31,7 +31,7 @@ class Search extends Component {
         })
         .then((res)=>res.json())
         .then((data)=>{
-            this.props.updateItems(data.content);
+            this.props.changeShownItems(data.content);
         });
     }
     render() {
