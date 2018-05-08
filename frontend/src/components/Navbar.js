@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import styledComponent from 'styled-components';
-import { Link, Router, BrowserRouter } from "react-router-dom";
+import {Link, Router, BrowserRouter} from 'react-router-dom';
 
 let Nav = styledComponent.nav`
     
@@ -14,18 +14,20 @@ class Navbar extends Component {
   render() {
     return <div className="navBar">
         <img src="" alt="the bay logo" />
-        <Link to="/"><h1>The Bay</h1></Link>
+        <Link to="/">
+        <h1>The Bay</h1>
+        </Link>
         <Link to="/">
           <button onClick={this.props.toggleSellItem}>Sell Item</button>
         </Link>
         <Link to="/">
-          <button style={{ display: !this.props.loggedIn ? "none" : "block" }} onClick={this.props.handleLogout}>
+          <button style={{display: !this.props.loggedIn ? 'none' : 'block'}} onClick={this.props.handleLogout}>
             Log out
           </button>
         </Link>
         <Link to="/profile">
           <button
-            style={{ display: !this.props.loggedIn ? "none" : "block" }}
+            style={{display: !this.props.loggedIn ? 'none' : 'block'}}
           >
             My Profile
           </button>

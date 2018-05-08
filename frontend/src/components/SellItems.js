@@ -19,6 +19,7 @@ class SellItems extends Component {
             itemQuantity: '',
             itemPrice: '',
             response: '',
+            class: 'hidden',
         };
     };
     handleSubmit = (event) => {
@@ -48,8 +49,11 @@ class SellItems extends Component {
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
     }
+    componentDidMount = () => {
+        setTimeout(()=>this.setState({class: 'sellItems slideIn'}), 200);
+    }
     render() {
-        return <Sell className="sellItems">
+        return <Sell className={this.state.class}>
             <form onSubmit={this.handleSubmit}>
             <label htmlFor="itemName">Item Name</label> <br/>
             <input type="text"
