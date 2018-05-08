@@ -38,6 +38,7 @@ class SellItems extends Component {
             console.log(data);
             this.setState({response: data.reason});
         });
+        this.props.toggleSellItem();
     };
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});

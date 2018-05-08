@@ -45,7 +45,7 @@ class App extends Component {
     });
   };
   renderItemDetails = (routerData) => {
-  return <ItemDetails items={this.state.items} id={routerData.match.params.id} getItemById={getItemById}/>
+    return <ItemDetails items={this.state.items} id={routerData.match.params.id} getItemById={getItemById}/>
   };
   updateUserInfo = (newUserInfo) => {
     console.log(newUserInfo);
@@ -60,28 +60,28 @@ class App extends Component {
   render() {
     return (
       <div>
-          <BrowserRouter>
+      <BrowserRouter>
       <div className="App mainContainer">
-          <NavBar 
-          className="navBar"
-          toggleSellItem={this.toggleSellItem}
-          />
-          <Search updateItems={this.updateItems} className='search' />
-          <UserCard className="userCard" userId={this.state.userId} />
-          {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}/> }
-          {this.state.register?<AccountCreation />:null }
-          <div className="itemContainer">
-           {this.state.items.map(renderAllItems)}
-          </div>
-          {this.state.showSellItem?<SellItems toggleSellItem={this.toggleSellItem} userId={this.state.userId}/>:null}
-          <Footer className='footer'/>
-          <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
-        {/* <Route exact path='/' render={renderAllItems} /> */}
-        <div>
-        </div>
+      <NavBar 
+      className="navBar"
+      toggleSellItem={this.toggleSellItem}
+      />
+      <Search updateItems={this.updateItems} className='search' />
+      <UserCard className="userCard" userId={this.state.userId} />
+      {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}/> }
+      {this.state.register?<AccountCreation />:null }
+      <div className="itemContainer">
+      {this.state.items.map(renderAllItems)}
       </div>
-        </BrowserRouter>
-        </div>
+      {this.state.showSellItem?<SellItems toggleSellItem={this.toggleSellItem} userId={this.state.userId}/>:null}
+      <Footer className='footer'/>
+      <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
+      {/* <Route exact path='/' render={renderAllItems} /> */}
+      <div>
+      </div>
+      </div>
+      </BrowserRouter>
+      </div>
     );
   }
 }

@@ -15,7 +15,9 @@ class Navbar extends Component {
             <div className="navBar">
                 <img src="" alt="the bay logo"/>
                 <h1>The Bay</h1>
-                <button onClick={this.props.toggleSellItem}>Sell Item</button>
+                <button
+                onClick={this.props.toggleSellItem}
+                >Sell Item</button>
             </div>
         );
     }
