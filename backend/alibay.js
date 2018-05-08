@@ -160,30 +160,12 @@ let buy = (itemId, quantity) => {
   };
 };
 let search = query => {
+   let allItems = {...items};
+   let filteredItems = _.pickBy(items, x => x.itemName.toLowerCase().includes(query.toLowerCase()))
+        
   return {
     status: true,
-    content: {
-      69769860: {
-        itemName: "Red Bike",
-        itemDescription:
-          "works great 2015 model selling because I bought a new one. I have 2 for sale",
-        sellerName: "Bobert Dobert",
-        price: 60,
-        quantity: 2,
-        sellerId: 869868,
-        listDate: 1519216899934
-      },
-      76976990: {
-        itemName: "left shoe",
-        itemDescription:
-          "Selling because I lost the right one its an original Air Yeezy worth $4000 for the pair so this is a bargain",
-        sellerName: "Slim Jimmy",
-        price: 300,
-        quantity: 1,
-        sellerId: 658791,
-        listDate: 1519211809934
-      }
-    }
+    content: filteredItems
   };
 };
 
