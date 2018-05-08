@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
+
 const Sell = styled.div`
     padding: 2rem;
 `;
@@ -43,40 +44,20 @@ class SellItems extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
     render() {
-        return (
-            <Sell className='sellItems'>
+        return <Sell className="sellItems">
             <form onSubmit={this.handleSubmit}>
-            <label htmlFor="itemName">Item Name</label>
-            <input type="text"
-            id='itemName'
-            name='itemName'
-            value={this.state.itemName}
-            onChange={this.handleChange}/> <br/>
-            <label htmlFor="itemDescription">Description</label>
-            <input type="text"
-            id='itemDescription'
-            name='itemDescription'
-            value={this.state.itemDescription}
-            onChange={this.handleChange}/> <br/>
-            <label htmlFor="itemQuantity">Quantity</label>
-            <input type="text"
-            id='itemQuantity'
-            name='itemQuantity'
-            value={this.state.itemQuantity}
-            onChange={this.handleChange}/> <br/>
-            <label htmlFor="itemPrice">Price</label>
-            <input type="text"
-            id='itemPrice'
-            name='itemPrice'
-            value={this.state.itemPrice}
-            onChange={this.handleChange}/>
-            <input type="submit" value="Submit"/>
+              <label htmlFor="itemName">Item Name</label>
+              <input type="text" id="itemName" name="itemName" value={this.state.itemName} onChange={this.handleChange} /> <br />
+              <label htmlFor="itemDescription">Description</label>
+              <input type="text" id="itemDescription" name="itemDescription" value={this.state.itemDescription} onChange={this.handleChange} /> <br />
+              <label htmlFor="itemQuantity">Quantity</label>
+              <input type="text" id="itemQuantity" name="itemQuantity" value={this.state.itemQuantity} onChange={this.handleChange} /> <br />
+              <label htmlFor="itemPrice">Price</label>
+              <input type="text" id="itemPrice" name="itemPrice" value={this.state.itemPrice} onChange={this.handleChange} />
+              <input type="submit" value="Submit" />
             </form>
-            <div className="response">
-            {this.state.response}
-            </div>
-            </Sell>
-        );
+            <div className="response">{this.state.response}</div>
+          </Sell>;
     }
 }
 

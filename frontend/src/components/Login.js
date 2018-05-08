@@ -34,30 +34,21 @@ class Login extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
     render() {
-        return (
-            <div className='login'>
-                <div>LOG IN HEADER</div>
-                    <form onSubmit={this.handleSubmit}>
-                    LOGIN:<br/>
-                    USERNAME<br/>
-                    <input
-                    type='text'
-                    id='username'
-                    name='usernameValue'
-                    onChange={this.handleChange}
-                    value={this.state.usernameValue} />
-                    <br/>PASSWORD<br/>
-                    <input
-                    type='password'
-                    id='password'
-                    name='passwordValue'
-                    onChange={this.handleChange}
-                    value= {this.state.passwordValue} />
-                    <br/>
-                    <input type='submit'/>
-                    </form>
-            </div>
-        );
+        return <div className="login">
+            <div>LOG IN HEADER</div>
+            <form onSubmit={this.handleSubmit}>
+              LOGIN:<br />
+              USERNAME<br />
+              <input type="text" id="username" name="usernameValue" onChange={this.handleChange} value={this.state.usernameValue} />
+              <br />PASSWORD<br />
+              <input type="password" id="password" name="passwordValue" onChange={this.handleChange} value={this.state.passwordValue} />
+              <br />
+              <input type="submit" />
+            </form>
+            <button style={{ display: this.props.loggedIn ? "none" : "block" }} onClick={this.props.toggleCreate}>
+              Create Account
+            </button>
+          </div>;
     }
 }
 

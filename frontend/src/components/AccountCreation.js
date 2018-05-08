@@ -13,7 +13,8 @@ class AccountCreation extends Component {
           method: "POST",
           body: JSON.stringify({
             username: username,
-            password: password
+            password: password,
+            credentials: 'same-origin'
           })
         })
         .then(response=>response.text())
@@ -30,9 +31,11 @@ class AccountCreation extends Component {
         document.getElementById("username").value = "";
         document.getElementById("password").value = "";
     }
+   
+
     render() {
         return <div className="accountCreation">
-            <div>Register Header</div>
+            <div>Register Header<button onClick={this.props.toggleCreate}>close pane</button></div>
             <form onSubmit={this.handleRegister}>
               LOGIN:<br />
               USERNAME<br />
