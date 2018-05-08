@@ -35,7 +35,7 @@ class Login extends Component {
         this.setState({ [event.target.name]: event.target.value });
     }
     componentWillMount = () => {
-        setTimeout(()=>this.setState({classLogin: 'login'}), 100)
+        setTimeout(()=>this.setState({classLogin: 'login slideIn'}), 100)
     }
     render() {
         return (<div className={this.state.classLogin}>
