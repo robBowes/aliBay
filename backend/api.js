@@ -73,6 +73,8 @@ app.post("/user", (req, res) => {
   let parsedBody = JSON.parse(body);
   let userId = parsedBody.userId;
   let sessionId = req.headers.cookie;
+  //sessionId = sessionId.substring(-1)
+  userId = parseInt(userId)
   res.send(JSON.stringify(alibay.user(userId, sessionId)));
 });
 
