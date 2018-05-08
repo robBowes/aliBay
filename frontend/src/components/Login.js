@@ -7,8 +7,8 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            usernameValue: '',
-            passwordValue: '',
+            usernameValue: 'bob',
+            passwordValue: 'test',
         };
     }
     handleSubmit = (event) => {
