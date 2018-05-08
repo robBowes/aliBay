@@ -19,8 +19,11 @@ class Search extends Component {
     handleChange = (event)=>{
         event.preventDefault();
         this.setState({searchContents: event.target.value});
-        let newItems = _.filter(this.props.allItems, (x)=>x.itemName.toLowerCase().includes(event.target.value.toLowerCase()));
-        this.props.changeShownItems(newItems)
+        let newItems = _.filter(this.props.allItems,
+            (x)=>x.itemName
+            .toLowerCase()
+            .includes(event.target.value.toLowerCase()));
+        this.props.changeShownItems(newItems);
     }
     handleSubmit = (event)=>{
         console.log('search');

@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import ItemCard from './ItemCard.js'
+import ItemCard from './ItemCard.js';
 import {itemsObjToArray, getItemById} from '../utils.js';
 
 let renderAllItems = (item, index) => {
