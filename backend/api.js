@@ -44,7 +44,8 @@ app.post("/buy", (req, res) => {
   let parsedBody = JSON.parse(body);
   let itemId = parsedBody.itemId;
   let quantity = parsedBody.quantity;
-  res.send(JSON.stringify(alibay.buy(itemId, quantity)));
+  let sessionId = req.headers.cookie;
+  res.send(JSON.stringify(alibay.buy(itemId, quantity, sessionId)));
 });
 
 app.post("/search", (req, res) => {

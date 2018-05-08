@@ -15,7 +15,7 @@ class UserCard extends Component {
         if (props.userId) this.getUser(props.userId);
     }
     getUser = (userId) => {
-        console.log(userId)
+      
         fetch('/user', {
             method: 'POST',
             credentials: 'same-origin',
@@ -23,6 +23,7 @@ class UserCard extends Component {
         })
         .then((res)=>res.json())
         .then((data)=>{
+            
             this.setState({...data});
         });
     }

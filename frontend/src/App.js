@@ -85,7 +85,7 @@ class App extends Component {
     return <Profile userId={this.state.userId}/>
     }
     else{
-      <Link to='/'/>
+      <Link to={'/'}/>
     }
   }
   render() {
