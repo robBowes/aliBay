@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 
 const Sell = styled.div`
-
+    padding: 2rem;
 `;
 
 class SellItems extends Component {
@@ -17,6 +17,7 @@ class SellItems extends Component {
             itemDescription: '',
             itemQuantity: '',
             itemPrice: '',
+            response: '',
         };
     };
     handleSubmit = (event) => {
@@ -30,13 +31,13 @@ class SellItems extends Component {
                 quantity: this.state.itemQuantity,
                 price: this.state.itemPrice,
                 sellerId: this.props.userId,
-            })
+            }),
         })
-        .then(res=>res.json())
+        .then((res)=>res.json())
         .then((data)=>{
             console.log(data)
-        })
-
+            this.setState({response: data.reason})
+        });
     };
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
@@ -50,19 +51,19 @@ class SellItems extends Component {
             id='itemName'
             name='itemName'
             value={this.state.itemName}
-            onChange={this.handleChange}/>
+            onChange={this.handleChange}/> <br/>
             <label htmlFor="itemDescription">Description</label>
             <input type="text"
             id='itemDescription'
             name='itemDescription'
             value={this.state.itemDescription}
-            onChange={this.handleChange}/>
+            onChange={this.handleChange}/> <br/>
             <label htmlFor="itemQuantity">Quantity</label>
             <input type="text"
             id='itemQuantity'
             name='itemQuantity'
             value={this.state.itemQuantity}
-            onChange={this.handleChange}/>
+            onChange={this.handleChange}/> <br/>
             <label htmlFor="itemPrice">Price</label>
             <input type="text"
             id='itemPrice'
@@ -71,6 +72,9 @@ class SellItems extends Component {
             onChange={this.handleChange}/>
             <input type="submit" value="Submit"/>
             </form>
+            <div className="response">
+            {this.state.response}
+            </div>
             </Sell>
         );
     }

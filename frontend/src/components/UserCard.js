@@ -12,13 +12,14 @@ class UserCard extends Component {
         };
     }
     componentWillReceiveProps = (props) => {
-        if (props.userId) this.getUser();
+        if (props.userId) this.getUser(props.userId);
     }
-    getUser = () => {
+    getUser = (userId) => {
+        console.log(userId)
         fetch('/user', {
             method: 'POST',
             credentials: 'same-origin',
-            body: JSON.stringify({userId: this.state.userId}),
+            body: JSON.stringify({userId}),
         })
         .then((res)=>res.json())
         .then((data)=>{
