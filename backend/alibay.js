@@ -118,7 +118,7 @@ let register = (username, password, sessionId) => {
       description: "",
       lastLoginDate: Date.now()
     };
-    console.log(users)
+    console.log(users);
     return {
       status: true,
       sessionId: sessionId,
@@ -135,21 +135,21 @@ let register = (username, password, sessionId) => {
 
 let allItems = () => {
   return {
-      status: true,
-      content: items,
-  }
+    status: true,
+    content: items
+  };
 };
 
 let item = itemId => {
+  if (!items[itemId]) {
+    return {
+      status: false,
+      reason: "itemId does not exist!"
+    };
+  }
   return {
-    itemName: "right shoe",
-    itemDescription:
-      "Stole the right shoe of a pair of original air Yeezy's from some chump so I'm selling it",
-    sellerName: "Swae Lee",
-    price: 250,
-    quantity: 1,
-    sellerId: 769769,
-    listDate: 1519215809934
+    status: true,
+    content: items[itemId]
   };
 };
 
@@ -187,22 +187,29 @@ let search = query => {
   };
 };
 
-let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) => {
+let addItem = (
+  itemName,
+  itemDescription,
+  quantity,
+  sellerId,
+  price,
+  sessionId
+) => {
   let keys = Object.keys(items);
   let parsedKeys = keys.map(x => parseInt(x));
   let maxKey = Math.max(...parsedKeys);
   let itemId = maxKey + 1;
   let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
-  
-  if(!users[sellerId]) {
+
+  if (!users[sellerId]) {
     return {
-        status: false,
-        reason: "Invalid sellerId"
-      }; 
+      status: false,
+      reason: "Invalid sellerId"
+    };
   }
-  let sellerName = users[sellerId]['username']
-  
+  let sellerName = users[sellerId]["username"];
+
   if (!sessionDoesExist) {
     return {
       status: false,
@@ -216,7 +223,7 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) 
     quantity,
     sellerId,
     sellerName,
-    price,
+    price
   };
 
   return {
@@ -235,7 +242,7 @@ let user = (userId, sessionId) => {
       reason: "Invalid userId"
     };
   }
-  console.log(sessionId)
+  console.log(sessionId);
   if (!sessionDoesExist) {
     return {
       status: false,
