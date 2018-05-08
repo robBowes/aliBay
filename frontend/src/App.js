@@ -34,6 +34,7 @@ class App extends Component {
       loggedIn: false,
       register: false,
       showLogIn: false,
+      showSellItem: false,
       items: [],
     };
   };
@@ -56,12 +57,18 @@ class App extends Component {
   updateItems = (items) => {
     this.setState({items: itemsObjToArray(items)});
   };
+  toggleSellItem = () => {
+    this.setState({showSellItem: !this.state.showSellItem});
+  }
   render() {
     return (
       <div>
           <BrowserRouter>
       <div className="App mainContainer">
-          <NavBar className="navBar"/>
+          <NavBar 
+          className="navBar"
+          toggleSellItem={this.toggleSellItem}
+          />
           <Search updateItems={this.updateItems} className='search' />
           <UserCard className="userCard" userId={this.state.userId} />
           {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}/> }
@@ -69,6 +76,7 @@ class App extends Component {
           <div className="itemContainer">
            {this.state.items.map(renderAllItems)}
           </div>
+          {this.state.showSellItem?<SellItems toggleSellItem={this.toggleSellItem}/>:null}
           <Footer className='footer'/>
           <Route exact={true} path='/item/:id' render={renderItemDetails} />
         {/* <Route exact path='/' render={renderAllItems} /> */}
