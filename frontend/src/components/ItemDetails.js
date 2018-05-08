@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 
+
 class ItemDetails extends Component {
   constructor() {
     super();
@@ -12,17 +13,16 @@ class ItemDetails extends Component {
     //fetch buy endpoint
   };
   render() {
-    return (
-      <div>
-        <div>
+    return <div>
+        <div className="Login">
           header<button>close pane</button>
         </div>
         <div>image</div>
         <div>Details text</div>
         Other Text/description
         <button>BUY</button>
-      </div>
-    );
+        
+      </div>;
   }
 }
 

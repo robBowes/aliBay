@@ -18,30 +18,14 @@ let renderAllItems = (item, index) => {
   return <ItemCard item={item} key={'item'+index}/>;
 };
 
-let renderItemDetails = () => {
+let renderItemDetails = (routerData) => {
   // This function will render an <ItemDetails/> card component when a user
-  // click on a specific item to View
-};
-
-let renderNavBar = () => {
-  // This function is responsible for rendering the navbar at top
-  // of screen
-};
-let renderFooter = () => {
-  // this function renders footer at all times (almost all times?)
+  // click on a specific item to Viewitem, id)
+  console.log(routerData.match.params.itemId)
+  return <ItemDetails item={{}} id={routerData.match.params.id}/>
 };
 
 
-let renderLogin = () => {
-  // This is the first function that renders when a user lands
-  // other than the top anchored navbar
-  // on page. Will render <Login/> Component
-};
-
-let renderRegisterUser = () => {
-  // This function will render the <AccountCreation/> card when a
-  // user click the Create Account button on the login page
-};
 
 
 
@@ -51,6 +35,7 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       register: false,
+      showLogIn: false,
       items: [],
     };
   };
@@ -67,24 +52,32 @@ class App extends Component {
   updateItems = (items) => {
     this.setState({items: itemsObjToArray(items)});
   }
+  toggleLog = () => {
+    this.setState({showLogIn: !this.state.showLogIn})
+  }
   render() {
     return (
+      <div>
+          <BrowserRouter>
       <div className="App mainContainer">
           <NavBar className="navBar"/>
           <Search updateItems={this.updateItems} className='search' />
           <UserCard className="userCard" />
-          {this.state.loggedIn?<Login />:null }
+          {this.state.showLogIn?<Login
+          close={this.toggleLog}
+          />:null }
           {this.state.register?<AccountCreation />:null }
           <div className="itemContainer">
            {this.state.items.map(renderAllItems)}
           </div>
           <Footer className='footer'/>
-        <BrowserRouter>
         <div>
+          <Route exact={true} path='/item/:id' render={renderItemDetails} />
         {/* <Route exact path='/' render={renderAllItems} /> */}
         </div>
-        </BrowserRouter>
       </div>
+        </BrowserRouter>
+        </div>
     );
   }
 }
