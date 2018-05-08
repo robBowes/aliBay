@@ -26,9 +26,14 @@
   z-index: 4;
   background-color: grey;
 }
+.hidden {
+  transform: translate(-100%,0);
+}
 .login {
+  display: block;
   grid-area: loginTop / loginLeft / loginBottom / loginRight;
   background-color: tomato;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 2;
 }
 .navBar {
