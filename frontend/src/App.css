@@ -6,7 +6,7 @@
 .mainContainer {
   display: grid;
   grid-template-rows: [navTop] 50px [navBottom searchTop profileTop] 40px [searchBottom mainTop] 5px [loginTop] 5px [registerTop] auto [registerBottom] 5px [loginBottom] 5px [mainBottom footerTop profileBottom] 50px [footerBottom];
-  grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] auto [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10%;
+  grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] auto [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
   "user search search search search search  search"
@@ -21,6 +21,15 @@
   justify-content: stretch;
   align-content: stretch;
 }
+
+.blurFrame {
+  transition: all 1s ease-in-out;
+  grid-area: navBottom / leftSide / footerTop / rightSide;
+  z-index:1;
+  background-color: rgba(0, 0, 0, 0.514);
+  /* filter: blur(10px) */
+}
+
 .accountCreation {
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
   z-index: 4;
@@ -37,8 +46,9 @@
 .login {
   /* display: block; */
   grid-area: loginTop / loginLeft / loginBottom / loginRight;
-  background-color: tomato;
+  background-color: aliceblue;
   z-index: 2;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.596)
 }
 .navBar {
   grid-area: nav;
@@ -93,3 +103,10 @@
   display: flex;
 }
 
+a:link {
+text-decoration: none;
+}
+
+a:hover{
+  color: grey;
+}

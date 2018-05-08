@@ -94,14 +94,15 @@ class App extends Component {
       <BrowserRouter>
       <div className="App mainContainer">
       <Route exact={true} path='/profile/' render={this.renderProfile}/>
-
+      
       <NavBar
       className="navBar"
       toggleSellItem={this.toggleSellItem}
       handleLogout={this.handleLogout}
       loggedIn={this.state.loggedIn}
       />
-
+      
+      <div className='blurFrame' style={{'display':!this.state.loggedIn?'block':'none'}}/>
       <Search
       changeShownItems={this.changeShownItems}
       allItems={this.state.items}
