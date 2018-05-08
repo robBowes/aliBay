@@ -12,6 +12,7 @@ class UserCard extends Component {
         };
     }
     componentWillReceiveProps = (props) => {
+        console.log(props.userId)
         if (props.userId) this.getUser(props.userId);
     }
     getUser = (userId) => {
@@ -24,6 +25,7 @@ class UserCard extends Component {
         .then((data)=>{
             console.log(data);
             this.setState({...data});
+            console.log(this.state)
         });
     }
     render() {

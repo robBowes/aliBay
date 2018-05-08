@@ -82,7 +82,7 @@ class App extends Component {
       loggedIn={this.state.loggedIn}
       />
       <Search updateItems={this.updateItems} className='search' />
-      <UserCard className="userCard" userId={this.state.userId} />
+      <UserCard className="userCard" userId={this.state.userId} clear={this.state.clearCard}/>
       {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}
       toggleCreate={this.toggleCreate} loggedIn={this.state.loggedIn}/> }
       {this.state.register?<AccountCreation
