@@ -26,6 +26,36 @@ let items = {
     quantity: 10,
     listDate: 713649819,
     sellerId: 545445
+  },
+  20000002: {
+    itemName: "Red Bike",
+    itemDescription:
+      "works great 2015 model selling because I bought a new one. I have 2 for sale",
+    sellerName: "Bobert Dobert",
+    price: 60,
+    quantity: 2,
+    sellerId: 869868,
+    listDate: 1519216899934
+  },
+  20000003: {
+    itemName: "2017 Corvette Z06",
+    itemDescription:
+      "My midlife crisis is over sweet car but now I have to live a boring life also I got a DUI",
+    sellerName: "Aubrey Drake Graham Jr",
+    price: 50000,
+    quantity: 1,
+    sellerId: 896070,
+    listDate: 1519211899934
+  },
+  20000004: {
+    itemName: "left shoe",
+    itemDescription:
+      "Selling because I lost the right one its an original Air Yeezy worth $4000 for the pair so this is a bargain",
+    sellerName: "Slim Jimmy",
+    price: 300,
+    quantity: 1,
+    sellerId: 658791,
+    listDate: 1519211809934
   }
 };
 
@@ -195,6 +225,16 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) 
   let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
   
+  sessionDoesExist = true
+
+  if(!users[sellerId]) {
+    return {
+        status: false,
+        reason: "Invalid sellerId"
+      }; 
+  }
+  let sellerName = users[sellerId]['username']
+  
   if (!sessionDoesExist) {
     return {
       status: false,
@@ -207,9 +247,10 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) 
     itemDescription,
     quantity,
     sellerId,
+    sellerName,
     price,
   };
-
+  
   return {
     status: true,
     reason: "Item Successfully Listed!"
