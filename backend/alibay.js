@@ -225,7 +225,6 @@ let addItem = (
     sellerName,
     price
   };
-
   return {
     status: true,
     reason: "Item Successfully Listed!"
