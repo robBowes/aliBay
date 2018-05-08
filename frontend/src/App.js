@@ -94,6 +94,7 @@ class App extends Component {
 
       <Search
       changeShownItems={this.changeShownItems}
+      allItems={this.state.items}
       className='search' />
 
       <UserCard

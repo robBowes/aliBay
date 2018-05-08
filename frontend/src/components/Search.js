@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 
 let Bar = styled.div`
     margin: 0.5rem;
@@ -18,6 +19,8 @@ class Search extends Component {
     handleChange = (event)=>{
         event.preventDefault();
         this.setState({searchContents: event.target.value});
+        let newItems = _.filter(this.props.allItems, (x)=>x.itemName.toLowerCase().includes(event.target.value.toLowerCase()));
+        this.props.changeShownItems(newItems)
     }
     handleSubmit = (event)=>{
         console.log('search');
