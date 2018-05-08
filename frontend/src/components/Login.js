@@ -19,8 +19,8 @@ class Login extends Component {
         })
         .then((response)=>response.text())
         .then((response)=>{
+            console.log(response)
             let parsedResponse = JSON.parse(response);
-            console.log(parsedResponse)
             if (parsedResponse.status === true) {
                 // alert(parsedResponse.reason);
                 this.props.updateUserInfo(parsedResponse);
