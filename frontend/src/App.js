@@ -22,7 +22,7 @@ let renderAllItems = (item, index) => {
 let renderItemDetails = (routerData) => {
   // This function will render an <ItemDetails/> card component when a user
   // click on a specific item to Viewitem, id)
-  console.log(routerData.match.params.itemId)
+  console.log('')
   return <ItemDetails item={{}} id={routerData.match.params.id}/>
 };
 
@@ -69,9 +69,9 @@ class App extends Component {
            {this.state.items.map(renderAllItems)}
           </div>
           <Footer className='footer'/>
-        <div>
           <Route exact={true} path='/item/:id' render={renderItemDetails} />
         {/* <Route exact path='/' render={renderAllItems} /> */}
+        <div>
         </div>
       </div>
         </BrowserRouter>

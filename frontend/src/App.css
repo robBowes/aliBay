@@ -49,3 +49,9 @@
 .search {
   grid-area: search;
 }
+
+.itemDetails {
+  grid-area: loginTop / loginLeft / loginBottom / loginRight;;
+  z-index: 3;
+  background:yellow;
+}
