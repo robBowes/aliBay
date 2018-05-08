@@ -225,8 +225,6 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) 
   let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
   
-  sessionDoesExist = true
-
   if(!users[sellerId]) {
     return {
         status: false,
@@ -250,7 +248,7 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) 
     sellerName,
     price,
   };
-  
+
   return {
     status: true,
     reason: "Item Successfully Listed!"
