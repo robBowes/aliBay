@@ -76,7 +76,7 @@ class App extends Component {
           <div className="itemContainer">
            {this.state.items.map(renderAllItems)}
           </div>
-          {this.state.showSellItem?<SellItems toggleSellItem={this.toggleSellItem}/>:null}
+          {this.state.showSellItem?<SellItems toggleSellItem={this.toggleSellItem} userId={this.state.userId}/>:null}
           <Footer className='footer'/>
           <Route exact={true} path='/item/:id' render={renderItemDetails} />
         {/* <Route exact path='/' render={renderAllItems} /> */}

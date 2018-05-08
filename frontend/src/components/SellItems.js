@@ -3,23 +3,75 @@
 */
 
 import React, {Component} from 'react';
+import styled from 'styled-components';
+
+const Sell = styled.div`
+
+`;
 
 class SellItems extends Component {
     constructor(props) {
         super(props);
         this.state = {
             itemName: '',
+            itemDescription: '',
+            itemQuantity: '',
+            itemPrice: '',
         };
     };
     handleSubmit = (event) => {
         event.preventDefault();
+        fetch('/addItem', {
+            method: 'PUT',
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                itemName: this.state.itemName,
+                itemDescription: this.state.itemDescription,
+                quantity: this.state.itemQuantity,
+                price: this.state.itemPrice,
+                sellerId: this.props.userId,
+            })
+        })
+        .then(res=>res.json())
+        .then((data)=>{
+            console.log(data)
+        })
+
     };
+    handleChange = (event) => {
+        this.setState({[event.target.name]: event.target.value});
+    }
     render() {
         return (
-            <div className='sellItems'>
+            <Sell className='sellItems'>
             <form onSubmit={this.handleSubmit}>
+            <label htmlFor="itemName">Item Name</label>
+            <input type="text"
+            id='itemName'
+            name='itemName'
+            value={this.state.itemName}
+            onChange={this.handleChange}/>
+            <label htmlFor="itemDescription">Description</label>
+            <input type="text"
+            id='itemDescription'
+            name='itemDescription'
+            value={this.state.itemDescription}
+            onChange={this.handleChange}/>
+            <label htmlFor="itemQuantity">Quantity</label>
+            <input type="text"
+            id='itemQuantity'
+            name='itemQuantity'
+            value={this.state.itemQuantity}
+            onChange={this.handleChange}/>
+            <label htmlFor="itemPrice">Price</label>
+            <input type="text"
+            id='itemPrice'
+            name='itemPrice'
+            value={this.state.itemPrice}
+            onChange={this.handleChange}/>
+            <input type="submit" value="Submit"/>
             </form>
-            </div>
+            </Sell>
         );
     }
 }
