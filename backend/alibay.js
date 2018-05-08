@@ -15,7 +15,7 @@ let users = {
     signupDate: 12546845,
     description: "this is my profile, it is a string",
     lastLoginDate: 175654646
-  },
+  }
 };
 
 let login = (username, password, sessionId) => {
@@ -175,13 +175,33 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price) => {
   };
 };
 
-let user = userId => {
+let user = (userId, sessionId) => {
+  let sessions = _.map(users, 'sessionId');
+  let sessionDoesExist = sessions.some(x => x === sessionId);
+  if (!(userId in users) || !sessionDoesExist) {
+    return {
+      status: false,
+      reason: 'Invalid userId or sessionId'
+    };
+  }
+  let username = users[userId]['username'];
+  let itemsListed = users[userId]['itemsListed'];
+  let transactions = users[userId]['transactions'];
+  let description = users[userId]['description'];
+
+  if (userId in users && sessionDoesExist) {
+    return {
+      status: true,
+      username,
+      itemsListed,
+      transactions,
+      description
+    };
+  }
   return {
-    username: "Bobert",
-    itemsListed: [69769860],
-    transactions: [76976990],
-    description: "Hello I like to sell but also buy"
-  };
+      status: false,
+      reason: 'unknown error'
+  }
 };
 
 module.exports = {

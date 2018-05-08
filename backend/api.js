@@ -72,9 +72,8 @@ app.post("/user", (req, res) => {
   let body = req.body.toString();
   let parsedBody = JSON.parse(body);
   let userId = parsedBody.userId;
-  let sessionID = req.headers.cookie;
-  console.log(sessionID)
-  res.send(JSON.stringify(alibay.user(userId)));
+  let sessionId = req.headers.cookie;
+  res.send(JSON.stringify(alibay.user(userId, sessionId)));
 });
 
 app.listen(4000, () => console.log("Listening on port 4000!"));
