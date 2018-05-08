@@ -8,7 +8,7 @@ function genUID() {
 let users = {
   10000001: {
     username: "bob",
-    password: "a5sf54sf45as65f4a4f5a5sdf45ad5",
+    password: "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
     itemsListed: [23423],
     transactions: [23424234234, 2342342],
     sessionId: 0000000000,
@@ -19,11 +19,30 @@ let users = {
 };
 
 let login = (username, password, sessionId) => {
+  username = username.toLowerCase();
+  let usernames = _.map(users, "username");
+  let userDoesExist = usernames.some(x => x === username);
+  let userId = _.findKey(users, x => (x.username = username));
+
+  if (userDoesExist && users[userId]["password"] === password) {
+    return {
+      status: true,
+      sessionId: sessionId,
+      userId: userId,
+      reason: "Login Successful!"
+    };
+  }
+
+  if (!userDoesExist || users[userId]["password"] !== password) {
+    return {
+      status: false,
+      reason: "Incorrect username or password."
+    };
+  }
+
   return {
-    status: true,
-    sessionId: 000000001,
-    userId: 000000002,
-    reason: "Login Successful!"
+    status: false,
+    reason: "Unknown Error"
   };
 };
 
