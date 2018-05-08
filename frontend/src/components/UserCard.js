@@ -27,6 +27,9 @@ class UserCard extends Component {
             this.setState({...data});
         });
     }
+    componentWillMount = () => {
+        this.setState({userId: null, username: null, description: null})
+    }
     render() {
         
         return (
