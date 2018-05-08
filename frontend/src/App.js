@@ -102,7 +102,7 @@ class App extends Component {
       loggedIn={this.state.loggedIn}
       />
       
-      <div className='blurFrame' style={{'display': !this.state.loggedIn || this.state.showSellItem?'block':'none'}}/>
+      <div className='blurFrame' style={{'z-index': !this.state.loggedIn || this.state.showSellItem?'1':'-1'}}/>
       <Search
       changeShownItems={this.changeShownItems}
       allItems={this.state.items}
