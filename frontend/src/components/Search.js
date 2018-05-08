@@ -15,7 +15,7 @@ class Search extends Component {
         this.setState({searchContents: event.target.value});
     }
     handleSubmit = (event)=>{
-        console.log('search')
+        console.log('search');
         event.preventDefault();
         fetch('/search', {
             method: 'POST', body: JSON.stringify({query: this.state.searchContents}),
