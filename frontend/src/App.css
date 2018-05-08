@@ -34,6 +34,7 @@
 .navBar {
   grid-area: nav;
   background-color: tomato;
+  display: flex;
 }
 .userCard {
   grid-area: user;

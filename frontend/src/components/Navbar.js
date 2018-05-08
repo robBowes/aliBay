@@ -14,6 +14,7 @@ class Navbar extends Component {
         return (
             <div className="navBar">
                 <img src="" alt="the bay logo"/>
+                <h1>The Bay</h1>
             </div>
         );
     }
