@@ -12,12 +12,7 @@ import ItemCard from './components/ItemCard.js';
 import AccountCreation from './components/AccountCreation.js';
 import Footer from './components/Footer.js';
 import SellItems from './components/SellItems.js';
-
-let renderAllItems = (item, index) => {
-  // This function will render <ItemCard/> components for each Item
-  // in item array
-  return <ItemCard item={item} key={'item'+index}/>;
-};
+import ItemContainer from './components/ItemContainer';
 
 class App extends Component {
   constructor() {
@@ -114,9 +109,7 @@ class App extends Component {
         null
       }
 
-      <div className="itemContainer">
-      {this.state.items.map(renderAllItems)}
-      </div>
+      <ItemContainer items={this.state.items}/>
       {
         this.state.showSellItem?
         <SellItems
