@@ -127,6 +127,7 @@ class App extends Component {
 
       <Footer/>
       <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
+      <Route exact={true} path='/profile/:userId' component={Profile}/>
       </div>
       </BrowserRouter>
       </div>
