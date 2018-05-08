@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import {Route, BrowserRouter, Link} from 'react-router-dom';
 import './App.css';
-import {itemsObjToArray} from './utils.js';
+import {itemsObjToArray, getItemById} from './utils.js';
 import Login from './components/Login.js';
 import NavBar from './components/Navbar.js';
 import UserCard from './components/UserCard.js';
@@ -18,12 +18,6 @@ let renderAllItems = (item, index) => {
   return <ItemCard item={item} key={'item'+index}/>;
 };
 
-let renderItemDetails = (routerData) => {
-  // This function will render an <ItemDetails/> card component when a user
-  // click on a specific item to Viewitem, id)
-  console.log('')
-  return <ItemDetails item={{}} id={routerData.match.params.id}/>
-};
 
 
 
@@ -47,6 +41,9 @@ class App extends Component {
       this.setState({items});
     });
   };
+  renderItemDetails = (routerData) => {
+  return <ItemDetails items={this.state.items} id={routerData.match.params.id} getItemById={getItemById}/>
+  };
   updateUserInfo = (newUserInfo) => {
     console.log(newUserInfo);
     this.setState({loggedIn: true, userId: newUserInfo.userId});
@@ -68,7 +65,7 @@ class App extends Component {
            {this.state.items.map(renderAllItems)}
           </div>
           <Footer className='footer'/>
-          <Route exact={true} path='/item/:id' render={renderItemDetails} />
+          <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
         {/* <Route exact path='/' render={renderAllItems} /> */}
         <div>
         </div>
