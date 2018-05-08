@@ -27,16 +27,31 @@ class Profile extends Component {
       });
   };
   render() {
-    return (
-      <div className="userProfileContainer">
-        <div>
+    return <div className="userProfileContainer">
+        <div className="profileLeft">
           <img src="http://unsplash.it/300/300" />
-          <h1>{'Name: '+this.state.username}</h1>
-          <h5>{'Description: ' + this.state.description}</h5>
+          <h1>{"Name: " + this.state.username}</h1>
+          <h5>{"Description: " + this.state.description}</h5>
           <br />
         </div>
-      </div>
-    );
+        <div className="profileItemsContainer">
+          <div className="profileItemsLists">
+            ITEMS PURCHASED<br />
+            {this.state.transactions + ""}
+            <br />
+          </div>
+          <div className="profileItemsLists">
+            ITEMS SOLD<br />
+            {this.state.transactions + ""}
+            <br />
+          </div>
+          <div className="profileItemsLists">
+            ITEMS FOR SALE
+            <br />
+            {this.state.itemsListed + ""}
+          </div>
+        </div>
+      </div>;
   }
 }
 
