@@ -35,11 +35,20 @@ class Profile extends Component {
           <br />
         </div>
         <div className="profileItemsContainer">
-          <div className="profileItemsLists">ITEMS PURCHASED
+          <div className="profileItemsLists">
+            ITEMS PURCHASED<br />
+            {this.state.transactions + ""}
+            <br />
           </div>
-          <div className="profileItemsLists">ITEMS SOLD
+          <div className="profileItemsLists">
+            ITEMS SOLD<br />
+            {this.state.transactions + ""}
+            <br />
           </div>
-          <div className="profileItemsLists">ITEMS FOR SALE
+          <div className="profileItemsLists">
+            ITEMS FOR SALE
+            <br />
+            {this.state.itemsListed + ""}
           </div>
         </div>
       </div>;

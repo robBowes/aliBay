@@ -82,7 +82,7 @@
 .profileItemsContainer{
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
   background-color:tan;
-  width: 70vw;
+  width: 75%;
 }
 
 .profileItemsLists{
