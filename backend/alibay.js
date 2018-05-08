@@ -50,8 +50,11 @@ let register = (username, password, sessionId) => {
   username = username.toLowerCase();
   let usernames = _.map(users, "username");
   let userDoesExist = usernames.some(x => x === username);
-  let userId = Math.max(Object.keys(users)) + 1;
-
+  let keys = Object.keys(users)
+  let parsedKeys = keys.map(x => parseInt(x))
+  let maxKey = Math.max(...parsedKeys)
+  let userId = maxKey + 1;
+  
   if (userDoesExist) {
     return {
       status: false,
