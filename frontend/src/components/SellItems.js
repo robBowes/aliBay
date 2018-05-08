@@ -35,8 +35,8 @@ class SellItems extends Component {
         })
         .then((res)=>res.json())
         .then((data)=>{
-            console.log(data)
-            this.setState({response: data.reason})
+            console.log(data);
+            this.setState({response: data.reason});
         });
     };
     handleChange = (event) => {

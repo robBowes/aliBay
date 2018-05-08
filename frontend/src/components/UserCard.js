@@ -15,7 +15,6 @@ class UserCard extends Component {
         if (props.userId) this.getUser(props.userId);
     }
     getUser = (userId) => {
-        console.log(userId)
         fetch('/user', {
             method: 'POST',
             credentials: 'same-origin',
