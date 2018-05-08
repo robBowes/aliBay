@@ -15,7 +15,7 @@ let users = {
     signupDate: 12546845,
     description: "this is my profile, it is a string",
     lastLoginDate: 175654646
-  }
+  },
 };
 
 let login = (username, password, sessionId) => {
