@@ -45,6 +45,7 @@ class ItemDetails extends Component {
             </Link>
           </h1>
         </div>
+        <div className='flexItem'>
         <div>
           <img src={'http://unsplash.it/' + Math.floor(Math.random() * (400 - 250) + 250) + '/' + Math.floor(Math.random() * (400 - 250) + 250)} />
         </div>
@@ -57,9 +58,9 @@ class ItemDetails extends Component {
             {'List date: ' + this.state.item.listDate}
           </h2>
           <br />
-        </div>
-        {this.state.item.itemDescription}
-        <h3>{'quantity: ' + this.state.item.quantity}</h3>
+        {this.state.item.itemDescription}<br/>
+        <h3>{'quantity: ' + this.state.item.quantity}</h3></div>
+        </div><br/>
         <button onClick={this.handleBuy}>BUY</button>
       </div>;
   }
