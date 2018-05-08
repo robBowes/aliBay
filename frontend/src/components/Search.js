@@ -23,7 +23,9 @@ class Search extends Component {
         console.log('search');
         event.preventDefault();
         fetch('/search', {
-            method: 'POST', body: JSON.stringify(
+            method: 'POST', 
+            credentials: 'same-origin',
+            body: JSON.stringify(
                 {query: this.state.searchContents}
             ),
         })

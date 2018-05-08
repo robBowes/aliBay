@@ -17,8 +17,8 @@ class UserCard extends Component {
     getUser = () => {
         fetch('/user', {
             method: 'POST',
-            body: JSON.stringify({userId: this.state.userId}),
             credentials: 'same-origin',
+            body: JSON.stringify({userId: this.state.userId}),
         })
         .then((res)=>res.json())
         .then((data)=>{

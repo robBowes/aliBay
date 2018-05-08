@@ -15,6 +15,7 @@ class Login extends Component {
         event.preventDefault();
         fetch('/login', {
             method: 'POST',
+            credentials: 'same-origin',
             body: JSON.stringify({username: this.state.usernameValue, password: this.state.passwordValue}),
         })
         .then((response)=>response.text())

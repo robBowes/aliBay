@@ -11,7 +11,7 @@ import ItemDetails from './components/ItemDetails.js';
 import ItemCard from './components/ItemCard.js';
 import AccountCreation from './components/AccountCreation.js';
 import Footer from './components/Footer.js';
-import SellItems from './components/SellItems.js'
+import SellItems from './components/SellItems.js';
 
 let renderAllItems = (item, index) => {
   // This function will render <ItemCard/> components for each Item
@@ -22,10 +22,9 @@ let renderAllItems = (item, index) => {
 let renderItemDetails = (routerData) => {
   // This function will render an <ItemDetails/> card component when a user
   // click on a specific item to Viewitem, id)
-  console.log('')
-  return <ItemDetails item={{}} id={routerData.match.params.id}/>
+  console.log('');
+  return <ItemDetails item={{}} id={routerData.match.params.id}/>;
 };
-
 
 
 class App extends Component {
@@ -40,7 +39,9 @@ class App extends Component {
   };
   componentWillMount = () => {
     let items;
-    fetch('/allItems')
+    fetch('/allItems', {
+      credentials: 'same-origin',
+    })
     .then((res)=>res.json())
     .then((data)=>{
       items = data.content;
