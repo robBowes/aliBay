@@ -13,6 +13,7 @@ import AccountCreation from './components/AccountCreation.js';
 import Footer from './components/Footer.js';
 import SellItems from './components/SellItems.js';
 import ItemContainer from './components/ItemContainer';
+import Profile from './components/Profile.js'
 
 class App extends Component {
   constructor() {
@@ -79,11 +80,20 @@ class App extends Component {
       show: false,
     });
   }
+  renderProfile = () =>{
+    if(this.state.loggedIn){
+    return <Profile userId={this.state.userId}/>
+    }
+    else{
+      <Link to='/'/>
+    }
+  }
   render() {
     return (
       <div>
       <BrowserRouter>
       <div className="App mainContainer">
+      <Route exact={true} path='/profile/' render={this.renderProfile}/>
 
       <NavBar
       className="navBar"
@@ -128,7 +138,6 @@ class App extends Component {
 
       <Footer/>
       <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
-      {/*<Route exact={true} path='/profile/:userId' render={this.renderProfile}/>*/}
       </div>
       </BrowserRouter>
       </div>
