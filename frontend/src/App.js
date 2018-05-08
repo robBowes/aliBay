@@ -64,7 +64,6 @@ class App extends Component {
   };
   toggleSellItem = () => {
     this.setState({showSellItem: !this.state.showSellItem});
-    this.getAllItems();
   }
   toggleCreate = () => {
     this.setState({register: !this.state.register});
@@ -128,11 +127,15 @@ class App extends Component {
       }
 
       <ItemContainer items={this.state.showItems}/>
+
       {
         this.state.showSellItem?
         <SellItems
         toggleSellItem={this.toggleSellItem}
-        userId={this.state.userId}/>:
+        userId={this.state.userId}
+        getAllItems={this.getAllItems}
+        showAllItems={this.showAllItems}
+        />:
         null
       }
 
