@@ -46,31 +46,31 @@ class SellItems extends Component {
         return (
             <Sell className='sellItems'>
             <form onSubmit={this.handleSubmit}>
-            <label htmlFor="itemName">Item Name</label>
+            <label htmlFor="itemName">Item Name</label> <br/>
             <input type="text"
             id='itemName'
             name='itemName'
             value={this.state.itemName}
             onChange={this.handleChange}/> <br/>
-            <label htmlFor="itemDescription">Description</label>
+            <label htmlFor="itemDescription">Description</label> <br/>
             <input type="text"
             id='itemDescription'
             name='itemDescription'
             value={this.state.itemDescription}
             onChange={this.handleChange}/> <br/>
-            <label htmlFor="itemQuantity">Quantity</label>
+            <label htmlFor="itemQuantity">Quantity</label> <br/>
             <input type="text"
             id='itemQuantity'
             name='itemQuantity'
             value={this.state.itemQuantity}
             onChange={this.handleChange}/> <br/>
-            <label htmlFor="itemPrice">Price</label>
+            <label htmlFor="itemPrice">Price</label> <br/>
             <input type="text"
             id='itemPrice'
             name='itemPrice'
             value={this.state.itemPrice}
-            onChange={this.handleChange}/>
-            <input type="submit" value="Submit"/>
+            onChange={this.handleChange}/> <br/>
+            <input type="submit" value="Submit"/> <br/>
             </form>
             <div className="response">
             {this.state.response}
