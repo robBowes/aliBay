@@ -5,6 +5,9 @@
 import React, {Component} from 'react';
 
 class UserCard extends Component {
+    getUser = () => {
+        
+    }
     render() {
         return (
             <div className="userCard">

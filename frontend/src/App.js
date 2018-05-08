@@ -63,17 +63,21 @@ class App extends Component {
       items = itemsObjToArray(items)
       this.setState({items});
     });
+  };
+  updateUserInfo = (newUserInfo) => {
+    console.log(newUserInfo)
+    this.setState({loggedIn: true, userId: newUserInfo.userId});
   }
   updateItems = (items) => {
     this.setState({items: itemsObjToArray(items)});
-  }
+  };
   render() {
     return (
       <div className="App mainContainer">
           <NavBar className="navBar"/>
           <Search updateItems={this.updateItems} className='search' />
           <UserCard className="userCard" />
-          {this.state.loggedIn?<Login />:null }
+          {this.state.loggedIn?<Login updateUserInfo={this.updateUserInfo}/>:null }
           {this.state.register?<AccountCreation />:null }
           <div className="itemContainer">
            {this.state.items.map(renderAllItems)}
