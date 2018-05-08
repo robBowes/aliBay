@@ -60,6 +60,16 @@ class App extends Component {
   toggleCreate = () => {
     this.setState({register: !this.state.register})
   }
+  handleLogout = () => {
+    document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    this.setState({
+      loggedIn: false,
+      register: false,
+      showLogIn: false,
+      showSellItem: false,
+      userId: undefined
+    });
+  }
   render() {
     return (
       <div>
@@ -68,6 +78,8 @@ class App extends Component {
       <NavBar 
       className="navBar"
       toggleSellItem={this.toggleSellItem}
+      handleLogout={this.handleLogout}
+      loggedIn={this.state.loggedIn}
       />
       <Search updateItems={this.updateItems} className='search' />
       <UserCard className="userCard" userId={this.state.userId} />
