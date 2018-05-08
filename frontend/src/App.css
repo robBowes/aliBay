@@ -52,6 +52,7 @@
 }
 .itemContainer {
   grid-area: main;
+  overflow: scroll;
 }
 .search {
   grid-area: search;

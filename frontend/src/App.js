@@ -19,8 +19,6 @@ let renderAllItems = (item, index) => {
   return <ItemCard item={item} key={'item'+index}/>;
 };
 
-
-
 class App extends Component {
   constructor() {
     super();
@@ -35,6 +33,9 @@ class App extends Component {
     };
   };
   componentWillMount = () => {
+    this.getAllItems();
+  };
+  getAllItems = () => {
     let items;
     fetch('/allItems', {
       credentials: 'same-origin',
@@ -45,7 +46,7 @@ class App extends Component {
       items = itemsObjToArray(items);
       this.setState({items});
     });
-  };
+  }
   renderItemDetails = (routerData) => {
     return <ItemDetails items={this.state.items} id={routerData.match.params.id} getItemById={getItemById}/>
   };
@@ -58,6 +59,7 @@ class App extends Component {
   };
   toggleSellItem = () => {
     this.setState({showSellItem: !this.state.showSellItem});
+    this.getAllItems();
   }
   toggleCreate = () => {
     this.setState({register: !this.state.register})
