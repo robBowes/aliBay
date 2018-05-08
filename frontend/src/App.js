@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import {Route, BrowserRouter, Link} from 'react-router-dom';
 import './App.css';
-import {itemsObjToArray} from './utils.js'
+import {itemsObjToArray} from './utils.js';
 import Login from './components/Login.js';
 import NavBar from './components/Navbar.js';
 import UserCard from './components/UserCard.js';
@@ -27,8 +27,6 @@ let renderItemDetails = (routerData) => {
 
 
 
-
-
 class App extends Component {
   constructor() {
     super();
@@ -45,16 +43,17 @@ class App extends Component {
     .then((res)=>res.json())
     .then((data)=>{
       items = data.content;
-      items = itemsObjToArray(items)
+      items = itemsObjToArray(items);
       this.setState({items});
     });
+  };
+  updateUserInfo = (newUserInfo) => {
+    console.log(newUserInfo);
+    this.setState({loggedIn: true, userId: newUserInfo.userId});
   }
   updateItems = (items) => {
     this.setState({items: itemsObjToArray(items)});
-  }
-  toggleLog = () => {
-    this.setState({showLogIn: !this.state.showLogIn})
-  }
+  };
   render() {
     return (
       <div>
@@ -62,10 +61,8 @@ class App extends Component {
       <div className="App mainContainer">
           <NavBar className="navBar"/>
           <Search updateItems={this.updateItems} className='search' />
-          <UserCard className="userCard" />
-          {this.state.showLogIn?<Login
-          close={this.toggleLog}
-          />:null }
+          <UserCard className="userCard" userId={this.state.userId} />
+          {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}/> }
           {this.state.register?<AccountCreation />:null }
           <div className="itemContainer">
            {this.state.items.map(renderAllItems)}
