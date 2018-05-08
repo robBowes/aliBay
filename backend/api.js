@@ -2,25 +2,29 @@ const alibay = require("./alibay.js");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const sha = require('sha1');
+
 
 app.use(bodyParser.raw({ type: "*/*" }));
 
 app.post("/login", (req, res) => {
   let body = req.body.toString();
-  console.log(body);
   let parsedBody = JSON.parse(body);
-  console.log(parsedBody);
   let username = parsedBody.username;
   let password = parsedBody.password;
-  res.send(JSON.stringify(alibay.login(username, password)));
+  let sessionId = sha(Math.random()*1000000)
+  res.set('Set-Cookie', sessionId);
+  res.send(JSON.stringify(alibay.login(username, password, sessionId)));
 });
 
 app.post("/register", (req, res) => {
   let body = req.body.toString();
   let parsedBody = JSON.parse(body);
   let username = parsedBody.username;
-  let password = parsedBody.password;
-  res.send(JSON.stringify(alibay.register(username, password)));
+  let password = sha(parsedBody.password);
+  let sessionId = sha(Math.random()*1000000)
+  res.set('Set-Cookie', sessionId);
+  res.send(JSON.stringify(alibay.register(username, password, sessionId)));
 });
 
 app.get("/allItems", (req, res) => {

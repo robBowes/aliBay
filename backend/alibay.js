@@ -1,22 +1,67 @@
 const assert = require("assert");
+const _ = require("lodash");
 
 function genUID() {
   return Math.floor(Math.random() * 100000000);
 }
 
-let login = (username, password) => {
+let users = {
+  10000001: {
+    username: "bob",
+    password: "a5sf54sf45as65f4a4f5a5sdf45ad5",
+    itemsListed: [23423],
+    transactions: [23424234234, 2342342],
+    sessionId: 0000000000,
+    signupDate: 12546845,
+    description: "this is my profile, it is a string",
+    lastLoginDate: 175654646
+  }
+};
+
+let login = (username, password, sessionId) => {
   return {
     status: true,
     sessionId: 000000001,
+    userId: 000000002,
     reason: "Login Successful!"
   };
 };
 
-let register = (username, password) => {
+let register = (username, password, sessionId) => {
+  username = username.toLowerCase();
+  let usernames = _.map(users, "username");
+  let userDoesExist = usernames.some(x => x === username);
+  let userId = Math.max(Object.keys(users)) + 1;
+
+  if (userDoesExist) {
+    return {
+      status: false,
+      reason: "Username already exists!"
+    };
+  }
+
+  if (!userDoesExist) {
+    users[userId] = {
+      username: username,
+      password: password,
+      itemsListed: [],
+      transactions: [],
+      sessionId: sessionId,
+      signupDate: Date.now(),
+      description: "",
+      lastLoginDate: Date.now()
+    };
+    return {
+      status: true,
+      sessionId: sessionId,
+      userId: userId,
+      reason: "Registration Successful"
+    };
+  }
+
   return {
-    status: true,
-    sessionId: 000000001,
-    reason: "Registration Successful!"
+    status: false,
+    reason: "Unknown Error!"
   };
 };
 
