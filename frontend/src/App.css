@@ -5,7 +5,7 @@
 }
 .mainContainer {
   display: grid;
-  grid-template-rows: [navTop] 50px [navBottom] 20px [searchBottom mainTop] 5px [loginTop] 5px [registerTop] auto [registerBottom] 5px [loginBottom] 5px [mainBottom footerTop] 50px [footerBottom];
+  grid-template-rows: [navTop] 50px [navBottom searchTop] 40px [searchBottom mainTop] 5px [loginTop] 5px [registerTop] auto [registerBottom] 5px [loginBottom] 5px [mainBottom footerTop] 50px [footerBottom];
   grid-template-columns: [leftSide] 15% [endUser] 5px [registerLeft] 5px [loginLeft] auto [loginRight] 5px [registerRight] 5px [rightColumn] 10%;
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"

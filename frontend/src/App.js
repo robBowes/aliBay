@@ -13,8 +13,8 @@ import Footer from './components/Footer.js';
 
 let renderAllItems = (item) => {
   // This function will render <ItemCard/> components for each Item in item array
-  console.log(item)
-  return <ItemCard item={item} />
+  console.log(item);
+  return <ItemCard item={item} />;
 };
 
 let renderItemDetails = () => {

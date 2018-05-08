@@ -3,6 +3,11 @@
  */
 
 import React, {Component} from 'react';
+import styledComponent from 'styled-components';
+
+let Nav = styledComponent.nav`
+    
+`;
 
 class Navbar extends Component {
     render() {

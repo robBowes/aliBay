@@ -2,6 +2,11 @@
  * Makes a search request to the server
  */
 import React, {Component} from 'react';
+import styled from 'styled-components'
+
+let Bar = styled.div`
+    margin: 0.5rem;
+`;
 
 class Search extends Component {
     constructor() {
@@ -28,12 +33,12 @@ class Search extends Component {
     }
     render() {
         return (
-            <div className="search">
+            <Bar className="search">
                 <form onSubmit={this.handleSubmit}>
                     <input type='text' placeholder='Search' value={this.state.searchContents} onChange={this.handleChange}/>
                     <input type='submit' />
                 </form>
-            </div>
+            </Bar>
         );
     }
 }

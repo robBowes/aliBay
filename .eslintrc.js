@@ -18,6 +18,7 @@ module.exports = {
         "semi": ["error", "always"],
         "require-jsdoc" : "off",
         "linebreak-style":"off",
-        "no-unused-vars":"off"
+        "no-unused-vars":"off",
+        "no-invalid-this": "off"
     }
 };
