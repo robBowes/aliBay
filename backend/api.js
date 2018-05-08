@@ -23,6 +23,7 @@ app.post("/register", (req, res) => {
   let username = parsedBody.username;
   let password = sha(parsedBody.password);
   let sessionId = sha(Math.random()*1000000)
+  console.log("PARSED USER", parsedBody.username)
   res.set('Set-Cookie', sessionId);
   res.send(JSON.stringify(alibay.register(username, password, sessionId)));
 });
@@ -56,14 +57,16 @@ app.post("/search", (req, res) => {
 app.put("/addItem", (req, res) => {
   let body = req.body.toString();
   let parsedBody = JSON.parse(body);
-  let itemName = parsedBody.itemTitle;
+  let itemName = parsedBody.itemName;
   let itemDescription = parsedBody.itemDescription;
   let quantity = parsedBody.quantity;
   let sellerId = parsedBody.sellerId;
   let price = parsedBody.price;
+  let sessionId = req.headers.cookie;
+  sellerId = parseInt(sellerId)
   res.send(
     JSON.stringify(
-      alibay.addItem(itemName, itemDescription, quantity, sellerId, price)
+      alibay.addItem(itemName, itemDescription, quantity, sellerId, price, sessionId)
     )
   );
 });
@@ -73,7 +76,6 @@ app.post("/user", (req, res) => {
   let parsedBody = JSON.parse(body);
   let userId = parsedBody.userId;
   let sessionId = req.headers.cookie;
-  //sessionId = sessionId.substring(-1)
   userId = parseInt(userId)
   res.send(JSON.stringify(alibay.user(userId, sessionId)));
 });

@@ -30,6 +30,8 @@ class App extends Component {
       showLogIn: false,
       showSellItem: false,
       items: [],
+      clearCard:false,
+      show: false
     };
   };
   componentWillMount = () => {
@@ -49,13 +51,27 @@ class App extends Component {
   };
   updateUserInfo = (newUserInfo) => {
     console.log(newUserInfo);
-    this.setState({loggedIn: true, userId: newUserInfo.userId});
+    this.setState({loggedIn: true, userId: newUserInfo.userId, show: true});
   }
   updateItems = (items) => {
     this.setState({items: itemsObjToArray(items)});
   };
   toggleSellItem = () => {
     this.setState({showSellItem: !this.state.showSellItem});
+  }
+  toggleCreate = () => {
+    this.setState({register: !this.state.register})
+  }
+  handleLogout = () => {
+   document.cookie=""
+    this.setState({
+      loggedIn: false,
+      register: false,
+      showLogIn: false,
+      showSellItem: false,
+      userId: undefined,
+      show: false
+    });
   }
   render() {
     return (
@@ -65,11 +81,15 @@ class App extends Component {
       <NavBar 
       className="navBar"
       toggleSellItem={this.toggleSellItem}
+      handleLogout={this.handleLogout}
+      loggedIn={this.state.loggedIn}
       />
       <Search updateItems={this.updateItems} className='search' />
-      <UserCard className="userCard" userId={this.state.userId} />
-      {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}/> }
-      {this.state.register?<AccountCreation />:null }
+      <UserCard className="userCard" userId={this.state.userId} show={this.state.show}/>
+      {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}
+      toggleCreate={this.toggleCreate} loggedIn={this.state.loggedIn}/> }
+      {this.state.register?<AccountCreation
+      toggleCreate={this.toggleCreate} />:null }
       <div className="itemContainer">
       {this.state.items.map(renderAllItems)}
       </div>

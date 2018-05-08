@@ -18,13 +18,58 @@ let users = {
   }
 };
 
+let items = {
+  20000001: {
+    itemDescription: "sample",
+    itemName: "some name",
+    price: 12312.12,
+    quantity: 10,
+    listDate: 713649819,
+    sellerId: 545445
+  },
+  20000002: {
+    itemName: "Red Bike",
+    itemDescription:
+      "works great 2015 model selling because I bought a new one. I have 2 for sale",
+    sellerName: "Bobert Dobert",
+    price: 60,
+    quantity: 2,
+    sellerId: 869868,
+    listDate: 1519216899934
+  },
+  20000003: {
+    itemName: "2017 Corvette Z06",
+    itemDescription:
+      "My midlife crisis is over sweet car but now I have to live a boring life also I got a DUI",
+    sellerName: "Aubrey Drake Graham Jr",
+    price: 50000,
+    quantity: 1,
+    sellerId: 896070,
+    listDate: 1519211899934
+  },
+  20000004: {
+    itemName: "left shoe",
+    itemDescription:
+      "Selling because I lost the right one its an original Air Yeezy worth $4000 for the pair so this is a bargain",
+    sellerName: "Slim Jimmy",
+    price: 300,
+    quantity: 1,
+    sellerId: 658791,
+    listDate: 1519211809934
+  }
+};
+
 let login = (username, password, sessionId) => {
   username = username.toLowerCase();
-  let usernames = _.map(users, "username");
-  let userDoesExist = usernames.some(x => x === username);
-  let userId = _.findKey(users, x => (x.username = username));
-  if (userDoesExist && users[userId]["password"] === password) {
-    users[userId]['sessionId'] = sessionId;
+  let userId = _.findKey(users, x => x["username"] === username);
+  if (!userId) {
+    return {
+      status: false,
+      reason: "Username does not exist"
+    };
+  }
+  if (users[userId]["password"] === password) {
+    users[userId]["sessionId"] = sessionId;
     return {
       status: true,
       sessionId: sessionId,
@@ -33,10 +78,10 @@ let login = (username, password, sessionId) => {
     };
   }
 
-  if (!userDoesExist || users[userId]["password"] !== password) {
+  if (users[userId]["password"] !== password) {
     return {
       status: false,
-      reason: "Incorrect username or password."
+      reason: "Incorrect password."
     };
   }
 
@@ -50,11 +95,11 @@ let register = (username, password, sessionId) => {
   username = username.toLowerCase();
   let usernames = _.map(users, "username");
   let userDoesExist = usernames.some(x => x === username);
-  let keys = Object.keys(users)
-  let parsedKeys = keys.map(x => parseInt(x))
-  let maxKey = Math.max(...parsedKeys)
+  let keys = Object.keys(users);
+  let parsedKeys = keys.map(x => parseInt(x));
+  let maxKey = Math.max(...parsedKeys);
   let userId = maxKey + 1;
-  
+
   if (userDoesExist) {
     return {
       status: false,
@@ -73,6 +118,7 @@ let register = (username, password, sessionId) => {
       description: "",
       lastLoginDate: Date.now()
     };
+    console.log(users)
     return {
       status: true,
       sessionId: sessionId,
@@ -171,7 +217,38 @@ let search = query => {
   };
 };
 
-let addItem = (itemName, itemDescription, quantity, sellerId, price) => {
+let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) => {
+  let keys = Object.keys(items);
+  let parsedKeys = keys.map(x => parseInt(x));
+  let maxKey = Math.max(...parsedKeys);
+  let itemId = maxKey + 1;
+  let sessions = _.map(users, "sessionId");
+  let sessionDoesExist = sessions.some(x => x === sessionId);
+  
+  if(!users[sellerId]) {
+    return {
+        status: false,
+        reason: "Invalid sellerId"
+      }; 
+  }
+  let sellerName = users[sellerId]['username']
+  
+  if (!sessionDoesExist) {
+    return {
+      status: false,
+      reason: "Invalid sessionId"
+    };
+  }
+
+  items[itemId] = {
+    itemName,
+    itemDescription,
+    quantity,
+    sellerId,
+    sellerName,
+    price,
+  };
+
   return {
     status: true,
     reason: "Item Successfully Listed!"
@@ -179,24 +256,26 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price) => {
 };
 
 let user = (userId, sessionId) => {
-  let sessions = _.map(users, 'sessionId');
+  let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
+
   if (!(userId in users)) {
     return {
       status: false,
-      reason: 'Invalid userId'
+      reason: "Invalid userId"
     };
   }
+  console.log(sessionId)
   if (!sessionDoesExist) {
     return {
       status: false,
-      reason: 'Invalid sessionId'
+      reason: "Invalid sessionId"
     };
   }
-  let username = users[userId]['username'];
-  let itemsListed = users[userId]['itemsListed'];
-  let transactions = users[userId]['transactions'];
-  let description = users[userId]['description'];
+  let username = users[userId]["username"];
+  let itemsListed = users[userId]["itemsListed"];
+  let transactions = users[userId]["transactions"];
+  let description = users[userId]["description"];
 
   if (userId in users && sessionDoesExist) {
     return {
@@ -208,9 +287,9 @@ let user = (userId, sessionId) => {
     };
   }
   return {
-      status: false,
-      reason: 'unknown error'
-  }
+    status: false,
+    reason: "unknown error"
+  };
 };
 
 module.exports = {

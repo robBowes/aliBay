@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
+
 const Sell = styled.div`
     padding: 2rem;
 `;
@@ -44,8 +45,7 @@ class SellItems extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
     render() {
-        return (
-            <Sell className='sellItems'>
+        return <Sell className="sellItems">
             <form onSubmit={this.handleSubmit}>
             <label htmlFor="itemName">Item Name</label> <br/>
             <input type="text"
@@ -73,11 +73,8 @@ class SellItems extends Component {
             onChange={this.handleChange}/> <br/>
             <input type="submit" value="Submit"/> <br/>
             </form>
-            <div className="response">
-            {this.state.response}
-            </div>
-            </Sell>
-        );
+            <div className="response">{this.state.response}</div>
+          </Sell>;
     }
 }
 
