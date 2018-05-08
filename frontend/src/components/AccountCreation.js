@@ -5,6 +5,12 @@
 import React, {Component} from 'react';
 
 class AccountCreation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            class: 'hidden',
+        };
+    }
     handleRegister = (event) => {
         event.preventDefault();
         let username = document.getElementById("username1").value;
@@ -33,9 +39,11 @@ class AccountCreation extends Component {
         document.getElementById("password1").value = "";
     }
    
-
+    componentWillMount = () => {
+        setTimeout(()=>this.setState({class: 'accountCreation'}));
+    }
     render() {
-        return <div className="accountCreation">
+        return <div className={this.state.class}>
             <div>Register Header<button onClick={this.props.toggleCreate}>close pane</button></div>
             <form onSubmit={this.handleRegister}>
               LOGIN:<br />
