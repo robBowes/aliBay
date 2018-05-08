@@ -40,7 +40,7 @@ class AccountCreation extends Component {
     }
    
     componentWillMount = () => {
-        setTimeout(()=>this.setState({class: 'accountCreation'}));
+        setTimeout(()=>this.setState({class: 'accountCreation slideIn'}));
     }
     render() {
         return <div className={this.state.class}>

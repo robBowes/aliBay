@@ -23,7 +23,6 @@
 }
 .accountCreation {
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
-  transition: all 2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   z-index: 4;
   background-color: grey;
 }
@@ -32,11 +31,13 @@
   visibility: hidden;
   transform: translate(-100%,0);
 }
+.slideIn {
+  transition: all 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
 .login {
   /* display: block; */
   grid-area: loginTop / loginLeft / loginBottom / loginRight;
   background-color: tomato;
-  transition: all 2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   z-index: 2;
 }
 .navBar {
