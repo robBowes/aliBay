@@ -20,10 +20,14 @@ let users = {
 
 let login = (username, password, sessionId) => {
   username = username.toLowerCase();
-  let usernames = _.map(users, "username");
-  let userDoesExist = usernames.some(x => x === username);
-  let userId = _.findKey(users, x => (x.username = username));
-  if (userDoesExist && users[userId]["password"] === password) {
+  let userId = _.findKey(users, x => (x['username'] === username));
+  if (!userId) {
+    return {
+        status: false,
+        reason: "Username does not exist"
+      };
+  }
+  if (users[userId]["password"] === password) {
     users[userId]['sessionId'] = sessionId;
     return {
       status: true,
@@ -33,10 +37,10 @@ let login = (username, password, sessionId) => {
     };
   }
 
-  if (!userDoesExist || users[userId]["password"] !== password) {
+  if (users[userId]["password"] !== password) {
     return {
       status: false,
-      reason: "Incorrect username or password."
+      reason: "Incorrect password."
     };
   }
 
