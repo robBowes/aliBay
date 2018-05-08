@@ -24,16 +24,23 @@ class App extends Component {
       showLogIn: false,
       showSellItem: false,
       items: [],
+      showItems: [],
       clearCard: false,
       show: false,
     };
   };
   componentWillMount = () => {
-    this.getAllItems();
+    this.getAllItems()
+    .then(()=>{
+      this.showAllItems();
+    });
   };
+  showAllItems = () => {
+    this.setState({showItems: this.state.items});
+  }
   getAllItems = () => {
     let items;
-    fetch('/allItems', {
+    return fetch('/allItems', {
       credentials: 'same-origin',
     })
     .then((res)=>res.json())
@@ -52,8 +59,8 @@ class App extends Component {
   updateUserInfo = (newUserInfo) => {
     this.setState({loggedIn: true, userId: newUserInfo.userId, show: true});
   }
-  updateItems = (items) => {
-    this.setState({items: itemsObjToArray(items)});
+  changeShownItems = (items) => {
+    this.setState({showItems: itemsObjToArray(items)});
   };
   toggleSellItem = () => {
     this.setState({showSellItem: !this.state.showSellItem});
@@ -96,7 +103,8 @@ class App extends Component {
       />
 
       <Search
-      updateItems={this.updateItems}
+      changeShownItems={this.changeShownItems}
+      allItems={this.state.items}
       className='search' />
 
       <UserCard
@@ -119,7 +127,7 @@ class App extends Component {
         null
       }
 
-      <ItemContainer items={this.state.items}/>
+      <ItemContainer items={this.state.showItems}/>
       {
         this.state.showSellItem?
         <SellItems

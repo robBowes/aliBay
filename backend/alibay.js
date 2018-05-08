@@ -15,6 +15,16 @@ let users = {
     signupDate: 12546845,
     description: "this is my profile, it is a string",
     lastLoginDate: 175654646
+  },
+  10000002: {
+    username: "glob",
+    password: "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    itemsListed: [23423],
+    transactions: [23424234234, 2342342],
+    sessionId: 00000000002,
+    signupDate: 12546845,
+    description: "this is my profile, it is a string",
+    lastLoginDate: 175654646
   }
 };
 
@@ -25,7 +35,7 @@ let items = {
     price: 12312.12,
     quantity: 10,
     listDate: 713649819,
-    sellerId: 545445
+    sellerId: 10000002
   },
   20000002: {
     itemName: "Red Bike",
@@ -56,6 +66,16 @@ let items = {
     quantity: 1,
     sellerId: 658791,
     listDate: 1519211809934
+  }
+};
+
+let transactions = {
+  30000001: {
+    sellerId: 10000001,
+    buyerId: 10000002,
+    itemId: 20000002,
+    quantity: 2,
+    price: 123.5
   }
 };
 
@@ -153,16 +173,60 @@ let item = itemId => {
   };
 };
 
-let buy = (itemId, quantity) => {
+let buy = (itemId, quantity, sessionId) => {
+  let sessions = _.map(users, "sessionId");
+  let sessionDoesExist = sessions.some(x => x === sessionId);
+
+  if (!items[itemId]) {
+    return {
+      status: false,
+      reason: "Invalid itemId"
+    };
+  }
+
+  if (!sessionDoesExist) {
+    return {
+      status: false,
+      reason: "Invalid sessionId"
+    };
+  }
+
+  let keys = Object.keys(transactions);
+  let parsedKeys = keys.map(x => parseInt(x));
+  let maxKey = Math.max(...parsedKeys);
+  let transactionId = maxKey + 1;
+  let sellerId = items[itemId]["sellerId"];
+  let buyerId = _.findKey(users, x => x["sessionId"] === sessionId);
+  let price = items[itemId]["price"];
+
+  transactions[transactionId] = {
+    sellerId,
+    buyerId,
+    itemId,
+    quantity,
+    price
+  };
+
+  items[itemId]["quantity"] = items[itemId]["quantity"] - 1;
+  users[buyerId]["transactions"] = users[buyerId]["transactions"].concat(
+    transactionId
+  );
+  users[sellerId]["transactions"] = users[sellerId]["transactions"].concat(
+    transactionId
+  );
+
   return {
     status: true,
     reason: "purchase successful"
   };
 };
+
 let search = query => {
-   let allItems = {...items};
-   let filteredItems = _.pickBy(items, x => x.itemName.toLowerCase().includes(query.toLowerCase()))
-        
+  let allItems = { ...items };
+  let filteredItems = _.pickBy(items, x =>
+    x.itemName.toLowerCase().includes(query.toLowerCase())
+  );
+
   return {
     status: true,
     content: filteredItems
