@@ -248,7 +248,6 @@ let addItem = (itemName, itemDescription, quantity, sellerId, price, sessionId) 
     sellerName,
     price,
   };
-
   return {
     status: true,
     reason: "Item Successfully Listed!"

@@ -34,8 +34,11 @@ class Login extends Component {
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     }
+    componentWillMount = () => {
+        setTimeout(()=>this.setState({classLogin: 'login'}), 100)
+    }
     render() {
-        return (<div className="login">
+        return (<div className={this.state.classLogin}>
         <div>LOG IN HEADER</div>
         <form onSubmit={this.handleSubmit}>
         LOGIN:<br />
