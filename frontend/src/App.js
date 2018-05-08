@@ -28,8 +28,8 @@ class App extends Component {
       showLogIn: false,
       showSellItem: false,
       items: [],
-      clearCard:false,
-      show: false
+      clearCard: false,
+      show: false,
     };
   };
   componentWillMount = () => {
@@ -48,10 +48,12 @@ class App extends Component {
     });
   }
   renderItemDetails = (routerData) => {
-    return <ItemDetails items={this.state.items} id={routerData.match.params.id} getItemById={getItemById}/>
+    return <ItemDetails
+    items={this.state.items}
+    id={routerData.match.params.id}
+    getItemById={getItemById}/>;
   };
   updateUserInfo = (newUserInfo) => {
-    console.log(newUserInfo);
     this.setState({loggedIn: true, userId: newUserInfo.userId, show: true});
   }
   updateItems = (items) => {
@@ -62,17 +64,17 @@ class App extends Component {
     this.getAllItems();
   }
   toggleCreate = () => {
-    this.setState({register: !this.state.register})
+    this.setState({register: !this.state.register});
   }
   handleLogout = () => {
-   document.cookie=""
+    document.cookie='';
     this.setState({
       loggedIn: false,
       register: false,
       showLogIn: false,
       showSellItem: false,
       userId: undefined,
-      show: false
+      show: false,
     });
   }
   render() {
@@ -80,27 +82,51 @@ class App extends Component {
       <div>
       <BrowserRouter>
       <div className="App mainContainer">
-      <NavBar 
+
+      <NavBar
       className="navBar"
       toggleSellItem={this.toggleSellItem}
       handleLogout={this.handleLogout}
       loggedIn={this.state.loggedIn}
       />
-      <Search updateItems={this.updateItems} className='search' />
-      <UserCard className="userCard" userId={this.state.userId} show={this.state.show}/>
-      {this.state.loggedIn?null:<Login updateUserInfo={this.updateUserInfo}
-      toggleCreate={this.toggleCreate} loggedIn={this.state.loggedIn}/> }
-      {this.state.register?<AccountCreation
-      toggleCreate={this.toggleCreate} />:null }
+
+      <Search
+      updateItems={this.updateItems}
+      className='search' />
+
+      <UserCard
+      className="userCard"
+      userId={this.state.userId}
+      show={this.state.show}/>
+
+      {
+        this.state.loggedIn?
+        null:
+        <Login
+        updateUserInfo={this.updateUserInfo}
+        toggleCreate={this.toggleCreate}
+        loggedIn={this.state.loggedIn}/>
+      }
+
+      {
+        this.state.register?
+        <AccountCreation toggleCreate={this.toggleCreate} />:
+        null
+      }
+
       <div className="itemContainer">
       {this.state.items.map(renderAllItems)}
       </div>
-      {this.state.showSellItem?<SellItems toggleSellItem={this.toggleSellItem} userId={this.state.userId}/>:null}
-      <Footer className='footer'/>
+      {
+        this.state.showSellItem?
+        <SellItems
+        toggleSellItem={this.toggleSellItem}
+        userId={this.state.userId}/>:
+        null
+      }
+
+      <Footer/>
       <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
-      {/* <Route exact path='/' render={renderAllItems} /> */}
-      <div>
-      </div>
       </div>
       </BrowserRouter>
       </div>
