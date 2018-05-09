@@ -27,7 +27,6 @@ class Login extends Component {
         })
         .then((response) => response.text())
         .then((response) => {
-            console.log(response);
             let parsedResponse = JSON.parse(response);
             if (parsedResponse.status === true) {
                 // alert(parsedResponse.reason);
@@ -50,7 +49,12 @@ class Login extends Component {
         return (<div className={this.state.classes.join(' ') }>
 
         <div
-        style={{maxWidth: '20rem'}}
+        style={
+            {
+                maxWidth: '20rem',
+                minWidth: '15rem',
+            }
+        }
         className="card border-secondary">
         <h2 className="card-header">Sign In</h2>
         <form
@@ -90,6 +94,7 @@ class Login extends Component {
         style={
             {
                 maxWidth: '20rem',
+                minWidth: '15rem',
             }
         }
         className="card border-secondary">

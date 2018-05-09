@@ -1,6 +1,6 @@
 /**
- * A page where unregistered users can create a new user profile
- */
+* A page where unregistered users can create a new user profile
+*/
 
 import React, {Component} from 'react';
 
@@ -9,47 +9,86 @@ class AccountCreation extends Component {
         super(props);
         this.state = {
             class: 'hidden',
+            username: '',
+            password: '',
+            classes: ['hidden', 'accountCreation', 'slideIn'],
         };
     }
-    handleRegister = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        let username = document.getElementById('username1').value;
-        let password = document.getElementById('password1').value;
-        console.log(username);
         fetch('/register', {
-          method: 'POST',
-          body: JSON.stringify({
-            username: username,
-            password: password,
-            credentials: 'same-origin',
-          }),
+            method: 'POST',
+            body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password,
+                credentials: 'same-origin',
+            }),
         })
         .then((response)=>response.text())
         .then((response)=>{
             let parsedResponse = JSON.parse(response);
             if (parsedResponse.status === true) {
-                alert(parsedResponse.reason);
+                // alert(parsedResponse.reason);
+                this.props.updateUserInfo(parsedResponse);
             } else {
-                alert(parsedResponse.reason);
+                // alert(parsedResponse.reason);
             }
-        })
-        ;
-        document.getElementById('username1').value = '';
-        document.getElementById('password1').value = '';
+        });
+    }
+    handleChange = (event) => {
+        this.setState({[event.target.name]: event.target.value});
+    }
+    componentWillReceiveProps = (props) => {
+        let newClasses = props.register?
+        'accountCreation slideIn':
+        'hidden accountCreation slideIn';
+        this.setState({classes: newClasses.split(' ')});
     }
     render() {
-        return <div className={this.props.register?'accountCreation slideIn':'hidden accountCreation slideIn'}>
-            <div>Register Header<button onClick={this.props.toggleCreate}>close pane</button></div>
-            <form onSubmit={this.handleRegister}>
-              LOGIN:<br />
-              USERNAME<br />
-              <input type="text" id="username1" />
-              <br />PASSWORD<br />
-              <input type="password" id="password1" />
-              <br />
-              <input type="submit" />
-            </form>
-          </div>;
+        return <div className={this.state.classes.join(' ')}>
+
+        <div
+        className="card border-secondary" >
+
+        <h2
+        className="card-header" >
+        Register
+        <button onClick={this.props.toggleCreate}>X</button>
+        </h2>
+
+
+        <form
+        className="card-body"
+        onSubmit={this.handleSubmit}>
+
+        <label htmlFor="username1">Username</label> <br />
+
+        <input
+        className="form-text text-muted"
+        onChange={this.handleChange}
+        value={this.state.username}
+        type="text"
+        name="username"
+        id="username1" /><br />
+
+        <label htmlFor="password1">Password</label> <br />
+
+        <input
+        onChange={this.handleChange}
+        value={this.state.password}
+        name="password"
+        type="password"
+        id="password1" />
+
+        <br />
+
+        <input
+        className="btn btn-primary"
+        type="submit" />
+
+        </form>
+        </div>
+        </div>;
     }
 }
 

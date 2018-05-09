@@ -56,7 +56,7 @@ class App extends Component {
     getItemById={getItemById}/>;
   };
   updateUserInfo = (newUserInfo) => {
-    this.setState({loggedIn: true, userId: newUserInfo.userId, show: true});
+    this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
   }
   changeShownItems = (items) => {
     this.setState({showItems: itemsObjToArray(items)});
@@ -126,6 +126,7 @@ class App extends Component {
       <AccountCreation
       toggleCreate={this.toggleCreate}
       register={this.state.register}
+      updateUserInfo={this.updateUserInfo}
       />
 
       <ItemContainer items={this.state.showItems}/>

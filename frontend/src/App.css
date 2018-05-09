@@ -34,7 +34,8 @@
 .accountCreation {
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
   z-index: 4;
-  background-color: grey;
+  /* background-color: re; */
+  padding: 5rem;
 }
 .hidden {
   /* display: none; */
@@ -45,15 +46,17 @@
 .slideIn {
   transition: all 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
+.shadow {
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.596);
+}
 .login {
   grid-area: loginTop / loginLeft / loginBottom / loginRight;
-  background-color: aliceblue;
+  background-color: rgba(0, 0, 0, 0);
   z-index: 2;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.596);
-  padding: 7rem;
+  padding: 7rem 10rem;
   display: flex;
-  justify-content: space-between;
-  overflow: scroll;
+  justify-content: space-evenly;
+  overflow: hidden;
 }
 .navBar {
   grid-area: nav;
