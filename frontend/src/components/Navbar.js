@@ -16,45 +16,51 @@ const disabledBtn = 'btn btn-info disabled';
 class Navbar extends Component {
   render() {
     return <div
-    className="navBar">
+    className="navBar navbar navbar-dark navbar-expand-lg  bg-dark">
 
     <img src="" alt="the bay logo" />
 
     <Link to="/">
 
-    <h1>The Bay</h1>
+    <h1>Key-Bay</h1>
 
     </Link>
+    <div className=''>
 
-    <div className="navButtons">
-    <Link to="/">
-    <button
+    <ul className="navButtons navbar-nav mr-auto">
+    <li
     style={{height: '100%'}}
-    className={this.props.loggedIn ? btn : disabledBtn}
+    // className={this.props.loggedIn ? btn : disabledBtn}
+    className="nav-item "
     onClick={this.props.toggleSellItem} >
+
+    <Link
+    // className={'nav-link ' + this.props.loggedIn?'disabled':''}
+    className="nav-link"
+
+    to="/">
     Sell Item
-    </button>
-
     </Link>
-
-
-    <Link to={!this.props.loggedIn?'/':'/profile/user'+this.props.userId}>
-    <button
-    // className={'btn btn-info'+ ' '}
+    </li>
+    <li
     style={{height: '100%'}}
-    className={this.props.loggedIn ? btn : disabledBtn}
+    className="nav-item "
     >
+    <Link
+    className="nav-link"
+    to={!this.props.loggedIn?'/':'/profile/user'+this.props.userId}>
     My Profile
-    </button>
     </Link>
-    <Link to="/">
-    <button
-    className={this.props.loggedIn ? btn : disabledBtn}
+    </li>
+    <li
+    className="nav-item "
     style={{height: '100%'}}
     onClick={this.props.handleLogout}>
+    <Link className="nav-link" to="/">
     Log out
-    </button>
     </Link>
+    </li>
+    </ul>
     </div>
     </div>;
   }

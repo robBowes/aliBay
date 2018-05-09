@@ -19,7 +19,8 @@ class ItemDetails extends Component {
     };
   }
   handleBuy = () => {
-    fetch('/buy', {
+    if (this.state.item.quantity)
+    {fetch('/buy', {
       method: 'POST',
       credentials: 'same-origin',
       body: JSON.stringify({
@@ -29,8 +30,10 @@ class ItemDetails extends Component {
     })
     .then((res)=>res.json())
     .then((data)=>{
-      console.log(data);
-    });
+      this.props.getAllItems().then(()=>{
+        this.setState({item: this.props.getItemById(this.props.items, this.props.id)});
+      });
+    });}
   };
   componentWillMount = () => {
     this.setState({item: this.props.getItemById(this.props.items, this.props.id)});

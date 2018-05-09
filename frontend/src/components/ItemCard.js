@@ -18,7 +18,7 @@ class ItemCard extends Component {
     <h5 className="card-header">
     {this.props.item.itemName}
     </h5>
-
+    <img src={this.props.item.filename} alt=""/>
     <h6> {this.props.item.itemDescription} </h6>
 
     <p>Price $ {this.props.item.price} </p>

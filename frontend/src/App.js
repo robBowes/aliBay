@@ -51,6 +51,7 @@ class App extends Component {
   }
   renderItemDetails = (routerData) => {
     return <ItemDetails
+    getAllItems={this.getAllItems}
     items={this.state.items}
     id={routerData.match.params.id}
     getItemById={getItemById}/>;
