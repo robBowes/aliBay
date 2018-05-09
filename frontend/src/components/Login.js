@@ -53,6 +53,7 @@ class Login extends Component {
             {
                 maxWidth: '20rem',
                 minWidth: '15rem',
+                minHeight: '23rem',
             }
         }
         className="card border-secondary">
@@ -85,7 +86,7 @@ class Login extends Component {
         <br />
 
         <input
-        className="btn btn-primary"
+        className="btn btn-primary smallMargin"
         type="submit" />
         </form>
         </div>
@@ -95,6 +96,7 @@ class Login extends Component {
             {
                 maxWidth: '20rem',
                 minWidth: '15rem',
+                minHeight: '23rem',
             }
         }
         className="card border-secondary">
