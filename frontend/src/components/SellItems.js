@@ -34,7 +34,7 @@ class SellItems extends Component {
                 quantity: this.state.itemQuantity,
                 price: this.state.itemPrice,
                 sellerId: this.props.userId,
-                imagename: this.state.imagename,
+                filename: this.state.filename,
             }),
         })
         .then((res)=>res.json())
@@ -79,7 +79,7 @@ class SellItems extends Component {
                 return new Error('upload');
             }
             console.log(data);
-            this.setState({imagename: data.content});
+            this.setState({filename: data.content});
         })
         .catch((e)=>console.log(e));
     }
