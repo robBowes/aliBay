@@ -109,8 +109,8 @@ renderListedById = ()=>{
     }
     return <div className="userProfileContainer">
         <div className="profileLeft">
-          <img src="http://unsplash.it/300/300" />
-          <h1>{"Name: " + this.state.username}</h1>
+          <img className="profilePicture" src="http://unsplash.it/300/300" />
+          <h1 className='usernameH1'>{this.state.username}</h1>
           <h5>{"Description: " + this.state.description}</h5>
           <h5>Location: </h5>
           <br />
