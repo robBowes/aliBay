@@ -323,6 +323,14 @@ let user = (userId, sessionId) => {
 let getTransactions = (txs, sessionId) => {
   let sessions = _.map(users, 'sessionId');
   let sessionDoesExist = sessions.some((x) => x === sessionId);
+
+  if (!sessionDoesExist) {
+    return {
+      status: false,
+      reason: 'Invalid sessionId',
+    };
+  }
+
   let filteredTransactions = txs.filter((x) => (transactions[x]))
   let outputObj = {status: true, content: {}}
 
