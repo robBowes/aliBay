@@ -53,7 +53,7 @@ class SellItems extends Component {
         setTimeout(()=>this.setState({class: 'sellItems slideIn'}), 200);
     }
     render() {
-        return <Sell className={this.state.class}>
+        return <Sell className={this.props.showSellItem?'sellItems slideIn':'hidden sellItems slideIn' } >
             <form onSubmit={this.handleSubmit}>
             <label htmlFor="itemName">Item Name</label> <br/>
             <input type="text"
