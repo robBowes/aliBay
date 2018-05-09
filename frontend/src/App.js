@@ -43,7 +43,7 @@ class App extends Component {
     return fetch('/allItems', {
       credentials: 'same-origin',
     })
-    .then((res)=>res.json())
+    .then((res)=>res.json())    
     .then((data)=>{
       let items =itemsObjToArray(data.content);
       this.setState({items});

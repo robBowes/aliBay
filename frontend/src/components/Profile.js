@@ -33,7 +33,8 @@ class Profile extends Component {
         let itemsSold= this.state.txData.map((x,i)=>{
             return this.getSoldByTxn(x.sellerId)
         })
-        return itemsSold[0]
+        itemsSold[0].reverse()
+        return itemsSold[0].slice(0,4)
     }
 
   getBoughtByTxn = (txn)=>{
@@ -49,9 +50,10 @@ class Profile extends Component {
         return this.getBoughtByTxn(x)[0];
         }
       });
-      let itemsShow = itemsBought.slice(0, 5);
+      itemsBought.reverse();
+      let itemsShow = itemsBought.slice(0, 4).reverse();
       console.log(itemsShow)
-      return itemsShow
+      return itemsShow.reverse();
   }
   getListedById = (id) => {
       return this.state.items.filter((item)=>{
@@ -65,7 +67,8 @@ renderListedById = ()=>{
         return this.getListedById(x.itemId)
     })
     console.log(this.state)
-    return itemsListed[0]
+    itemsListed[0].reverse()
+    return itemsListed[0].slice(0,4)
 }
 
   getUser = userId => {
@@ -95,11 +98,13 @@ renderListedById = ()=>{
   }
   render() {
     let ren = (x, k)=>{
-        return <div className='smallItemCard' key={k}>
-            <img src="http://unsplash.it/190/200"/>
+        return <div className="smallItemCard" key={k}>
+            
+              <img className="smallCardImage" src={x.filename} />
+            
             <br />
             <div className="smallCardName">{x.itemName}</div>
-            <div className='smallCardPrice'>{'$'+x.price}</div>
+            <div className="smallCardPrice">{"$" + x.price}</div>
           </div>;
     }
     return <div className="userProfileContainer">
@@ -111,20 +116,19 @@ renderListedById = ()=>{
           <br />
         </div>
         <div className="profileItemsContainer">
-            <div className="profileItemHead">ITEMS PURCHASED</div>
+          <div className="profileItemHead card-header">ITEMS PURCHASED</div>
           <div className="profileItemsLists">
-        
-            {this.state.txData ? this.renderBoughtByTxn().map(ren):null}
+            {this.state.txData ? this.renderBoughtByTxn().map(ren) : null}
             <br />
           </div>
-          <div className="profileItemHead">ITEMS SOLD</div>
-          
+          <div className="profileItemHead card-header">ITEMS SOLD</div>
+
           <div className="profileItemsLists">
             {this.state.txData ? this.renderSoldByTxn().map(ren) : null}
             <br />
           </div>
-          <div className="profileItemHead">ITEMS FOR SALE</div>
-          
+          <div className="profileItemHead card-header">ITEMS FOR SALE</div>
+
           <div className="profileItemsLists">
             <br />
             {this.state.txData ? this.renderListedById().map(ren) : null}
