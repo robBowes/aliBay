@@ -16,5 +16,8 @@
     "fs-extra": "^5.0.0",
     "lodash": "^4.17.10",
     "sha1": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3"
   }
 }
