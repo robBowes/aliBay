@@ -97,6 +97,10 @@
   display:flex;
 }
 
+.profileItemHead{
+  background-color: aliceblue;
+}
+
 .profileItemsContainer{
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
   background-color:tan;
