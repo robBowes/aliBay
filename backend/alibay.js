@@ -299,7 +299,8 @@ let addItem = (
   
   users[sellerId]['itemsListed'] =  users[sellerId]['itemsListed'].concat(itemId)
 
-  console.log(items)
+
+  console.log("ADDING ITEM FILENAME: ", filename)
 
   items[itemId] = {
     itemName,
@@ -316,6 +317,9 @@ let addItem = (
   };
 };
 
+console.log(items)
+
+
 let user = (userId, sessionId) => {
   let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
@@ -326,7 +330,6 @@ let user = (userId, sessionId) => {
       reason: "Invalid userId"
     };
   }
-  console.log(sessionId);
   if (!sessionDoesExist) {
     return {
       status: false,
