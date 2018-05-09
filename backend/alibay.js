@@ -367,6 +367,27 @@ let getTransactions = (txs, sessionId) => {
   return outputObj;
 };
 
+let images = (image, itemId, filename, sessionId) => {
+  let sessions = _.map(users, "sessionId");
+  let sessionDoesExist = sessions.some(x => x === sessionId);
+
+  if (!sessionDoesExist) {
+    return {
+      status: false,
+      reason: "Invalid sessionId"
+    };
+  }
+  
+  if(!items[itemId]){
+    return {
+      status: false,
+      reason: "Invalid ItemId"
+    }
+  }
+  
+  return fs.writeFile('./data/images/'+filename)
+}
+
 module.exports = {
   login,
   register,
@@ -376,5 +397,6 @@ module.exports = {
   search,
   addItem,
   user,
-  getTransactions
+  getTransactions,
+  images,
 };
