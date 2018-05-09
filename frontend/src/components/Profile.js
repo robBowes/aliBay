@@ -17,14 +17,27 @@ class Profile extends Component {
   itemsObjToArray = (items) => {
     let newItems = Object.entries(items).map((item)=>{
         let newItem = {...item[1]};
-        newItem.itemId = item[0];
+        newItem.txId = item[0];
         return newItem;
     });
     return newItems;
 };
-  getSoldByTxn = (transactions, txn) =>{
+   
+  getSoldByTxn = (txn) =>{
+     return this.state.items.filter((item)=>{
+         console.log(item)
+        return item.itemId === txn.toString();
+    });
+}
+    renderSoldByTxn = () => {
+        let itemsSold= this.state.txData.map((x,i)=>{
+            console.log(x)
+            return this.getSoldByTxn(x.itemId)
+        })
+        console.log(itemsSold)
+        return itemsSold[0]
+    }
 
-  }
   getBoughtByTxn = (transactions, txn)=>{
 
   }
@@ -39,23 +52,35 @@ class Profile extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        let newData = this.itemsObjToArray(data)
-        console.log(newData)
-        ;
+        this.setState({ ...data })
+        this.getTransactions(this.state.transactions);
       });
   };
   getTransactions = transactions => {
-      fetch('/',{
+      console.log(transactions)
+      fetch('/transactions',{
           method: 'POST',
           credentials: "same-origin",
-          body: JSON.stringify({txs: transactions})
+          body: JSON.stringify({txs: [30000001, 30000001]})
       })
-      .then(res=>res.json())
+      .then(res=>res.text())
       .then(data=>{
+          let newData = JSON.parse(data).content
+          this.setState({txData: this.itemsObjToArray(newData)})
+            console.log(this.state)
           
       })
   }
   render() {
+    let ren = (x, k)=>{
+        console.log(x)
+        return <div key={k}>
+            <img src="http://unsplash.it/200/200"/>
+            <br />
+            {x.itemName}
+            {'$'+x.price}
+          </div>;
+    }
     return <div className="userProfileContainer">
         <div className="profileLeft">
           <img src="http://unsplash.it/300/300" />
@@ -70,9 +95,9 @@ class Profile extends Component {
             {this.state.transactions + ""}
             <br />
           </div>
-          <div className="profileItemsLists">
             ITEMS SOLD<br />
-            {this.state.transactions + ""}
+          <div className="profileItemsLists">
+            {this.state.txData?this.renderSoldByTxn().map(ren):null}
             <br />
           </div>
           <div className="profileItemsLists">
