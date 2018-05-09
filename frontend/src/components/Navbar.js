@@ -22,12 +22,14 @@ class Navbar extends Component {
 
     <Link to="/">
 
-    <h1>Key-Bay</h1>
-
+    <a className="navbar-brand">Key-Bay</a>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+    </button>
     </Link>
-    <div className=''>
+    <div className='collapse navbar-collapse navbar'>
 
-    <ul className="navButtons navbar-nav mr-auto">
+    <ul className="navButtons navbar-nav ml-auto">
     <li
     style={{height: '100%'}}
     // className={this.props.loggedIn ? btn : disabledBtn}
