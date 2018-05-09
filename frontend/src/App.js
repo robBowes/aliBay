@@ -64,7 +64,8 @@ class App extends Component {
   toggleSellItem = () => {
     this.setState({showSellItem: !this.state.showSellItem});
   }
-  toggleCreate = () => {
+  toggleCreate = (event) => {
+    event.preventDefault();
     this.setState({register: !this.state.register});
   }
   handleLogout = () => {
