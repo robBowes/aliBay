@@ -19,6 +19,7 @@ class SellItems extends Component {
             itemQuantity: '',
             itemPrice: '',
             response: '',
+            filename: '',
             class: 'hidden',
         };
     };
@@ -45,6 +46,15 @@ class SellItems extends Component {
         .then(()=>{
             this.props.showAllItems();
         });
+        this.setState({
+            itemName: '',
+            itemDescription: '',
+            itemQuantity: '',
+            itemPrice: '',
+            response: '',
+            filename: '',
+            response: '',
+        });
     };
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
@@ -58,10 +68,10 @@ class SellItems extends Component {
         fetch('/pic', {
             method: 'POST',
             credentials: 'same-origin',
-            body: {
+            body: JSON.stringify({
                 image,
                 extension,
-            },
+            }),
         })
         .then((res)=>res.text())
         .then((data)=>{
