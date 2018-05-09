@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const app = express();
 const sha = require('sha1');
 
-
 app.use(bodyParser.raw({ type: "*/*" }));
 
 app.post("/login", (req, res) => {

@@ -46,11 +46,14 @@
   transition: all 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 .login {
-  /* display: block; */
   grid-area: loginTop / loginLeft / loginBottom / loginRight;
   background-color: aliceblue;
   z-index: 2;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.596)
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.596);
+  padding: 7rem;
+  display: flex;
+  justify-content: space-between;
+  overflow: scroll;
 }
 .navBar {
   grid-area: nav;

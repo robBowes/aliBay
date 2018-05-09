@@ -1,7 +1,7 @@
 /**
 * An entry point to the app where a user can log in
 */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Login extends Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class Login extends Component {
             usernameValue: 'bob',
             passwordValue: 'test',
             classLogin: 'hidden',
+            classes: ['hidden', 'login', 'slideIn'],
         };
     }
     handleSubmit = (event) => {
@@ -17,11 +18,16 @@ class Login extends Component {
         fetch('/login', {
             method: 'POST',
             credentials: 'same-origin',
-            body: JSON.stringify({ username: this.state.usernameValue, password: this.state.passwordValue }),
+            body: JSON.stringify(
+                {
+                    username: this.state.usernameValue,
+                    password: this.state.passwordValue,
+                }
+            ),
         })
         .then((response) => response.text())
         .then((response) => {
-            console.log(response)
+            console.log(response);
             let parsedResponse = JSON.parse(response);
             if (parsedResponse.status === true) {
                 // alert(parsedResponse.reason);
@@ -32,23 +38,79 @@ class Login extends Component {
         });
     }
     handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({[event.target.name]: event.target.value});
+    }
+    componentWillReceiveProps = (props) => {
+        let newClass = props.loggedIn ?
+        'hidden login slideIn form-group':
+        'login slideIn form-group';
+        this.setState({classes: newClass.split(' ')});
     }
     render() {
-        return (<div className={!this.props.loggedIn?'login slideIn':'hidden login slideIn' }>
-        <div>LOG IN HEADER</div>
-        <form onSubmit={this.handleSubmit}>
-        LOGIN:<br />
-        USERNAME<br />
-        <input type="text" id="username" name="usernameValue" onChange={this.handleChange} value={this.state.usernameValue} />
-        <br />PASSWORD<br />
-        <input type="password" id="password" name="passwordValue" onChange={this.handleChange} value={this.state.passwordValue} />
+        return (<div className={this.state.classes.join(' ') }>
+
+        <div
+        style={{maxWidth: '20rem'}}
+        className="card border-secondary">
+        <h2 className="card-header">Sign In</h2>
+        <form
+        className="card-body"
+        onSubmit={this.handleSubmit}>
+
+        <p>Already a member? Login to manage your account!</p>
+
+        <label htmlFor="username">Username</label> <br />
+
+        <input
+        className="form-text text-muted"
+        type="text"
+        id="username"
+        name="usernameValue"
+        onChange={this.handleChange}
+        value={this.state.usernameValue} />
+
+        <label htmlFor="password">Password</label> <br/>
+
+        <input
+        className="form-password"
+        type="password"
+        id="password"
+        name="passwordValue"
+        onChange={this.handleChange}
+        value={this.state.passwordValue} />
         <br />
-        <input type="submit" />
+
+        <input
+        className="btn btn-primary"
+        type="submit" />
         </form>
-        <button style={{ display: this.props.loggedIn ? "none" : "block" }} onClick={this.props.toggleCreate}>
+        </div>
+
+        <div
+        style={
+            {
+                maxWidth: '20rem',
+            }
+        }
+        className="card border-secondary">
+
+        <h2 className="card-header">Register</h2>
+        <form
+        className="card-body"
+        onSubmit={this.props.toggleCreate}>
+
+        <label htmlFor="register">
+        Register now to post, edit, and manage ads. It’s quick, easy, and free!
+        </label>
+
+        <button
+        id="register"
+        className="btn btn-primary"
+        >
         Create Account
         </button>
+        </form>
+        </div>
         </div>);
     };
 }
