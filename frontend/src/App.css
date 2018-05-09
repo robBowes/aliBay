@@ -60,9 +60,9 @@
 }
 .navBar {
   grid-area: nav;
-  background-color: tomato;
-  display: flex;
-  justify-content: space-between;
+  /* background-color: tomato; */
+  /* display: flex; */
+  /* justify-content: space-between; */
 }
 .userCard {
   grid-area: user;
@@ -71,6 +71,8 @@
 .footer {
   grid-area: foot;
   background-color: tomato;
+  display: flex;
+  justify-content: space-between;
 }
 .itemContainer {
   grid-area: main;

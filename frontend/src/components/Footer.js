@@ -13,8 +13,8 @@ text-align: center;
 class Footer extends Component {
     render() {
         return (
-            <Foot className='footer'>
-            © 2018 <br /> Randykinz SuperSeriousProductions Inc
+            <Foot className='footer navbar navbar-expand-lg navbar-dark bg-dark'>
+            © 2018  Randykinz SuperSerious Productions Inc
             <a href="mailto:">Contact Us</a>
             </Foot>
         );
