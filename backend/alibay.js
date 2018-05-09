@@ -271,7 +271,8 @@ let addItem = (
   quantity,
   sellerId,
   price,
-  sessionId
+  sessionId,
+  filename,
 ) => {
   let keys = Object.keys(items);
   let parsedKeys = keys.map(x => parseInt(x));
@@ -294,6 +295,10 @@ let addItem = (
       reason: "Invalid sessionId"
     };
   }
+  
+  users[sellerId]['itemsListed'] =  users[sellerId]['itemsListed'].concat(itemId)
+
+  console.log(items)
 
   items[itemId] = {
     itemName,
@@ -301,7 +306,8 @@ let addItem = (
     quantity,
     sellerId,
     sellerName,
-    price
+    price,
+    filename,
   };
   return {
     status: true,
@@ -367,7 +373,7 @@ let getTransactions = (txs, sessionId) => {
   return outputObj;
 };
 
-let images = (image, itemId, filename, sessionId) => {
+let images = (image, filename, sessionId) => {
   let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
 
@@ -376,13 +382,6 @@ let images = (image, itemId, filename, sessionId) => {
       status: false,
       reason: "Invalid sessionId"
     };
-  }
-  
-  if(!items[itemId]){
-    return {
-      status: false,
-      reason: "Invalid ItemId"
-    }
   }
   
   return fs.writeFile('./data/images/'+filename)
