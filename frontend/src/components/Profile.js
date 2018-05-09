@@ -26,32 +26,45 @@ class Profile extends Component {
   getSoldByTxn = (txn) =>{
      return this.state.items.filter((item)=>{
          
-        return item.itemId === txn.toString();
+        return item.sellerId === txn;
     });
 }
     renderSoldByTxn = () => {
         let itemsSold= this.state.txData.map((x,i)=>{
-            console.log(x)
-            return this.getSoldByTxn(x.itemId)
+            return this.getSoldByTxn(x.sellerId)
         })
-        console.log(itemsSold)
         return itemsSold[0]
     }
 
-  getBoughtByTxn = (transactions, txn)=>{
+  getBoughtByTxn = (txn)=>{
+        return this.state.items.filter((item)=>{
+        return txn.itemId === item.itemId
+  })
+}
 
+
+  renderBoughtByTxn = ()=>{
+      let itemsBought = this.state.txData.map((x, i) => {
+        if (x.buyerId===this.state.userId){
+        return this.getBoughtByTxn(x)[0];
+        }
+      });
+      let itemsShow = itemsBought.slice(0, 5);
+      console.log(itemsShow)
+      return itemsShow
   }
   getListedById = (id) => {
       return this.state.items.filter((item)=>{
-         console.log(item)
+         if (item.quantity>0){
         return item.sellerId.toString() === this.state.userId;
-
+         }
   })
 }
 renderListedById = ()=>{
     let itemsListed = this.state.itemsListed.map((x)=>{
         return this.getListedById(x.itemId)
     })
+    console.log(this.state)
     return itemsListed[0]
 }
 
@@ -68,28 +81,25 @@ renderListedById = ()=>{
       });
   };
   getTransactions = transactions => {
-      console.log(transactions)
       fetch('/transactions',{
           method: 'POST',
           credentials: "same-origin",
-          body: JSON.stringify({txs: [30000001, 30000001]})
+          body: JSON.stringify({txs: transactions})
       })
       .then(res=>res.text())
       .then(data=>{
           let newData = JSON.parse(data).content
           this.setState({txData: this.itemsObjToArray(newData)})
-            console.log(this.state)
           
       })
   }
   render() {
     let ren = (x, k)=>{
-        console.log(x)
-        return <div key={k}>
-            <img src="http://unsplash.it/200/200"/>
+        return <div className='smallItemCard' key={k}>
+            <img src="http://unsplash.it/190/200"/>
             <br />
-            {x.itemName}
-            {'$'+x.price}
+            <div className="smallCardName">{x.itemName}</div>
+            <div className='smallCardPrice'>{'$'+x.price}</div>
           </div>;
     }
     return <div className="userProfileContainer">
@@ -104,7 +114,7 @@ renderListedById = ()=>{
             <div className="profileItemHead">ITEMS PURCHASED</div>
           <div className="profileItemsLists">
         
-            {this.state.transactions + ""}
+            {this.state.txData ? this.renderBoughtByTxn().map(ren):null}
             <br />
           </div>
           <div className="profileItemHead">ITEMS SOLD</div>
