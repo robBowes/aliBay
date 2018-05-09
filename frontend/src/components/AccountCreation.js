@@ -13,37 +13,32 @@ class AccountCreation extends Component {
     }
     handleRegister = (event) => {
         event.preventDefault();
-        let username = document.getElementById("username1").value;
-        let password = document.getElementById("password1").value;
-        console.log(username)
-        fetch("/register", {
-          method: "POST",
+        let username = document.getElementById('username1').value;
+        let password = document.getElementById('password1').value;
+        console.log(username);
+        fetch('/register', {
+          method: 'POST',
           body: JSON.stringify({
             username: username,
             password: password,
-            credentials: 'same-origin'
-          })
+            credentials: 'same-origin',
+          }),
         })
-        .then(response=>response.text())
-        .then(response=>{
-            let parsedResponse = JSON.parse(response)
-            if (parsedResponse.status === true){
-                alert(parsedResponse.reason)
-            }
-            else {
-                alert(parsedResponse.reason)
+        .then((response)=>response.text())
+        .then((response)=>{
+            let parsedResponse = JSON.parse(response);
+            if (parsedResponse.status === true) {
+                alert(parsedResponse.reason);
+            } else {
+                alert(parsedResponse.reason);
             }
         })
         ;
-        document.getElementById("username1").value = "";
-        document.getElementById("password1").value = "";
-    }
-   
-    componentWillMount = () => {
-        setTimeout(()=>this.setState({class: 'accountCreation slideIn'}));
+        document.getElementById('username1').value = '';
+        document.getElementById('password1').value = '';
     }
     render() {
-        return <div className={this.state.class}>
+        return <div className={this.props.register?'accountCreation slideIn':'hidden accountCreation slideIn'}>
             <div>Register Header<button onClick={this.props.toggleCreate}>close pane</button></div>
             <form onSubmit={this.handleRegister}>
               LOGIN:<br />

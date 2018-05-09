@@ -13,13 +13,13 @@ import AccountCreation from './components/AccountCreation.js';
 import Footer from './components/Footer.js';
 import SellItems from './components/SellItems.js';
 import ItemContainer from './components/ItemContainer';
-import Profile from './components/Profile.js'
+import Profile from './components/Profile.js';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: false,
+      loggedIn: true,
       register: false,
       showLogIn: false,
       showSellItem: false,
@@ -33,6 +33,7 @@ class App extends Component {
     this.getAllItems()
     .then(()=>{
       this.showAllItems();
+      this.setState({loggedIn: false});
     });
   };
   showAllItems = () => {
@@ -70,7 +71,7 @@ class App extends Component {
   }
   handleLogout = () => {
     document.cookie='';
-    
+
     this.setState({
       loggedIn: false,
       register: false,
@@ -81,11 +82,10 @@ class App extends Component {
     });
   }
   renderProfile = () =>{
-    if(this.state.loggedIn){
-    return <Profile userId={this.state.userId}/>
-    }
-    else{
-      <Link to={'/'}/>
+    if (this.state.loggedIn) {
+      return <Profile userId={this.state.userId}/>;
+    } else {
+      <Link to={'/'}/>;
     }
   }
   render() {
@@ -94,14 +94,14 @@ class App extends Component {
       <BrowserRouter>
       <div className="App mainContainer">
       <Route exact={true} path='/profile/' render={this.renderProfile}/>
-      
+
       <NavBar
       className="navBar"
       toggleSellItem={this.toggleSellItem}
       handleLogout={this.handleLogout}
       loggedIn={this.state.loggedIn}
       />
-      
+
       <div className='blurFrame' style={{'background-color': !this.state.loggedIn || this.state.showSellItem?'rgba(0, 0, 0, 0.514':'rgba(0, 0, 0, 0'}}/>
       <Search
       changeShownItems={this.changeShownItems}
@@ -113,20 +113,15 @@ class App extends Component {
       userId={this.state.userId}
       show={this.state.show}/>
 
-      {
-        this.state.loggedIn?
-        null:
-        <Login
-        updateUserInfo={this.updateUserInfo}
-        toggleCreate={this.toggleCreate}
-        loggedIn={this.state.loggedIn}/>
-      }
+      <Login
+      updateUserInfo={this.updateUserInfo}
+      toggleCreate={this.toggleCreate}
+      loggedIn={this.state.loggedIn}/>
 
-      {
-        this.state.register?
-        <AccountCreation toggleCreate={this.toggleCreate} />:
-        null
-      }
+      <AccountCreation
+      toggleCreate={this.toggleCreate}
+      register={this.state.register}
+      />
 
       <ItemContainer items={this.state.showItems}/>
 
