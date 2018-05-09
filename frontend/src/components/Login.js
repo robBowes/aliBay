@@ -18,7 +18,12 @@ class Login extends Component {
         fetch('/login', {
             method: 'POST',
             credentials: 'same-origin',
-            body: JSON.stringify({username: this.state.usernameValue, password: this.state.passwordValue}),
+            body: JSON.stringify(
+                {
+                    username: this.state.usernameValue,
+                    password: this.state.passwordValue,
+                }
+            ),
         })
         .then((response) => response.text())
         .then((response) => {
@@ -36,11 +41,12 @@ class Login extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
     componentWillReceiveProps = (props) => {
-        let newClass = props.loggedIn?'hidden login slideIn form-group':'login slideIn form-group';
+        let newClass = props.loggedIn ?
+        'hidden login slideIn form-group':
+        'login slideIn form-group';
         this.setState({classes: newClass.split(' ')});
     }
     render() {
-        // return (<div className={!this.props.loggedIn?'login slideIn':'hidden login slideIn'+'form-group' }>
         return (<div className={this.state.classes.join(' ') }>
 
         <div
@@ -84,7 +90,6 @@ class Login extends Component {
         style={
             {
                 maxWidth: '20rem',
-                float: 'right',
             }
         }
         className="card border-secondary">
@@ -93,11 +98,14 @@ class Login extends Component {
         <form
         className="card-body"
         onSubmit={this.props.toggleCreate}>
-        <label htmlFor="register">Register now to post, edit, and manage ads. It’s quick, easy, and free!</label>
+
+        <label htmlFor="register">
+        Register now to post, edit, and manage ads. It’s quick, easy, and free!
+        </label>
+
         <button
         id="register"
         className="btn btn-primary"
-        // onClick={}
         >
         Create Account
         </button>
