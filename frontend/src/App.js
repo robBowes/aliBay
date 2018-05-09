@@ -80,7 +80,7 @@ class App extends Component {
   }
   renderProfile = (routerData) =>{
     if (this.state.loggedIn) {
-      return <Profile userId={routerData.match.params.userId}/>;
+      return <Profile userId={routerData.match.params.userId} items={this.state.items}/>;
     } else {
       <Link to={'/'}/>;
     }
