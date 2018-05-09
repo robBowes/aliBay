@@ -32,6 +32,7 @@ class UserCard extends Component {
     render() {
         return (
             <div className="userCard" style={{'display': this.props.show?'block':'none'}}>
+            {/*<img src="http://unsplash.it/220/300"/>*/}
                 <h3>{this.state.username}</h3>
                 <h4>{this.state.description} </h4>
             </div>
