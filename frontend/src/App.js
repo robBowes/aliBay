@@ -129,16 +129,14 @@ class App extends Component {
 
       <ItemContainer items={this.state.showItems}/>
 
-      {
-        this.state.showSellItem?
-        <SellItems
-        toggleSellItem={this.toggleSellItem}
-        userId={this.state.userId}
-        getAllItems={this.getAllItems}
-        showAllItems={this.showAllItems}
-        />:
-        null
-      }
+
+      <SellItems
+      toggleSellItem={this.toggleSellItem}
+      userId={this.state.userId}
+      getAllItems={this.getAllItems}
+      showAllItems={this.showAllItems}
+      showSellItem={this.state.showSellItem}
+      />
 
       <Footer/>
       <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
