@@ -90,15 +90,12 @@ app.post("/transactions", (req, res) => {
 });
 
 app.post('/pic', (req, res) => {
-  let body = req.body.toString();
-  let parsedBody = JSON.parse(body);
-  let image = parsedBody.image;
-  let extension = req.body.ext;
-  let randomString = '' +  Math.floor(Math.random() * 10000000);
-  let randomFilename = randomString + '.' + extension;
+  let extension = req.query.ext.split('.').pop();
+  let randomString = '' +  Math.floor(Math.random() * 10000000)
+  let randomFilename = randomString + '.' + extension
   let sessionId = req.headers.cookie;
   let sendBack = {status: true, content: './data/images/'+randomFilename}
-  alibay.images(image, randomFilename, sessionId)
+  alibay.images(req.body, randomFilename, sessionId)
   .then(x => res.send(sendBack));
 })
 
