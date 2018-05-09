@@ -18,18 +18,18 @@ class Navbar extends Component {
     return <div
     className="navBar navbar navbar-dark navbar-expand-lg  bg-dark">
 
-    <img src="" alt="the bay logo" />
+    <img src="/keybaylogo.png" alt="the bay logo" style={{height: '90%'}}/>
 
     <Link to="/">
 
-    <a className="navbar-brand">Key-Bay</a>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    {/* <a className="navbar-brand">Key-Bay</a> */}
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style={{}}>
     <span className="navbar-toggler-icon"></span>
     </button>
     </Link>
-    <div className='collapse navbar-collapse navbar'>
+    <div className='navbar-collapse collapse show'>
 
-    <ul className="navButtons navbar-nav ml-auto">
+    <ul className=" navbar-nav ml-auto">
     <li
     style={{height: '100%'}}
     // className={this.props.loggedIn ? btn : disabledBtn}
@@ -63,6 +63,10 @@ class Navbar extends Component {
     </Link>
     </li>
     </ul>
+    {/* <form className="form-inline my-2 my-lg-0">
+    <input className="form-control mr-sm-2" type="text" placeholder="Search" />
+    <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form> */}
     </div>
     </div>;
   }
