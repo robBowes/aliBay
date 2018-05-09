@@ -74,7 +74,12 @@ class Profile extends Component {
   render() {
     let ren = (x, k)=>{
         console.log(x)
-        return (<div key={k}>{x.itemName}</div>)
+        return <div key={k}>
+            <img src="http://unsplash.it/200/200"/>
+            <br />
+            {x.itemName}
+            {'$'+x.price}
+          </div>;
     }
     return <div className="userProfileContainer">
         <div className="profileLeft">
@@ -90,9 +95,8 @@ class Profile extends Component {
             {this.state.transactions + ""}
             <br />
           </div>
-          <div className="profileItemsLists">
             ITEMS SOLD<br />
-            {this.state.transactions + ""}
+          <div className="profileItemsLists">
             {this.state.txData?this.renderSoldByTxn().map(ren):null}
             <br />
           </div>

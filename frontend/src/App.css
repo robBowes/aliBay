@@ -104,6 +104,10 @@
   display: flex;
 }
 
+.profileItemCard{
+  display: block;
+}
+
 .flexItem{
   display: flex;
 }
