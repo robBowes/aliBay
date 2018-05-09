@@ -6,8 +6,17 @@ yarn-debug.log*
 yarn-error.log*
 
 # user data
+<<<<<<< HEAD
 data/
 backend/data
+=======
+/data
+data/
+/data
+data/
+backend/data
+
+>>>>>>> 7966cec2eb3decdc5eb5d7923200ed580a415b15
 
 # Runtime data
 pids
