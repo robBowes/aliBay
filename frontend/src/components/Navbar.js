@@ -25,7 +25,7 @@ class Navbar extends Component {
             Log out
           </button>
         </Link>
-        <Link to="/profile">
+        <Link to={"/profile/user"+this.props.userId}>
           <button
             style={{display: !this.props.loggedIn ? 'none' : 'block'}}
           >

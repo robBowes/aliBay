@@ -1,9 +1,15 @@
 const assert = require('assert');
 const _ = require('lodash');
+// const mongoose = require('mongoose');
+// const url = 'http://localhost:50216';
+// mongoose.connect(url);
 
-function genUID() {
-  return Math.floor(Math.random() * 100000000);
-}
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {
+//   // we're connected!
+// });
+
 
 let users = {
   10000001: {
@@ -314,8 +320,28 @@ let user = (userId, sessionId) => {
   };
 };
 
+let getTransactions = (txs, sessionId) => {
+  let sessions = _.map(users, 'sessionId');
+  let sessionDoesExist = sessions.some((x) => x === sessionId);
+
+  if (!sessionDoesExist) {
+    return {
+      status: false,
+      reason: 'Invalid sessionId',
+    };
+  }
+
+  let filteredTransactions = txs.filter((x) => (transactions[x]))
+  let outputObj = {status: true, content: {}}
+
+  filteredTransactions.forEach((x) => {
+    outputObj['content'][x] = transactions[x];
+  });
+
+  return outputObj;
+};
+
 module.exports = {
-  genUID,
   login,
   register,
   allItems,
@@ -324,4 +350,5 @@ module.exports = {
   search,
   addItem,
   user,
+  getTransactions,
 };

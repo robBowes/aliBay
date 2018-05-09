@@ -79,9 +79,9 @@ class App extends Component {
       show: false,
     });
   }
-  renderProfile = () =>{
+  renderProfile = (routerData) =>{
     if (this.state.loggedIn) {
-      return <Profile userId={this.state.userId}/>;
+      return <Profile userId={routerData.match.params.userId}/>;
     } else {
       <Link to={'/'}/>;
     }
@@ -91,13 +91,14 @@ class App extends Component {
       <div>
       <BrowserRouter>
       <div className="App mainContainer">
-      <Route exact={true} path='/profile/' render={this.renderProfile}/>
+      <Route exact={true} path='/profile/user:userId' render={this.renderProfile}/>
 
       <NavBar
       className="navBar"
       toggleSellItem={this.toggleSellItem}
       handleLogout={this.handleLogout}
       loggedIn={this.state.loggedIn}
+      userId={this.state.userId}
       />
 
       <div
