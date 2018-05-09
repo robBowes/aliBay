@@ -5,7 +5,8 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: this.props.userId
+      userId: this.props.userId,
+      items: this.props.items
     };
   }
   componentDidMount = () => {
@@ -13,8 +14,24 @@ class Profile extends Component {
       this.getUser(this.props.userId);
     }
   };
+  itemsObjToArray = (items) => {
+    let newItems = Object.entries(items).map((item)=>{
+        let newItem = {...item[1]};
+        newItem.itemId = item[0];
+        return newItem;
+    });
+    return newItems;
+};
+  getSoldByTxn = (transactions, txn) =>{
+
+  }
+  getBoughtByTxn = (transactions, txn)=>{
+
+  }
+  getListedByTxn = () => {
+
+  }
   getUser = userId => {
-    console.log(userId);
     fetch("/user", {
       method: "POST",
       credentials: "same-origin",
@@ -22,10 +39,22 @@ class Profile extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        this.setState({ ...data });
+        let newData = this.itemsObjToArray(data)
+        console.log(newData)
+        ;
       });
   };
+  getTransactions = transactions => {
+      fetch('/',{
+          method: 'POST',
+          credentials: "same-origin",
+          body: JSON.stringify({txs: transactions})
+      })
+      .then(res=>res.json())
+      .then(data=>{
+          
+      })
+  }
   render() {
     return <div className="userProfileContainer">
         <div className="profileLeft">
