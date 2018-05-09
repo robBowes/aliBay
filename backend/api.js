@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const app = express();
 const sha = require('sha1');
 
-app.use(bodyParser.raw({ type: "*/*" }));
+app.use(bodyParser.raw({ type: "*/*" , limit: '20mb'}));
+
+app.use(express.static('data/images'))
 
 app.post("/login", (req, res) => {
   let body = req.body.toString();
@@ -62,11 +64,12 @@ app.put("/addItem", (req, res) => {
   let quantity = parsedBody.quantity;
   let sellerId = parsedBody.sellerId;
   let price = parsedBody.price;
+  let filename = parsedBody.filename;
   let sessionId = req.headers.cookie;
   sellerId = parseInt(sellerId)
   res.send(
     JSON.stringify(
-      alibay.addItem(itemName, itemDescription, quantity, sellerId, price, sessionId)
+      alibay.addItem(itemName, itemDescription, quantity, sellerId, price, sessionId, filename)
     )
   );
 });
@@ -89,18 +92,13 @@ app.post("/transactions", (req, res) => {
 });
 
 app.post('/pic', (req, res) => {
-  let body = req.body.toString();
-  let parsedBody = JSON.parse(body);
-  let image = parsedBody.image;
-  let itemId = parsedBody.itemId;
-  let extension = req.body.ext;
-  let randomString = '' +  Math.floor(Math.random() * 10000000);
-  let randomFilename = randomString + '.' + extension;
+  let extension = req.query.ext.split('.').pop();
+  let randomString = '' +  Math.floor(Math.random() * 10000000)
+  let randomFilename = randomString + '.' + extension
   let sessionId = req.headers.cookie;
-  let sendBack = {status: true, content: './data/images/'+filename}
-  alibay.images(image, itemId, randomFilename, sessionId)
+  let sendBack = {status: true, content: '/'+randomFilename}
+  alibay.images(req.body, randomFilename, sessionId)
   .then(x => res.send(sendBack));
 })
-
 
 app.listen(4000, () => console.log("Listening on port 4000!"));

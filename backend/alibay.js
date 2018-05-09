@@ -94,6 +94,7 @@ console.log(users,items,transactions)
 // };
 
 let backupData = () => {
+  console.log("\n <-----BACKING UP DATA-----> \n")
   fs.writeJson("./data/users.json", JSON.stringify(users), err => {
     console.log("Writing Users err: ", err);
   });
@@ -271,7 +272,8 @@ let addItem = (
   quantity,
   sellerId,
   price,
-  sessionId
+  sessionId,
+  filename,
 ) => {
   let keys = Object.keys(items);
   let parsedKeys = keys.map(x => parseInt(x));
@@ -294,6 +296,11 @@ let addItem = (
       reason: "Invalid sessionId"
     };
   }
+  
+  users[sellerId]['itemsListed'] =  users[sellerId]['itemsListed'].concat(itemId)
+
+
+  console.log("ADDING ITEM FILENAME: ", filename)
 
   items[itemId] = {
     itemName,
@@ -301,13 +308,17 @@ let addItem = (
     quantity,
     sellerId,
     sellerName,
-    price
+    price,
+    filename,
   };
   return {
     status: true,
     reason: "Item Successfully Listed!"
   };
 };
+
+console.log(items)
+
 
 let user = (userId, sessionId) => {
   let sessions = _.map(users, "sessionId");
@@ -319,7 +330,6 @@ let user = (userId, sessionId) => {
       reason: "Invalid userId"
     };
   }
-  console.log(sessionId);
   if (!sessionDoesExist) {
     return {
       status: false,
@@ -367,7 +377,7 @@ let getTransactions = (txs, sessionId) => {
   return outputObj;
 };
 
-let images = (image, itemId, filename, sessionId) => {
+let images = (image, filename, sessionId) => {
   let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
 
@@ -378,14 +388,9 @@ let images = (image, itemId, filename, sessionId) => {
     };
   }
   
-  if(!items[itemId]){
-    return {
-      status: false,
-      reason: "Invalid ItemId"
-    }
-  }
+  console.log("IM TRYING TO UPLOAD", filename)
   
-  return fs.writeFile('./data/images/'+filename)
+  return fs.writeFile('./data/images/'+filename, image)
 }
 
 module.exports = {

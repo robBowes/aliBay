@@ -47,7 +47,8 @@ class ItemDetails extends Component {
         </div>
         <div className='flexItem'>
         <div>
-          <img src={'http://unsplash.it/' + Math.floor(Math.random() * (400 - 250) + 250) + '/' + Math.floor(Math.random() * (400 - 250) + 250)} />
+          {/* <img src={'http://unsplash.it/' + Math.floor(Math.random() * (400 - 250) + 250) + '/' + Math.floor(Math.random() * (400 - 250) + 250)} /> */}
+          <img src={this.state.item.filename} />
         </div>
         <div>
           <h2>
