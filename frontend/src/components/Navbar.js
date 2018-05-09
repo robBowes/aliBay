@@ -16,21 +16,22 @@ const disabledBtn = 'btn btn-info disabled';
 class Navbar extends Component {
   render() {
     return <div
-    className="navBar navbar">
+    className="navBar navbar navbar-dark navbar-expand-lg  bg-dark">
 
     <img src="" alt="the bay logo" />
 
     <Link to="/">
 
-    <h1>The Bay</h1>
+    <h1>Key-Bay</h1>
 
     </Link>
+    <div className=''>
 
-    <div className="navButtons nav nav-tabs">
-    <div
+    <ul className="navButtons navbar-nav mr-auto">
+    <li
     style={{height: '100%'}}
     // className={this.props.loggedIn ? btn : disabledBtn}
-    className="nav-item fade show"
+    className="nav-item "
     onClick={this.props.toggleSellItem} >
 
     <Link
@@ -40,29 +41,26 @@ class Navbar extends Component {
     to="/">
     Sell Item
     </Link>
-
-    </div>
-
-
-    <div
-    // className={'btn btn-info'+ ' '}
+    </li>
+    <li
     style={{height: '100%'}}
-    className="nav-item fade show"
+    className="nav-item "
     >
     <Link
     className="nav-link"
     to={!this.props.loggedIn?'/':'/profile/user'+this.props.userId}>
     My Profile
     </Link>
-    </div>
-    <div
-    className="nav-item fade show"
+    </li>
+    <li
+    className="nav-item "
     style={{height: '100%'}}
     onClick={this.props.handleLogout}>
     <Link className="nav-link" to="/">
     Log out
     </Link>
-    </div>
+    </li>
+    </ul>
     </div>
     </div>;
   }
