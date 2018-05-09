@@ -40,14 +40,12 @@ class App extends Component {
     this.setState({showItems: this.state.items});
   }
   getAllItems = () => {
-    let items;
     return fetch('/allItems', {
       credentials: 'same-origin',
     })
     .then((res)=>res.json())
     .then((data)=>{
-      items = data.content;
-      items = itemsObjToArray(items);
+      let items =itemsObjToArray(data.content);
       this.setState({items});
     });
   }
@@ -71,7 +69,6 @@ class App extends Component {
   }
   handleLogout = () => {
     document.cookie='';
-
     this.setState({
       loggedIn: false,
       register: false,
@@ -102,7 +99,13 @@ class App extends Component {
       loggedIn={this.state.loggedIn}
       />
 
-      <div className='blurFrame' style={{'background-color': !this.state.loggedIn || this.state.showSellItem?'rgba(0, 0, 0, 0.514':'rgba(0, 0, 0, 0'}}/>
+      <div
+      className='blurFrame'
+      style={
+        {'backgroundColor': (!this.state.loggedIn || this.state.showSellItem)?
+        'rgba(0, 0, 0, 0.514':'rgba(0, 0, 0, 0'}
+      }/>
+
       <Search
       changeShownItems={this.changeShownItems}
       allItems={this.state.items}

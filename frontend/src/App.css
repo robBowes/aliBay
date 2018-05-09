@@ -23,10 +23,11 @@
 }
 
 .blurFrame {
+  pointer-events: none;
   grid-area: 2 / 1 / 8 / 8;
   z-index:1;
   transition: all 1s ease-in-out;
-  /* background-color: rgba(0, 0, 0, 0.514); */
+  background-color: rgba(0, 0, 0, 0.514);
   /* filter: blur(2px) */
 }
 
@@ -58,6 +59,7 @@
 }
 .userCard {
   grid-area: user;
+  z-index: 0;
 }
 .footer {
   grid-area: foot;
@@ -81,7 +83,6 @@
   background-color: tomato;
   z-index: 3;
 }
-
 
 .userProfileContainer{
   grid-area: profileTop / profileLeft / profileBottom / profileRight;
