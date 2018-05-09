@@ -25,6 +25,14 @@ class SellItems extends Component {
     };
     handleSubmit = (event) => {
         event.preventDefault();
+        if (!this.state.itemName ||
+            !this.state.itemDescription ||
+            !this.state.itemPrice ||
+            !this.state.itemQuantity
+        ) {
+            alert('Enter a valid item');
+            return;
+        }
         fetch('/addItem', {
             method: 'PUT',
             credentials: 'same-origin',
