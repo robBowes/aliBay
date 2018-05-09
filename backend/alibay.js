@@ -94,6 +94,7 @@ console.log(users,items,transactions)
 // };
 
 let backupData = () => {
+  console.log("\n <-----BACKING UP DATA-----> \n")
   fs.writeJson("./data/users.json", JSON.stringify(users), err => {
     console.log("Writing Users err: ", err);
   });
@@ -384,7 +385,9 @@ let images = (image, filename, sessionId) => {
     };
   }
   
-  return fs.writeFile('./data/images/'+filename)
+  console.log("IM TRYING TO UPLOAD", filename)
+  
+  return fs.writeFile('./data/images/'+filename, image)
 }
 
 module.exports = {
