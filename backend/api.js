@@ -88,5 +88,19 @@ app.post("/transactions", (req, res) => {
   res.send(JSON.stringify(alibay.getTransactions(txs, sessionId)));
 });
 
+app.post('/pic', (req, res) => {
+  let body = req.body.toString();
+  let parsedBody = JSON.parse(body);
+  let image = parsedBody.image;
+  let itemId = parsedBody.itemId;
+  let extension = req.body.ext;
+  let randomString = '' +  Math.floor(Math.random() * 10000000);
+  let randomFilename = randomString + '.' + extension;
+  let sessionId = req.headers.cookie;
+  let sendBack = {status: true, content: './data/images/'+filename}
+  alibay.images(image, itemId, randomFilename, sessionId)
+  .then(x => res.send(sendBack));
+})
+
 
 app.listen(4000, () => console.log("Listening on port 4000!"));
