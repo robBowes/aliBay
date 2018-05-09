@@ -44,11 +44,16 @@ class Search extends Component {
         return (
             <Bar className="search">
                 <form onSubmit={this.handleSubmit}>
-                    <input type='text'
+                    <input
+                    className="form-control"
+                    style={{width: '50%', display: 'inline'}}
+                    type='text'
                     placeholder='Search'
                     value={this.state.searchContents}
                     onChange={this.handleChange}/>
-                    <input type='submit' />
+                    <input
+                    className ="btn btn-primary"
+                    type='submit' />
                 </form>
             </Bar>
         );

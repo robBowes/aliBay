@@ -51,9 +51,20 @@ class AccountCreation extends Component {
         className="card border-secondary" >
 
         <h2
-        className="card-header" >
+        className="card-header"
+        style={
+            {
+                display: 'flex',
+                justifyContent: 'space-between',
+            }
+        }
+        >
         Register
-        <button onClick={this.props.toggleCreate}>X</button>
+        <button
+        className="btn btn-primary"
+        onClick={this.props.toggleCreate}
+        >X
+        </button>
         </h2>
 
 

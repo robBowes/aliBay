@@ -62,6 +62,7 @@
   grid-area: nav;
   background-color: tomato;
   display: flex;
+  justify-content: space-between;
 }
 .userCard {
   grid-area: user;
@@ -115,10 +116,15 @@
   display: flex;
 }
 
-a:link {
+:link {
 text-decoration: none;
+color: inherit;
 }
 
 a:hover{
   color: grey;
+}
+.navButtons {
+  display: flex;
+  justify-content: space-evenly;
 }
