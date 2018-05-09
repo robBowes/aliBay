@@ -32,6 +32,7 @@ class Profile extends Component {
           <img src="http://unsplash.it/300/300" />
           <h1>{"Name: " + this.state.username}</h1>
           <h5>{"Description: " + this.state.description}</h5>
+          <h5>Location: </h5>
           <br />
         </div>
         <div className="profileItemsContainer">
