@@ -387,11 +387,42 @@ let images = (image, filename, sessionId) => {
       reason: "Invalid sessionId"
     };
   }
-  
   console.log("IM TRYING TO UPLOAD", filename)
-  
   return fs.writeFile('./data/images/'+filename, image)
 }
+
+let description = (userId, newDescription, sessionId) => {
+  let sessions = _.map(users, "sessionId");
+  let sessionDoesExist = sessions.some(x => x === sessionId);
+
+  if (!(userId in users)) {
+    return {
+      status: false,
+      reason: "Invalid userId"
+    };
+  }
+  if (!sessionDoesExist) {
+    return {
+      status: false,
+      reason: "Invalid sessionId"
+    };
+  }
+
+  if (userId in users && sessionDoesExist) {
+    users[userId]['description'] = newDescription;
+    console.log(users[userId])
+    return {
+      status: true,
+      reason: "Description successfully updated!"
+    };
+  }
+
+  return {
+    status: false,
+    reason: "unknown error"
+  };
+};
+
 
 module.exports = {
   login,
@@ -404,4 +435,5 @@ module.exports = {
   user,
   getTransactions,
   images,
+  description,
 };

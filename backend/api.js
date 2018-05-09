@@ -101,4 +101,14 @@ app.post('/pic', (req, res) => {
   .then(x => res.send(sendBack));
 })
 
+app.post("/description", (req, res) => {
+  let body = req.body.toString();
+  let parsedBody = JSON.parse(body);
+  let userId = parsedBody.userId;
+  let newDescription = parsedBody.description 
+  let sessionId = req.headers.cookie;
+  userId = parseInt(userId)
+  res.send(JSON.stringify(alibay.description(userId, newDescription,  sessionId)));
+});
+
 app.listen(4000, () => console.log("Listening on port 4000!"));
