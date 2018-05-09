@@ -96,7 +96,7 @@ app.post('/pic', (req, res) => {
   let randomString = '' +  Math.floor(Math.random() * 10000000)
   let randomFilename = randomString + '.' + extension
   let sessionId = req.headers.cookie;
-  let sendBack = {status: true, content: './data/images/'+randomFilename}
+  let sendBack = {status: true, content: '/'+randomFilename}
   alibay.images(req.body, randomFilename, sessionId)
   .then(x => res.send(sendBack));
 })
