@@ -6,8 +6,14 @@ yarn-debug.log*
 yarn-error.log*
 
 # user data
+<<<<<<< HEAD
 /data
 data/
+||||||| merged common ancestors
+/data
+=======
+data/
+>>>>>>> 4be16aae64e26f9f8ffa25b50e8ad9292f875aa2
 
 # Runtime data
 pids
