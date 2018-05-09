@@ -87,7 +87,7 @@
 }
 .sellItems {
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
-  background-color: tomato;
+  /* background-color: tomato; */
   z-index: 3;
 }
 
@@ -131,4 +131,7 @@ a:hover{
 .navButtons {
   display: flex;
   justify-content: space-evenly;
+}
+.smallMargin {
+  margin: 0.5rem;
 }

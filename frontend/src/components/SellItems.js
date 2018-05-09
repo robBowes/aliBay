@@ -63,15 +63,17 @@ class SellItems extends Component {
         setTimeout(()=>this.setState({class: 'sellItems slideIn'}), 200);
     }
     uploadPicture = (image) => {
+        console.log(image);
         let filename = image.name;
         let extension = filename.split('.').pop();
-        fetch('/pic', {
+        fetch('/pic?ext='+extension, {
             method: 'POST',
             credentials: 'same-origin',
-            body: JSON.stringify({
-                image,
-                extension,
-            }),
+            body: image,
+            // JSON.stringify({
+            //     image,
+            //     extension,
+            // }),
         })
         .then((res)=>res.text())
         .then((data)=>{
@@ -80,7 +82,8 @@ class SellItems extends Component {
             //     return new Error('upload');
             // }
             console.log(data);
-        });
+        })
+        .catch((e)=>console.log(e));
     }
     render() {
         return <Sell
@@ -89,8 +92,12 @@ class SellItems extends Component {
             :
             'hidden sellItems slideIn'
         } >
+        <div className="card border-secondary">
+        <h3 className="card-header">Sell Item</h3>
 
-        <form onSubmit={this.handleSubmit}>
+        <form
+        className="card-body"
+        onSubmit={this.handleSubmit}>
 
         <label htmlFor="itemName">Item Name</label> <br/>
 
@@ -125,20 +132,23 @@ class SellItems extends Component {
         value={this.state.itemPrice}
         onChange={this.handleChange}/> <br/>
 
-
-        <input type="submit" value="Submit"/> <br/>
-
-
-        </form>
         <input
         type="file"
-        className='btn btn-primary'
+        className='btn btn-primary smallMargin'
         id='input'
         onChange={(e)=>this.uploadPicture(e.target.files[0])}
         accept='image'
         /> <br/>
 
+        <input
+        className="btn btn-primary smallMargin"
+        type="submit"
+        value="Submit"/> <br/>
+
+        </form>
+
         <div className="response">{this.state.response}</div>
+        </div>
         </Sell>;
     }
 }
