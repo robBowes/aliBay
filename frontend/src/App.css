@@ -100,12 +100,37 @@
 
 .profileItemHead{
   background-color: aliceblue;
+  font-size:12pt;
+  padding: 5px;
 }
 
 .profileItemsContainer{
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
   background-color:tan;
   width: 75%;
+  overflow: auto;
+}
+
+.smallItemCard{
+  padding:5px;
+  position: relative;
+}
+
+.smallCardPrice{
+  position: absolute;
+  right:5px;
+  top:10px;
+  background: blue;
+  color:white;
+  font-weight: bold;
+}
+
+.smallCardName{
+  position: absolute;
+  bottom: 10px;
+  background:blue;
+  color:white;
+  font-weight: bold;
 }
 
 .profileItemsLists{
