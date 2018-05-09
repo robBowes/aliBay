@@ -5,8 +5,8 @@
 }
 .mainContainer {
   display: grid;
-  grid-template-rows: [navTop] 50px [navBottom searchTop profileTop] 40px [searchBottom mainTop] 5px [loginTop] 5px [registerTop] auto [registerBottom] 5px [loginBottom] 5px [mainBottom footerTop profileBottom] 50px [footerBottom];
-  grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] auto [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
+  grid-template-rows: [navTop] 7vh [navBottom searchTop profileTop] 7vh [searchBottom mainTop] 1vh [loginTop] 1vh [registerTop] 75vh [registerBottom] 1vh [loginBottom] 1vh [mainBottom footerTop profileBottom] 7vh [footerBottom];
+  grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] 1fr [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
   "user search search search search search  search"
@@ -16,17 +16,17 @@
   "user main   main   main   main   main    sidebar"
   "user main   main   main   main   main    sidebar"
   "foot foot   foot   foot   foot   foot    foot";
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   justify-content: stretch;
   align-content: stretch;
 }
 
 .blurFrame {
-  transition: all 1s ease-in-out;
-  grid-area: navBottom / leftSide / footerTop / rightSide;
+  grid-area: 2 / 1 / 8 / 8;
   z-index:1;
-  background-color: rgba(0, 0, 0, 0.514);
+  transition: all 1s ease-in-out;
+  /* background-color: rgba(0, 0, 0, 0.514); */
   /* filter: blur(10px) */
 }
 
