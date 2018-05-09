@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const app = express();
 const sha = require('sha1');
 
-app.use(bodyParser.raw({ type: "*/*" }));
+app.use(bodyParser.raw({ type: "*/*" , limit: '20mb'}));
+
+app.use(express.static('data/images'))
 
 app.post("/login", (req, res) => {
   let body = req.body.toString();
