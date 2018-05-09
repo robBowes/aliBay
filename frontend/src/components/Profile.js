@@ -6,7 +6,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       userId: this.props.userId,
-      items: this.props.items
+      items: this.props.items,
     };
   }
   componentDidMount = () => {
@@ -25,7 +25,7 @@ class Profile extends Component {
    
   getSoldByTxn = (txn) =>{
      return this.state.items.filter((item)=>{
-         console.log(item)
+         
         return item.itemId === txn.toString();
     });
 }
@@ -41,9 +41,20 @@ class Profile extends Component {
   getBoughtByTxn = (transactions, txn)=>{
 
   }
-  getListedByTxn = () => {
+  getListedById = (id) => {
+      return this.state.items.filter((item)=>{
+         console.log(item)
+        return item.sellerId.toString() === this.state.userId;
 
-  }
+  })
+}
+renderListedById = ()=>{
+    let itemsListed = this.state.itemsListed.map((x)=>{
+        return this.getListedById(x.itemId)
+    })
+    return itemsListed[0]
+}
+
   getUser = userId => {
     fetch("/user", {
       method: "POST",
@@ -90,20 +101,23 @@ class Profile extends Component {
           <br />
         </div>
         <div className="profileItemsContainer">
+            <div className="profileItemHead">ITEMS PURCHASED</div>
           <div className="profileItemsLists">
-            ITEMS PURCHASED<br />
+        
             {this.state.transactions + ""}
             <br />
           </div>
-            ITEMS SOLD<br />
+          <div className="profileItemHead">ITEMS SOLD</div>
+          
           <div className="profileItemsLists">
-            {this.state.txData?this.renderSoldByTxn().map(ren):null}
+            {this.state.txData ? this.renderSoldByTxn().map(ren) : null}
             <br />
           </div>
+          <div className="profileItemHead">ITEMS FOR SALE</div>
+          
           <div className="profileItemsLists">
-            ITEMS FOR SALE
             <br />
-            {this.state.itemsListed + ""}
+            {this.state.txData ? this.renderListedById().map(ren) : null}
           </div>
         </div>
       </div>;

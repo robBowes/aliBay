@@ -52,6 +52,26 @@ class SellItems extends Component {
     componentDidMount = () => {
         setTimeout(()=>this.setState({class: 'sellItems slideIn'}), 200);
     }
+    uploadPicture = (image) => {
+        let filename = image.name;
+        let extension = filename.split('.').pop();
+        fetch('/pic', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: {
+                image,
+                extension,
+            },
+        })
+        .then((res)=>res.text())
+        .then((data)=>{
+            // if (!data.status) {
+            //     alert('Error!');
+            //     return new Error('upload');
+            // }
+            console.log(data);
+        });
+    }
     render() {
         return <Sell
         className={this.props.showSellItem?
@@ -59,33 +79,55 @@ class SellItems extends Component {
             :
             'hidden sellItems slideIn'
         } >
+
         <form onSubmit={this.handleSubmit}>
+
         <label htmlFor="itemName">Item Name</label> <br/>
+
         <input type="text"
         id='itemName'
         name='itemName'
         value={this.state.itemName}
         onChange={this.handleChange}/> <br/>
+
         <label htmlFor="itemDescription">Description</label> <br/>
+
         <input type="text"
         id='itemDescription'
         name='itemDescription'
         value={this.state.itemDescription}
         onChange={this.handleChange}/> <br/>
+
         <label htmlFor="itemQuantity">Quantity</label> <br/>
+
         <input type="text"
         id='itemQuantity'
         name='itemQuantity'
         value={this.state.itemQuantity}
         onChange={this.handleChange}/> <br/>
+
         <label htmlFor="itemPrice">Price</label> <br/>
-        <input type="text"
+
+        <input
+        type="text"
         id='itemPrice'
         name='itemPrice'
         value={this.state.itemPrice}
         onChange={this.handleChange}/> <br/>
+
+
         <input type="submit" value="Submit"/> <br/>
+
+
         </form>
+        <input
+        type="file"
+        className='btn btn-primary'
+        id='input'
+        onChange={(e)=>this.uploadPicture(e.target.files[0])}
+        accept='image'
+        /> <br/>
+
         <div className="response">{this.state.response}</div>
         </Sell>;
     }
