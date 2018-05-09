@@ -96,23 +96,43 @@
 .userProfileContainer{
   grid-area: profileTop / profileLeft / profileBottom / profileRight;
   z-index: 10000;
-  background-color: white;
+  background-color: #2B3E50;
   display:flex;
 }
 
+.usernameH1{
+  padding-left: 10px;
+  font-style: italic;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.548);
+  text-align:left;
+  background: #DF691A;
+  border-radius: 0px 10px 30px 0px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.438);
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
 .profileItemHead{
- background-color: rgb(53, 53, 53);
- color: white;
+ color: #5bc0de;
  font-weight: bold;
  font-style: italic;
- text-shadow: 1px 1px 1px  rgb(139, 139, 1);
+ text-shadow: 1px 1px 1px  rgba(0, 0, 0, 0.411);
 }
 
 .profileItemsContainer{
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
-  background-color:rgb(32, 32, 32);
+  background-color:#2B3E50;
   width: 75%;
   overflow: auto;
+}
+
+.profilePicture{
+  margin: 10px;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.507));
+  border-radius: 300px;
+  width: 300px;
+  height:300px;
+   
 }
 
 .smallItemCard{
@@ -131,7 +151,7 @@
   position: absolute;
   right:0px;
   top:10px;
-  background: rgb(53, 53, 53);
+  background: #DF691A;
   color:white;
   font-weight: bold;
   padding:2px;
@@ -142,7 +162,7 @@
 .smallCardName{
   position: absolute;
   bottom: 10px;
-  background:rgb(53, 53, 53);
+  background:#DF691A;
   color:white;
   font-weight: bold;
    padding:2px;
@@ -180,7 +200,8 @@ color: inherit;
 }
 
 a:hover{
-  color: grey;
+  filter: brightness(1.2);
+  text-decoration: none;
 }
 .navButtons {
   display: flex;
