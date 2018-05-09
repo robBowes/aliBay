@@ -34,6 +34,7 @@ class SellItems extends Component {
                 quantity: this.state.itemQuantity,
                 price: this.state.itemPrice,
                 sellerId: this.props.userId,
+                imagename: this.state.imagename,
             }),
         })
         .then((res)=>res.json())
@@ -70,18 +71,15 @@ class SellItems extends Component {
             method: 'POST',
             credentials: 'same-origin',
             body: image,
-            // JSON.stringify({
-            //     image,
-            //     extension,
-            // }),
         })
-        .then((res)=>res.text())
+        .then((res)=>res.json())
         .then((data)=>{
-            // if (!data.status) {
-            //     alert('Error!');
-            //     return new Error('upload');
-            // }
+            if (!data.status) {
+                alert('Error!');
+                return new Error('upload');
+            }
             console.log(data);
+            this.setState({imagename: data.content});
         })
         .catch((e)=>console.log(e));
     }
