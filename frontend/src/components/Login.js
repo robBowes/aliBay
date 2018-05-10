@@ -2,6 +2,7 @@
 * An entry point to the app where a user can log in
 */
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class Login extends Component {
     constructor(props) {
@@ -30,23 +31,27 @@ class Login extends Component {
             let parsedResponse = JSON.parse(response);
             if (parsedResponse.status === true) {
                 // alert(parsedResponse.reason);
-                this.props.updateUserInfo(parsedResponse);
+                // this.props.updateUserInfo(parsedResponse);
             } else {
                 alert(parsedResponse.reason);
             }
         });
+        console.log(this.props);
+        this.props.dispatch({type: 'LOGIN'});
     }
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
     }
-    componentWillReceiveProps = (props) => {
-        let newClass = props.loggedIn ?
-        'hidden login slideIn form-group':
-        'login slideIn form-group';
-        this.setState({classes: newClass.split(' ')});
-    }
+    // componentWillReceiveProps = (props) => {
+    //     let newClass = props.login.login ?
+    //     'hidden login slideIn form-group':
+    //     'login slideIn form-group';
+    //     this.setState({classes: newClass.split(' ')});
+    // }
     render() {
-        return (<div className={this.state.classes.join(' ') }>
+        return (<div className={this.props.login.login ?
+            'hidden login slideIn form-group':
+            'login slideIn form-group' }>
 
         <div
         style={
@@ -121,4 +126,12 @@ class Login extends Component {
         </div>);
     };
 }
-export default Login;
+
+const mapStateToProps = (state) => ({
+    login: state,
+});
+
+const connectedLogin = connect(mapStateToProps)(Login);
+
+// export default Login;
+export default connectedLogin;
