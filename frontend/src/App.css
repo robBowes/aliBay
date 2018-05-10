@@ -99,6 +99,8 @@ top: 2px;
 .cardBody{
   display:flex;
   border: 1px solid rgb(112, 112, 112);
+    transition: all 0.5s ease-in-out;
+
 }
 .itemName{
   margin-top: 10px;
@@ -132,6 +134,8 @@ top: 2px;
   font-weight: bold;
   padding:2px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.466);
+      transition: all 0.5s ease-in-out;
+
 }
 
 .search {
@@ -162,6 +166,7 @@ top: 2px;
   display: flex;
   flex-flow: column;
   max-width:400px;
+  overflow: hidden;
   
 }
 .lessPad{
@@ -231,6 +236,7 @@ top: 2px;
    position: absolute;
   vertical-align: middle;
   min-width: 400px;
+  max-width:400px;
 }
 
 .smallDetails{
@@ -289,6 +295,18 @@ top: 2px;
    
 }
 
+.userCardImage{
+  display:block;
+  margin:10px;
+  margin-top:30px;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.507));
+  border-radius: 300px;
+  width: 200px;
+  height:200px;
+  transition: all 0.1s ease-in-out;
+
+}
+
 .smallItemCard{
   margin:10px;
   position: relative;
@@ -300,6 +318,7 @@ top: 2px;
   flex-flow: column;
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.473);
   max-width:190px;
+  overflow: hidden;
 }
 
 .smallCardPrice{
@@ -380,3 +399,17 @@ a:hover{
   color: rgb(53, 53, 53) !important;
 }
 
+@media only screen and (max-width: 1000px) {
+    .cardPrice{
+        transition: all 0.5s ease-in-out;
+
+      top: 160px;
+    }
+    .userCardImage{
+      height:60px;
+      width: 60px;
+      border: 2px solid white;
+        transition: all 0.1s ease-in-out;
+
+    }
+}

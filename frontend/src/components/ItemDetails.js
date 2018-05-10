@@ -15,6 +15,7 @@ class ItemDetails extends Component {
       price: '',
       itemDescription: '',
       quantity: '',
+      class: 'hidden'
       },
     };
   }
@@ -38,6 +39,9 @@ class ItemDetails extends Component {
   componentWillMount = () => {
     this.setState({item: this.props.getItemById(this.props.items, this.props.id)});
   }
+  componentDidMount = () => {
+        setTimeout(()=>this.setState({class: 'sellItems slideIn'}), 200);
+    }
   render() {
     return <div className="itemDetails">
         <div className="itemMainCard">
