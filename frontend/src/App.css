@@ -268,7 +268,7 @@ top: 2px;
 }
 
 .userProfileContainer{
-  grid-area: profileTop / profileLeft / profileBottom / profileRight;
+  grid-area: profileTop / profileLeft / profileBottom / rightSide ;
   z-index: 10000;
   background-color: #2B3E50;
   display:flex;
@@ -294,7 +294,7 @@ top: 2px;
 }
 
 .profileItemsContainer{
-  grid-area: registerTop / registerLeft / registerBottom / registerRight;
+  grid-area: registerTop / registerLeft / registerBottom / rightSide;
   background-color:#2B3E50;
   width: 75%;
   overflow: auto;
