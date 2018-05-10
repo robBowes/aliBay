@@ -168,12 +168,17 @@ top: 2px;
 }
 
 .itemMainCard{
-  background:#2B3E50 ;
+  background: #212121;
   max-width: 100%;
   width:690px;
   position: relative;
-  
 }
+
+.card-header {
+  background: #1d1d1d;
+
+}
+
 .itemImageContainer{
  
   position: relative;
@@ -215,7 +220,7 @@ top: 2px;
 
 .itemDescription{
   display:block;
-  background-color:  rgb(45, 66, 85)  ;
+  background-color: rgb(33, 33, 33);
   margin: 12px;
   padding: 8px;
   max-height: 330px;
