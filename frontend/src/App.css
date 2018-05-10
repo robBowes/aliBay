@@ -102,6 +102,8 @@ top: 2px;
 .cardBody{
   display:flex;
   border: 1px solid rgb(112, 112, 112);
+    transition: all 0.5s ease-in-out;
+
 }
 .itemName{
   margin-top: 10px;
@@ -121,6 +123,10 @@ top: 2px;
   margin-left: 10px;
 }
 
+.cardDescription:hover{
+  font-style: none;
+}
+
 .cardPrice{
   font-size:20pt;
   position: absolute;
@@ -131,6 +137,8 @@ top: 2px;
   font-weight: bold;
   padding:2px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.466);
+      transition: all 0.5s ease-in-out;
+
 }
 
 .search {
@@ -140,8 +148,108 @@ top: 2px;
 .itemDetails {
   grid-area: loginTop / loginLeft / loginBottom / loginRight;;
   z-index: 3;
-  background:yellow;
+  display: flex;
+  justify-content: center;
 }
+
+.itemMainCard{
+  background:#2B3E50 ;
+  max-width: 100%;
+  width:690px;
+  position: relative;
+  
+}
+.itemImageContainer{
+ 
+  position: relative;
+  min-width:400px;
+  height:420px;
+  /* background: rgb(37, 54, 70); */
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  max-width:400px;
+  overflow: hidden;
+  
+}
+.lessPad{
+  padding: 1px !important;
+}
+
+.detailsName{
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.562);
+  padding: 0px;
+}
+
+.sellerName{
+  font-size: 10pt;
+  font-style: italic;
+  padding:0px;
+}
+
+.buyButton{
+  position: absolute;
+  bottom:0px;
+  box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.486);
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+
+.itemDescription{
+  display:block;
+  background-color:  rgb(45, 66, 85)  ;
+  margin: 12px;
+  padding: 8px;
+  max-height: 330px;
+  width:100%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.397);
+}
+
+.xButton{
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.445);
+}
+
+.itemPrice{
+  font-size: 25pt;
+  font-weight: bold;
+  font-style: italic;
+  position: absolute;
+  background-color: #DF691A;
+  right: 0px;
+  bottom: 8vh;
+  padding:4px;
+  padding-right:15px;
+  padding-left: 10px;
+  box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.473);
+  text-shadow: 1px 1px 1px black;
+}
+
+.itemImage{
+  display: inline-block;
+ 
+  margin-left:auto;
+  margin-right: auto; 
+   position: absolute;
+  vertical-align: middle;
+  min-width: 400px;
+  max-width:400px;
+}
+
+.smallDetails{
+  text-align: right;
+  font-size: 10pt;
+  position: absolute;
+  bottom:0px;
+  right:5px;
+}
+
 .sellItems {
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
   /* background-color: tomato; */
@@ -190,17 +298,30 @@ top: 2px;
    
 }
 
+.userCardImage{
+  display:block;
+  margin:10px;
+  margin-top:30px;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.507));
+  border-radius: 300px;
+  width: 200px;
+  height:200px;
+  transition: all 0.1s ease-in-out;
+
+}
+
 .smallItemCard{
   margin:10px;
   position: relative;
   min-width:190px;
   height:200px;
-  background: #2B3E50;
+  background: rgb(37, 54, 70);
   justify-content: center;
   display: flex;
   flex-flow: column;
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.473);
   max-width:190px;
+  overflow: hidden;
 }
 
 .smallCardPrice{
@@ -260,6 +381,10 @@ a{
 }
 
 a:hover{
+  text-decoration: none;
+}
+
+.cardBody:hover{
   filter: brightness(1.05);
   text-decoration: none;
   color: inherit;
@@ -277,6 +402,7 @@ a:hover{
   color: rgb(53, 53, 53) !important;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 800px) {
   .mainContainer {
     display: grid;
@@ -301,3 +427,20 @@ a:hover{
     grid-area: inherit;
   }
 }
+||||||| merged common ancestors
+=======
+@media only screen and (max-width: 1000px) {
+    .cardPrice{
+        transition: all 0.5s ease-in-out;
+
+      top: 160px;
+    }
+    .userCardImage{
+      height:60px;
+      width: 60px;
+      border: 2px solid white;
+        transition: all 0.1s ease-in-out;
+
+    }
+}
+>>>>>>> 3c239e8bb570ae09c840730ecd6267de4aeddf2a
