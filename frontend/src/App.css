@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
 }
+
 .mainContainer {
   display: grid;
   grid-template-rows: [navTop] 7vh [navBottom searchTop profileTop] 7vh [searchBottom mainTop] 1vh [loginTop] 1vh [registerTop] 75vh [registerBottom] 1vh [loginBottom] 1vh [mainBottom footerTop profileBottom] 7vh [footerBottom];
@@ -61,6 +62,7 @@
 .navBar {
   grid-area: nav;
   z-index: 3;
+  background-color: #395065 !important;
   /* background-color: tomato; */
   /* display: flex; */
   /* justify-content: space-between; */
@@ -71,7 +73,7 @@
 }
 .footer {
   grid-area: foot;
-  background-color: tomato;
+  background-color: #395065 !important;
   display: flex;
   justify-content: space-between;
 }
@@ -236,6 +238,10 @@ text-decoration: none;
 color: inherit;
 }
 
+a{
+  background-color: #395065;
+}
+
 a:hover{
   filter: brightness(1.05);
   text-decoration: none;
@@ -249,3 +255,4 @@ a:hover{
 .smallMargin {
   margin: 0.5rem;
 }
+
