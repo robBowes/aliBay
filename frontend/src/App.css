@@ -69,6 +69,7 @@
 }
 
 #search-button {
+  display: none;
   width: 9%;
 }
 
@@ -84,7 +85,7 @@
 }
 
 .form-control {
-width: 91% !important;
+width: 100% !important;
 position: relative;
 top: 2px;
 }
