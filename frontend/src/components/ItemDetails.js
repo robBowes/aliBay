@@ -40,32 +40,45 @@ class ItemDetails extends Component {
   }
   render() {
     return <div className="itemDetails">
-        <div>
-          <h1>
-            {this.state.item.itemName}
-            <Link to="/">
-              <button>close pane</button>
-            </Link>
-          </h1>
-        </div>
-        <div className='flexItem'>
-        <div>
-          {/* <img src={'http://unsplash.it/' + Math.floor(Math.random() * (400 - 250) + 250) + '/' + Math.floor(Math.random() * (400 - 250) + 250)} /> */}
-          <img src={this.state.item.filename} />
-        </div>
-        <div>
-          <h2>
-            {'Seller Name: ' + this.state.item.sellerName}
-            <br />
-            {'Price: $' + this.state.item.price.toLocaleString()}
-            <br />
-            {'List date: ' + this.state.item.listDate}
-          </h2>
+        <div className="itemMainCard">
+          <div className="card-header">
+            <h1 className="detailsName">{this.state.item.itemName}</h1>
+            <div className="sellerName">
+              {"Listed by " + this.state.item.sellerName}
+            </div>
+            <h1>
+              <Link className="xButton" to="/">
+                X
+              </Link>
+            </h1>
+          </div>
+          <div className="flexItem">
+            <div className="itemImageContainer">
+              <img className="itemImage" src={this.state.item.filename} />
+            </div>
+            <div>
+              <h2>
+                <br />
+                <div className="itemPrice">
+                  {"Price: $" + this.state.item.price.toLocaleString()}
+                </div>
+              </h2>
+                <br />
+            </div>
+              <br />  
+            <div className="itemDescription">  {this.state.item.itemDescription} </div>
+          </div>
           <br />
-        {this.state.item.itemDescription}<br/>
-        <h3>{'quantity: ' + this.state.item.quantity}</h3></div>
-        </div><br/>
-        <button onClick={this.handleBuy}>BUY</button>
+          <button className="btn btn-primary btn-lg buyButton" onClick={this.handleBuy}>
+            BUY
+          </button>
+                <div className='smallDetails'>
+                {"List date: " + this.state.item.listDate}
+              <br />
+              {this.state.item.quantity + " left in stock."}
+              <br/>
+              {'ID#: '+this.state.item.itemId}</div>
+        </div>
       </div>;
   }
 }
