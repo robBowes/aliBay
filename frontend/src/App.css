@@ -4,6 +4,9 @@
   margin: 0;
 }
 
+body{
+  background-color: #2f2f2f;
+}
 
 @media all and (min-width: 801px) {
 .mainContainer {
@@ -64,8 +67,8 @@
 }
 .navBar {
   grid-area: nav;
-  z-index: 3;
-  background-color: #395065 !important;
+  z-index: 10;
+  background-color: #1d1d1d !important;
   /* background-color: tomato; */
   /* display: flex; */
   /* justify-content: space-between; */
@@ -89,7 +92,7 @@ h4 {
 
 .footer {
   grid-area: foot;
-  background-color: #395065 !important;
+  background-color: #1d1d1d !important;
   display: flex;
   justify-content: space-between;
 }
@@ -106,10 +109,14 @@ top: 2px;
   overflow-x: hidden;
 }
 
+.card{
+  background-color: #333333;
+  border: 0px;
+}
+
 .cardBody{
   display:flex;
-  border: 1px solid rgb(112, 112, 112);
-    transition: all 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
 }
 .itemName{
@@ -135,7 +142,7 @@ top: 2px;
 }
 
 .cardPrice{
-  font-size:20pt;
+  font-size:15pt;
   position: absolute;
   right:0px;
   top:14px;
@@ -267,8 +274,8 @@ top: 2px;
 
 .userProfileContainer{
   grid-area: profileTop / profileLeft / profileBottom / profileRight;
-  z-index: 10000;
-  background-color: #2B3E50;
+  z-index: 2;
+  background-color: #2f2f2f;
   display:flex;
 }
 
@@ -293,7 +300,7 @@ top: 2px;
 
 .profileItemsContainer{
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
-  background-color:#2B3E50;
+  background-color:#2f2f2f;
   width: 75%;
   overflow: auto;
 }
@@ -324,7 +331,7 @@ top: 2px;
   position: relative;
   min-width:190px;
   height:200px;
-  background: rgb(37, 54, 70);
+  background: #2b2b2b;
   justify-content: center;
   display: flex;
   flex-flow: column;
@@ -387,7 +394,13 @@ color: inherit;
 }
 
 a{
-  background-color: #395065;
+  background-color: inherit;
+}
+
+#navbarColor02{
+  background-color: #1d1d1d;
+  padding-left: 10px;
+  margin-top: 5px;
 }
 
 a:hover{
@@ -398,7 +411,7 @@ a:hover{
   filter: brightness(1.05);
   text-decoration: none;
   color: inherit;
-  background-color: rgb(78, 93, 109);
+  background-color: rgb(47, 47, 47);
 }
 .navButtons {
   display: flex;
