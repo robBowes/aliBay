@@ -257,3 +257,7 @@ a:hover{
   margin: 0.5rem;
 }
 
+.text-muted {
+  color: rgb(53, 53, 53) !important;
+}
+
