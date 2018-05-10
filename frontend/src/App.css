@@ -10,7 +10,7 @@
   grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] 1fr [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
-  "user search search search search search  search"
+  "user search search search search search  sidebar"
   "user main   main   main   main   main    sidebar"
   "user main   main   main   main   main    sidebar"
   "user main   main   main   main   main    sidebar"
@@ -67,6 +67,11 @@
   /* display: flex; */
   /* justify-content: space-between; */
 }
+
+#search-button {
+  width: 9%;
+}
+
 .userCard {
   grid-area: user;
   z-index: 0;
@@ -77,6 +82,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.form-control {
+width: 91% !important;
+position: relative;
+top: 2px;
+}
+
 .itemContainer {
   grid-area: main;
   overflow: scroll;

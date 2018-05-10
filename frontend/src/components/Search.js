@@ -53,6 +53,7 @@ class Search extends Component {
                     onChange={this.handleChange}/>
                     <input
                     className ="btn btn-primary"
+                    id = "search-button"
                     type='submit' />
                 </form>
             </Bar>
