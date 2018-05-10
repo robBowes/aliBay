@@ -80,6 +80,7 @@
 .itemContainer {
   grid-area: main;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .cardBody{
