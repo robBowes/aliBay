@@ -9,41 +9,56 @@ class ItemDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: {itemName: '',
-      sellerName: '',
-      listDate: '',
-      price: '',
-      itemDescription: '',
-      quantity: '',
-      class: 'hidden'
+      item: {
+        itemName: "",
+        sellerName: "",
+        listDate: "",
+        price: "",
+        itemDescription: "",
+        quantity: ""
       },
+      class: "hidden",
+      classes: ["hidden", "itemDetails", "slideIn"]
     };
   }
   handleBuy = () => {
-    if (this.state.item.quantity)
-    {fetch('/buy', {
-      method: 'POST',
-      credentials: 'same-origin',
-      body: JSON.stringify({
-        itemId: this.state.item.itemId,
-        quantity: 1,
-      }),
-    })
-    .then((res)=>res.json())
-    .then((data)=>{
-      this.props.getAllItems().then(()=>{
-        this.setState({item: this.props.getItemById(this.props.items, this.props.id)});
-      });
-    });}
+    if (this.state.item.quantity) {
+      fetch("/buy", {
+        method: "POST",
+        credentials: "same-origin",
+        body: JSON.stringify({
+          itemId: this.state.item.itemId,
+          quantity: 1
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.props.getAllItems().then(() => {
+            this.setState({
+              item: this.props.getItemById(this.props.items, this.props.id)
+            });
+            this.state.item.quantity===0?document.getElementById("buy").disabled = true:null;
+          });
+        });
+    }
   };
   componentWillMount = () => {
-    this.setState({item: this.props.getItemById(this.props.items, this.props.id)});
-  }
-  componentDidMount = () => {
-        setTimeout(()=>this.setState({class: 'sellItems slideIn'}), 200);
-    }
+    this.props.toggleShowItem()
+    this.setState({
+      item: this.props.getItemById(this.props.items, this.props.id)
+    });
+    // let newClass = this.props.itemDet ? "hidden itemDetails slideIn form-group" : "itemDetails slideIn form-group";
+    // this.setState({ classes: newClass.split(" ") });
+  };
+   componentDidMount = () => {
+     setTimeout(() => this.setState({ classes: ["itemDetails", "slideIn"] }), 400);
+  };
+
+ 
+  
   render() {
-    return <div className="itemDetails">
+    return (
+      <div className={this.state.classes.join(" ")}>
         <div className="itemMainCard">
           <div className="card-header">
             <h1 className="detailsName">{this.state.item.itemName}</h1>
@@ -51,7 +66,7 @@ class ItemDetails extends Component {
               {"Listed by " + this.state.item.sellerName}
             </div>
             <h1>
-              <Link className="xButton" to="/">
+              <Link className="xButton" to="/" onClick={this.props.toggleShowItem}>
                 X
               </Link>
             </h1>
@@ -67,23 +82,33 @@ class ItemDetails extends Component {
                   {"Price: $" + this.state.item.price.toLocaleString()}
                 </div>
               </h2>
-                <br />
+              <br />
             </div>
-              <br />  
-            <div className="itemDescription">  {this.state.item.itemDescription} </div>
+            <br />
+            <div className="itemDescription">
+              {" "}
+              {this.state.item.itemDescription}{" "}
+            </div>
           </div>
           <br />
-          <button className="btn btn-primary btn-lg buyButton" onClick={this.handleBuy}>
+          <button
+            className="btn btn-primary btn-lg buyButton"
+            onClick={this.state.item.quantity>0?this.handleBuy:null}
+            style={this.state.item.quantity>0?{}:{'background-color':'grey','border':'none','color':'darkgrey','outline':'none !important'}}
+            id='buy'
+          >
             BUY
           </button>
-                <div className='smallDetails'>
-                {"List date: " + this.state.item.listDate}
-              <br />
-              {this.state.item.quantity + " left in stock."}
-              <br/>
-              {'ID#: '+this.state.item.itemId}</div>
+          <div className="smallDetails">
+            {"List date: " + this.state.item.listDate}
+            <br />
+            {this.state.item.quantity + " left in stock."}
+            <br />
+            {"ID#: " + this.state.item.itemId}
+          </div>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 
