@@ -23,6 +23,7 @@ class App extends Component {
       register: false,
       showLogIn: false,
       showSellItem: false,
+      showItemDet: false,
       items: [],
       showItems: [],
       clearCard: false,
@@ -51,10 +52,12 @@ class App extends Component {
   }
   renderItemDetails = (routerData) => {
     return <ItemDetails
+    itemDet={this.state.showItemDet}
     getAllItems={this.getAllItems}
     items={this.state.items}
     id={routerData.match.params.id}
-    getItemById={getItemById}/>;
+    getItemById={getItemById}
+    toggleShowItem={this.toggleShowItem}/>;
   };
   updateUserInfo = (newUserInfo) => {
     this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
@@ -64,6 +67,9 @@ class App extends Component {
   };
   toggleSellItem = () => {
     this.setState({showSellItem: !this.state.showSellItem});
+  }
+  toggleShowItem =()=>{
+    this.setState({showItemDet: !this.state.showItemDet})
   }
   toggleCreate = (event) => {
     event.preventDefault();
@@ -105,7 +111,7 @@ class App extends Component {
       <div
       className='blurFrame'
       style={
-        {'backgroundColor': (!this.state.loggedIn || this.state.showSellItem)?
+        {'backgroundColor': (!this.state.loggedIn || this.state.showSellItem || this.state.showItemDet)?
         'rgba(0, 0, 0, 0.514':'rgba(0, 0, 0, 0'}
       }/>
 

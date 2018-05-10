@@ -230,6 +230,8 @@ top: 2px;
   max-width: 270px;
 }
 
+
+
 .xButton{
   position: absolute;
   right: 15px;
@@ -412,18 +414,23 @@ a{
 
 a:hover{
   text-decoration: none;
+  color: inherit !important;
 }
 
 .cardBody:hover{
-  filter: brightness(1.05);
+  filter: brightness(1.08);
   text-decoration: none;
-  color: inherit;
+  color: inherit !important;
   background-color: rgb(47, 47, 47);
 }
+
+
+
 .navButtons {
   display: flex;
   justify-content: space-evenly;
 }
+
 .smallMargin {
   margin: 0.5rem;
 }
@@ -476,7 +483,6 @@ border-style: none;
 padding:5px;
 border-radius: 5px;
 width: 100%;
-
 }
 
 .sellFile{
@@ -490,6 +496,8 @@ width: 100%;
    padding-right:12%;
    margin-top: -4%;
 }
+
+
 
 @media only screen and (max-width: 1000px) {
     .cardPrice{
@@ -537,6 +545,8 @@ width: 100%;
 ::-webkit-scrollbar{
   display: none;
 }
+
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
