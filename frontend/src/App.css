@@ -105,17 +105,19 @@ top: 2px;
 
 .itemContainer {
   grid-area: main;
-  overflow: scroll;
-  overflow-x: hidden;
+  /* overflow: scroll;
+  overflow-x: hidden; */
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  align-items: stretch;
+
 }
 
 .card{
   background-color: #2f2f2f;
   border: 0px;
-  width: max-content;
+  flex: auto;
   /* height: max-content; */
 }
 
@@ -347,8 +349,8 @@ top: 2px;
   justify-content: center;
   display: flex;
   flex-flow: column;
-  max-width:190px;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .smallCardPrice{
@@ -383,7 +385,10 @@ top: 2px;
   margin-right: auto; 
    position: absolute;
   vertical-align: middle;
-  max-width:190px;
+  min-width:50px;
+  width: 100%;
+  height: auto;
+  max-width: fit-content;
 }
 
 .profileItemsLists{
