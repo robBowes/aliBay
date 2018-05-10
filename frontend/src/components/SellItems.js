@@ -99,9 +99,10 @@ class SellItems extends Component {
             : "hidden sellItems slideIn"
         }
       >
-        <div className="card border-secondary">
+        <div className="sellWidth">
+        <div className="card border-secondary ">
           <h3 className="card-header">Sell Item</h3>
-
+            <div className="sellForm">
           <form className="card-body" onSubmit={this.handleSubmit}>
             <label htmlFor="itemName">Item Name</label> <br />
             <input
@@ -114,7 +115,7 @@ class SellItems extends Component {
             />{" "}
             <br />
             <label htmlFor="itemDescription">Description</label> <br />
-            <input
+            <textarea
               className="sellDescription"
               type="text"
               id="itemDescription"
@@ -123,6 +124,8 @@ class SellItems extends Component {
               onChange={this.handleChange}
             />{" "}
             <br />
+            <div className='bottomBox'>
+            <div className='divideForm'>
             <label htmlFor="itemQuantity">Quantity</label> <br />
             <input
               type="number"
@@ -131,8 +134,8 @@ class SellItems extends Component {
               name="itemQuantity"
               value={this.state.itemQuantity}
               onChange={this.handleChange}
-            />{" "}
-            <br />
+            />{" "}</div>
+            <div className='divideForm'>
             <label htmlFor="itemPrice">Price</label> <br />
             <input
               className="sellPrice"
@@ -141,25 +144,30 @@ class SellItems extends Component {
               name="itemPrice"
               value={this.state.itemPrice}
               onChange={this.handleChange}
-            />{" "}
+            />{" "}</div>
+            </div>
             <br />
+            <div className="bottomBox   ">
             <input
               type="file"
-              className="btn btn-primary smallMargin"
+              className="btn btn-primary smallMargin sellFile"
               id="input"
               onChange={e => this.uploadPicture(e.target.files[0])}
               accept="image"
             />{" "}
-            <br />
+            
             <input
-              className="btn btn-primary smallMargin"
+              className="btn btn-primary smallMargin sellBtn"
               type="submit"
               value="Submit"
             />{" "}
             <br />
+            </div>
           </form>
 
           <div className="response">{this.state.response}</div>
+        </div>
+        </div>
         </div>
       </Sell>
     );
