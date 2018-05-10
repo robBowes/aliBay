@@ -3,13 +3,14 @@
   padding: 0;
   margin: 0;
 }
+
 .mainContainer {
   display: grid;
   grid-template-rows: [navTop] 7vh [navBottom searchTop profileTop] 7vh [searchBottom mainTop] 1vh [loginTop] 1vh [registerTop] 75vh [registerBottom] 1vh [loginBottom] 1vh [mainBottom footerTop profileBottom] 7vh [footerBottom];
   grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] 1fr [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
-  "user search search search search search  search"
+  "user search search search search search  sidebar"
   "user main   main   main   main   main    sidebar"
   "user main   main   main   main   main    sidebar"
   "user main   main   main   main   main    sidebar"
@@ -61,23 +62,38 @@
 .navBar {
   grid-area: nav;
   z-index: 3;
+  background-color: #395065 !important;
   /* background-color: tomato; */
   /* display: flex; */
   /* justify-content: space-between; */
 }
+
+#search-button {
+  display: none;
+  width: 9%;
+}
+
 .userCard {
   grid-area: user;
   z-index: 0;
 }
 .footer {
   grid-area: foot;
-  background-color: tomato;
+  background-color: #395065 !important;
   display: flex;
   justify-content: space-between;
 }
+
+.form-control {
+width: 100% !important;
+position: relative;
+top: 2px;
+}
+
 .itemContainer {
   grid-area: main;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .cardBody{
@@ -338,6 +354,10 @@ text-decoration: none;
 color: inherit;
 }
 
+a{
+  background-color: #395065;
+}
+
 a:hover{
   text-decoration: none;
 }
@@ -355,3 +375,8 @@ a:hover{
 .smallMargin {
   margin: 0.5rem;
 }
+
+.text-muted {
+  color: rgb(53, 53, 53) !important;
+}
+
