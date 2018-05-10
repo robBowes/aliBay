@@ -79,7 +79,14 @@
 .userCard {
   grid-area: user;
   z-index: 0;
+  margin: 10px;
+  word-wrap: break-word;
 }
+
+h4 {
+  font-size: 15px;
+}
+
 .footer {
   grid-area: foot;
   background-color: #395065 !important;
@@ -302,12 +309,12 @@ top: 2px;
 
 .userCardImage{
   display:block;
-  margin:10px;
+  margin:0px;
   margin-top:30px;
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.507));
   border-radius: 300px;
-  width: 200px;
-  height:200px;
+  width: 100%;
+  height: relative;
   transition: all 0.1s ease-in-out;
 
 }
@@ -442,6 +449,24 @@ padding:5px;
 border-radius: 5px;
 }
 
+@media only screen and (max-width: 1000px) {
+    .cardPrice{
+        transition: all 0.5s ease-in-out;
+
+      top: 160px;
+    }
+  
+}
+@media only screen and (max-width: 1050px) {
+    .userCardImage{
+    height:60px;
+      width: 60px;
+      border: 2px solid white;
+        transition: all 0.3s ease-in-out;
+
+    }
+}
+
 @media only screen and (max-width: 800px) {
   .mainContainer {
     display: grid;
@@ -465,28 +490,4 @@ border-radius: 5px;
     display: none;
     grid-area: inherit;
   }
-}
-
-
-@media only screen and (max-width: 1000px) {
-    .cardPrice{
-        transition: all 0.5s ease-in-out;
-
-      top: 160px;
-    }
-  
-}
-::-webkit-scrollbar { 
-    display: none; 
-}
-
-@media only screen and (max-width: 1300px) {
-    
-    .userCardImage{
-    height:60px;
-      width: 60px;
-      border: 2px solid white;
-        transition: all 0.3s ease-in-out;
-
-    }
 }
