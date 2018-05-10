@@ -15,9 +15,11 @@ class ItemCard extends Component {
 
     <Link to={'/item/' + this.props.item.itemId}>
 
-    <div className="cardBody">
+    {/* <div className="cardBody"> */}
     <div className='smallItemCard'>
-    <img className="smallCardImage" src={this.props.item.filename} alt=""/></div>
+    <img className="smallCardImage" src={this.props.item.filename} alt=""/>
+{/*     
+    </div>
     <div className="itemTextContainer">
     <h5 className="itemName">
     {this.props.item.itemName}
@@ -25,7 +27,7 @@ class ItemCard extends Component {
     <div>
         <br/>
     <h6 className='cardDescription'> {this.props.item.itemDescription} </h6>
-    </div></div>
+    </div></div> */}
    
 
     <p className='cardPrice'>  {'$ '+this.props.item.price.toLocaleString()} </p></div>
