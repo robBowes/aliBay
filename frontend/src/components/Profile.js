@@ -34,7 +34,7 @@ class Profile extends Component {
             return this.getSoldByTxn(x.sellerId)
         })
         itemsSold[0].reverse()
-        return itemsSold[0].slice(0,4)
+        return itemsSold[0]
     }
 
   getBoughtByTxn = (txn)=>{
@@ -51,7 +51,7 @@ class Profile extends Component {
         }
       });
       itemsBought.reverse();
-      let itemsShow = itemsBought.slice(0, 4).reverse();
+      let itemsShow = itemsBought.reverse();
       console.log(itemsShow)
       return itemsShow.reverse();
   }
@@ -68,7 +68,7 @@ renderListedById = ()=>{
     })
     console.log(this.state)
     itemsListed[0].reverse()
-    return itemsListed[0].slice(0,4)
+    return itemsListed[0]
 }
 
   getUser = userId => {
