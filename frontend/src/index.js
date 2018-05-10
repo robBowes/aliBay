@@ -5,8 +5,11 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {createStore} from 'redux';
 import allReducers from './reducers/index.js';
+import {Provider} from 'react-redux';
 
-const store = createStore();
+const store = createStore(allReducers);
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render((<Provider store={store}><App /></Provider>), document.getElementById('root')
+    );
+    registerServiceWorker();
+
