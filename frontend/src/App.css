@@ -60,6 +60,7 @@
 }
 .navBar {
   grid-area: nav;
+  z-index: 3;
   /* background-color: tomato; */
   /* display: flex; */
   /* justify-content: space-between; */
