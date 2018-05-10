@@ -491,3 +491,7 @@ border-radius: 5px;
     grid-area: inherit;
   }
 }
+
+::-webkit-scrollbar{
+  display: none;
+}
