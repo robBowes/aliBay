@@ -402,7 +402,6 @@ a:hover{
   color: rgb(53, 53, 53) !important;
 }
 
-<<<<<<< HEAD
 @media only screen and (max-width: 800px) {
   .mainContainer {
     display: grid;
@@ -427,8 +426,8 @@ a:hover{
     grid-area: inherit;
   }
 }
-||||||| merged common ancestors
-=======
+
+
 @media only screen and (max-width: 1000px) {
     .cardPrice{
         transition: all 0.5s ease-in-out;
@@ -443,4 +442,3 @@ a:hover{
 
     }
 }
->>>>>>> 3c239e8bb570ae09c840730ecd6267de4aeddf2a
