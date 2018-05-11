@@ -32,12 +32,12 @@ class Login extends Component {
             if (parsedResponse.status === true) {
                 // alert(parsedResponse.reason);
                 // this.props.updateUserInfo(parsedResponse);
+                this.props.dispatch({type: 'LOGIN'});
+                this.props.dispatch({type: 'USER_ID', payload: parsedResponse.userId});
             } else {
                 alert(parsedResponse.reason);
             }
         });
-        console.log(this.props);
-        this.props.dispatch({type: 'LOGIN'});
     }
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
@@ -49,7 +49,7 @@ class Login extends Component {
     //     this.setState({classes: newClass.split(' ')});
     // }
     render() {
-        return (<div className={this.props.login.login ?
+        return (<div className={this.props.loggedIn ?
             'hidden login slideIn form-group':
             'login slideIn form-group' }>
 
@@ -128,7 +128,10 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    login: state,
+    loggedIn: state.test.loggedIn,
+    show: state.test.show,
+    register: state.test.register,
+
 });
 
 const connectedLogin = connect(mapStateToProps)(Login);
