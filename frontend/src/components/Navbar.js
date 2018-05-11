@@ -105,6 +105,7 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => ({
    loggedIn: state.view.loggedIn,
+   view: state.view,
 });
 
 export default connect(mapStateToProps)(Navbar);
