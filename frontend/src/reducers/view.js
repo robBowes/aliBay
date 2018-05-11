@@ -28,6 +28,9 @@ export default (state= {
         newState.cart = !newState.cart
 
     }
+    else if(action.type==="DISABLE_CART"){
+        newState.cart = false
+    }
     return newState;
 };
 
