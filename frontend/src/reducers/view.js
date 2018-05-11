@@ -2,6 +2,7 @@ export default (state= {
     loggedIn: false,
     show: false,
     register: false,
+    cart: false
 }
 , action) => {
     let newState = {...state};
@@ -10,7 +11,7 @@ export default (state= {
             loggedIn: true,
             show: true,
             register: true,
-        };
+        };    
     } else if (action.type === 'LOGOUT') {
         newState = {
             loggedIn: false,
@@ -20,6 +21,10 @@ export default (state= {
             userId: undefined,
             show: false,
         };
+    }
+    else if (action.type === 'TOGGLE_CART'){
+        newState.cart = !newState.cart
+
     }
     return newState;
 };

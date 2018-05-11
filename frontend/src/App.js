@@ -14,6 +14,7 @@ import Footer from './components/Footer.js';
 import SellItems from './components/SellItems.js';
 import ItemContainer from './components/ItemContainer';
 import Profile from './components/Profile.js';
+import Cart from './components/Cart.js';
 import {connect} from 'react-redux';
 
 class App extends Component {
@@ -145,6 +146,9 @@ class App extends Component {
       getAllItems={this.getAllItems}
       showAllItems={this.showAllItems}
       showSellItem={this.state.showSellItem}
+      />
+
+      <Cart
       />
 
       <Footer/>

@@ -585,6 +585,11 @@ width: 100%;
   display: none;
 }
 
+.cartContainer{
+  grid-area: main;
+  z-index: 2;
+}
+
 
 
 input::-webkit-outer-spin-button,
