@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class Cart extends Component {
     trify = (x, k) => {
         return <tr>
-            <td><img style={{'max-width'    :'50px'}} src={x.filename}/></td>
+            <td><img style={{'max-width'    :'80px'}} src={x.filename}/></td>
             <td>{x.itemName}</td>
             <td>{'$'+x.price}</td>
             <td>{x.quantity}</td>
@@ -23,30 +23,22 @@ class Cart extends Component {
     }
   render() {
     console.log(this.props);
-    return (
-      <div
-        style={{ display: this.props.show ? "block" : "none",
-    'overflow':'scroll' }}
-        className="cartContainer card"
-      >
-      CART
-      <table style={{'width':'100%'}}>
-          <tr>
-              <th></th>
+    return <div style={{ display: this.props.show ? "block" : "none" }} className="cartContainer card">
+        <div className="carTable">
+          CART
+          <table style={{ width: "100%" }}>
+            <tr>
+              <th />
               <th>NAME</th>
               <th>PRICE</th>
               <th>QUANTITY</th>
-          </tr>
-          {this.props.items.map(this.trify)}
-          <tr>
-              
-              <td colspan='2' style={{'text-align':'right'}}>{'$'+this.total(this.props.items)}</td>
-              </tr>
-      </table>
-      <button className='btn btn-lg'>CHECKOUT</button>
-      
-      </div>
-    );
+            </tr>
+            {this.props.items.map(this.trify)}
+          </table>
+        </div>
+        <button className="btn btn-lg">CHECKOUT</button>
+        <div className='cartTotal'>{"$" + this.total(this.props.items)}</div>
+      </div>;
   }
 }
 
