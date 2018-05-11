@@ -2,8 +2,9 @@
  * A window to sell items
  */
 
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, {Component} from 'react';
+import styled from 'styled-components';
+import {connect} from 'react-redux';
 
 const Sell = styled.div`
   padding: 2rem;
@@ -13,16 +14,16 @@ class SellItems extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemName: "",
-      itemDescription: "",
-      itemQuantity: "",
-      itemPrice: "",
-      response: "",
-      filename: "",
-      class: "hidden"
+      itemName: '',
+      itemDescription: '',
+      itemQuantity: '',
+      itemPrice: '',
+      response: '',
+      filename: '',
+      class: 'hidden',
     };
   }
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     if (
       !this.state.itemName ||
@@ -30,73 +31,73 @@ class SellItems extends Component {
       !this.state.itemPrice ||
       !this.state.itemQuantity
     ) {
-      alert("Enter a valid item");
+      alert('Enter a valid item');
       return;
     }
-    fetch("/addItem", {
-      method: "PUT",
-      credentials: "same-origin",
+    fetch('/addItem', {
+      method: 'PUT',
+      credentials: 'same-origin',
       body: JSON.stringify({
         itemName: this.state.itemName,
         itemDescription: this.state.itemDescription,
         quantity: this.state.itemQuantity,
         price: this.state.itemPrice,
         sellerId: this.props.userId,
-        filename: this.state.filename
-      })
+        filename: this.state.filename,
+      }),
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        this.setState({ response: data.reason });
+        this.setState({response: data.reason});
       });
     this.props.toggleSellItem();
     this.props.getAllItems().then(() => {
       this.props.showAllItems();
     });
     this.setState({
-      itemName: "",
-      itemDescription: "",
-      itemQuantity: "",
-      itemPrice: "",
-      response: "",
-      filename: "",
-      response: ""
+      itemName: '',
+      itemDescription: '',
+      itemQuantity: '',
+      itemPrice: '',
+      response: '',
+      filename: '',
+      response: '',
     });
   };
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value});
   };
   componentDidMount = () => {
-    setTimeout(() => this.setState({ class: "sellItems slideIn" }), 200);
+    setTimeout(() => this.setState({class: 'sellItems slideIn'}), 200);
   };
-  uploadPicture = image => {
+  uploadPicture = (image) => {
     console.log(image);
     let filename = image.name;
-    let extension = filename.split(".").pop();
-    fetch("/pic?ext=" + extension, {
-      method: "POST",
-      credentials: "same-origin",
-      body: image
+    let extension = filename.split('.').pop();
+    fetch('/pic?ext=' + extension, {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: image,
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (!data.status) {
-          alert("Error!");
-          return new Error("upload");
+          alert('Error!');
+          return new Error('upload');
         }
         console.log(data);
-        this.setState({ filename: data.content });
+        this.setState({filename: data.content});
       })
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
   };
   render() {
     return (
       <Sell
         className={
           this.props.showSellItem
-            ? "sellItems slideIn"
-            : "hidden sellItems slideIn"
+            ? 'sellItems slideIn'
+            : 'hidden sellItems slideIn'
         }
       >
         <div className="sellWidth">
@@ -112,7 +113,7 @@ class SellItems extends Component {
               name="itemName"
               value={this.state.itemName}
               onChange={this.handleChange}
-            />{" "}
+            />{' '}
             <br />
             <label htmlFor="itemDescription">Description</label> <br />
             <textarea
@@ -122,7 +123,7 @@ class SellItems extends Component {
               name="itemDescription"
               value={this.state.itemDescription}
               onChange={this.handleChange}
-            />{" "}
+            />{' '}
             <br />
             <div className='bottomBox'>
             <div className='divideForm'>
@@ -134,7 +135,7 @@ class SellItems extends Component {
               name="itemQuantity"
               value={this.state.itemQuantity}
               onChange={this.handleChange}
-            />{" "}</div>
+            />{' '}</div>
             <div className='divideForm'>
             <label htmlFor="itemPrice">Price</label> <br />
             <input
@@ -144,7 +145,7 @@ class SellItems extends Component {
               name="itemPrice"
               value={this.state.itemPrice}
               onChange={this.handleChange}
-            />{" "}</div>
+            />{' '}</div>
             </div>
             <br />
             <div className="bottomBox   ">
@@ -152,15 +153,15 @@ class SellItems extends Component {
               type="file"
               className="btn btn-primary smallMargin sellFile"
               id="input"
-              onChange={e => this.uploadPicture(e.target.files[0])}
+              onChange={(e) => this.uploadPicture(e.target.files[0])}
               accept="image"
-            />{" "}
-            
+            />{' '}
+
             <input
               className="btn btn-primary smallMargin sellBtn"
               type="submit"
               value="Submit"
-            />{" "}
+            />{' '}
             <br />
             </div>
           </form>
@@ -174,4 +175,8 @@ class SellItems extends Component {
   }
 }
 
-export default SellItems;
+const mapStateToProps = (state) => ({
+  userId: state.user.userId,
+});
+
+export default connect(mapStateToProps)(SellItems);
