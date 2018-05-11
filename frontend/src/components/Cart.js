@@ -1,39 +1,41 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import styled from 'styled-components';
+import {connect} from 'react-redux';
+import StripeButton from './StripeButton';
+
 
 class Cart extends Component {
   getCart = () => {
-      console.log(this.props.userId)
-    fetch("/user", {
-      method: "POST",
-      credentials: "same-origin",
-      body: JSON.stringify({userId: parseInt(this.props.userId) })
+      console.log(this.props.userId);
+    fetch('/user', {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: JSON.stringify({userId: parseInt(this.props.userId)}),
     })
-      .then(res => res.json())
-      .then(data => {
-          console.log(data)
-          
-        this.props.dispatch({type: 'UPDATE_CART', payload: data.cart})
+      .then((res) => res.json())
+      .then((data) => {
+          console.log(data);
+
+        this.props.dispatch({type: 'UPDATE_CART', payload: data.cart});
       });
   };
   trify = (x, k) => {
     return (
       <tr>
         <td>
-          <img style={{ "max-width": "80px" }} src={x.filename} />
+          <img style={{'max-width': '80px'}} src={x.filename} />
         </td>
         <td>{x.itemName}</td>
-        <td>{"$" + x.price}</td>
+        <td>{'$' + x.price}</td>
         <td>{x.quantity}</td>
       </tr>
     );
   };
   componentDidMount = () => {
-      setTimeout(this.getCart, 200)
+      setTimeout(this.getCart, 200);
   }
- 
-  total = x => {
+
+  total = (x) => {
     console.log(x);
     if (x.length >= 1) {
       return x.reduce((a, b) => {
@@ -47,12 +49,12 @@ class Cart extends Component {
     console.log(this.props);
     return (
       <div
-        style={{ display: this.props.show ? "block" : "none" }}
+        style={{display: this.props.show ? 'block' : 'none'}}
         className="cartContainer card"
       >
         <div className="carTable">
           CART
-          <table style={{ width: "100%" }}>
+          <table style={{width: '100%'}}>
             <tr>
               <th />
               <th>NAME</th>
@@ -62,17 +64,17 @@ class Cart extends Component {
             {this.props.items.map(this.trify)}
           </table>
         </div>
-        <button className="btn btn-lg">CHECKOUT</button>
-        <div className="cartTotal">{"$" + this.total(this.props.items)}</div>
+        <button className="btn btn-lg">        <StripeButton className="btn btn-primary"/></button>
+        <div className="cartTotal">{'$' + this.total(this.props.items)}</div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   show: state.view.cart,
   items: state.displayItems,
-  userId: state.user.userId
+  userId: state.user.userId,
 });
 
 export default connect(mapStateToProps)(Cart);
