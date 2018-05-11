@@ -168,9 +168,9 @@ class App extends Component {
 
 
 const mapStateToProps = (state) =>({
-  loggedIn: state.test.loggedIn,
+  loggedIn: state.view.loggedIn,
   userId: state.user.userId,
-  show: state.test.show,
+  show: state.view.show,
   items: state.items,
 
 });

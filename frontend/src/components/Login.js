@@ -122,9 +122,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    loggedIn: state.test.loggedIn,
-    show: state.test.show,
-    register: state.test.register,
+    loggedIn: state.view.loggedIn,
+    show: state.view.show,
+    register: state.view.register,
 
 });
 
