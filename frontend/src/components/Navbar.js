@@ -22,6 +22,10 @@ class Navbar extends Component {
   handleClick = (event)=>{
     this.props.dispatch({type: 'DISABLE_CART'});
   }
+  activeItem = (page) => {
+    let ret = this.props.view[page];
+    return ret?'nav-link active':'nav-link';
+  }
   render() {
     return (
       <nav className="navBar navbar navbar-expand-lg navbar-dark bg-dark avbar-toggleable-md">
@@ -50,7 +54,7 @@ class Navbar extends Component {
         <div className="navbar-collapse collapse" id="navbarColor02">
           <ul className="navbar-nav ml-auto">
             <li // style={{height: '100%'}}
-              className="nav-item active"
+              className={()=>this.activeItem('cart')}
               onClick={this.toggleCart}
             >
               <Link className="nav-link" href="#" to="/">
@@ -59,7 +63,7 @@ class Navbar extends Component {
             </li>
 
             <li // style={{height: '100%'}}
-              className="nav-item active"
+              className={()=>this.activeItem('showSellItemx')}
               onClick={()=>this.props.dispatch({
                 type: 'TOGGLE_SELL_ITEM',
               })}

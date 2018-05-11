@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const Sell = styled.div`
   padding: 2rem;
@@ -104,7 +105,15 @@ class SellItems extends Component {
       >
         <div className="sellWidth">
         <div className="card border-secondary ">
+          <div>
+
           <h3 className="card-header">Sell Item</h3>
+          <Link className="xButton" to="/" onClick={()=>this.props.dispatch({
+            type: 'TOGGLE_SELL_ITEM',
+          })}>
+                X
+              </Link>
+          </div>
             <div className="sellForm">
           <form className="card-body" onSubmit={this.handleSubmit}>
             <label htmlFor="itemName">Item Name</label> <br />
