@@ -55,7 +55,7 @@ class Login extends Component {
                     minHeight: '23rem',
                 }
             }
-            className="card border-secondary">
+            className="card border-secondary loginText">
             <h2 className="card-header">Sign In</h2>
             <form
             className="card-body"
@@ -98,7 +98,7 @@ class Login extends Component {
                     minHeight: '23rem',
                 }
             }
-            className="card border-secondary">
+            className="card border-secondary loginText">
 
             <h2 className="card-header">Register</h2>
             <div
