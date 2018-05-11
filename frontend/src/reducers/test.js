@@ -5,8 +5,6 @@ export default (state= {
 }
     , action) => {
     let newState = {...state};
-    // console.log(action);
-    // let newState = state;
     if (action.type === 'LOGIN') {
 newState = {
         loggedIn: true,
@@ -16,7 +14,3 @@ newState = {
 }
     return newState;
 };
-
-// updateUserInfo = (newUserInfo) => {
-//     this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
-//   }
