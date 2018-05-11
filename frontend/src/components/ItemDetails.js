@@ -57,9 +57,9 @@ class ItemDetails extends Component {
     // this.setState({ classes: newClass.split(" ") });
   };
    componentDidMount = () => {
-                 this.state.item.quantity === 0 ? (document.getElementById("buy").disabled = true) : null;
+                 this.state.item.quantity === 0 ? (document.getElementById('buy').disabled = true) : null;
 
-     setTimeout(() => this.setState({ classes: ["itemDetails",  "slideIn"] }), 400);
+     setTimeout(() => this.setState({classes: ['itemDetails', 'slideIn']}), 400);
   };
 
 
@@ -101,7 +101,7 @@ class ItemDetails extends Component {
           <button
             className="btn btn-primary btn-lg buyButton"
             onClick={this.state.item.quantity>0?this.handleBuy:null}
-            style={this.state.item.quantity>0?{}:{'background-color': 'grey', 'border': 'none', 'color': 'darkgrey', 'outline': 'none !important'}}
+            style={this.state.item.quantity>0?{}:{'backgroundColor': 'grey', 'border': 'none', 'color': 'darkgrey', 'outline': 'none !important'}}
             id='buy'
           >
             BUY

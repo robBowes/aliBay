@@ -16,6 +16,7 @@ class Profile extends Component {
     }
   };
   itemsObjToArray = (items) => {
+    if (!items) return;
     let newItems = Object.entries(items).map((item)=>{
         let newItem = {...item[1]};
         newItem.txId = item[0];
@@ -33,7 +34,7 @@ class Profile extends Component {
         let itemsSold= this.state.txData.map((x, i)=>{
             return this.getSoldByTxn(x.sellerId);
         });
-        itemsSold[0].reverse();
+        if (itemsSold[0]) itemsSold[0].reverse();
         return itemsSold[0];
     }
 
