@@ -3,6 +3,7 @@ export default (state= {
     show: false,
     register: false,
     cart: false,
+    blur: true,
 }
 , action) => {
     let newState = {...state};
@@ -27,6 +28,9 @@ export default (state= {
         newState.cart = !newState.cart;
     } else if (action.type === 'TOGGLE_SELL_ITEM') {
         newState.showSellItem = !newState.showSellItem;
+    }
+    else if(action.type==="DISABLE_CART"){
+        newState.cart = false
     }
     return newState;
 };
