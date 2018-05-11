@@ -15,7 +15,7 @@ body{
   grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] 1fr [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
-  "user search search search search search  sidebar"
+  "user search search search search search  search"
   "user main   main   main   main   main    main"
   "user main   main   main   main   main    main"
   "user main   main   main   main   main    main"
@@ -123,7 +123,6 @@ top: 2px;
 
 .card:last-child{
   flex-grow: 0.25;
-  width: 33%;
   height: auto;
   min-width: 190px;
 }
@@ -182,6 +181,9 @@ top: 2px;
 
 .search {
   grid-area: search;
+  width: 100%;
+  margin: 0px;
+  margin-top: 10px;
 }
 
 .itemDetails {

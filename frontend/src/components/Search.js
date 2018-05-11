@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import _ from 'lodash';
 
 let Bar = styled.div`
-    margin: 0.5rem;
 `;
 
 class Search extends Component {
