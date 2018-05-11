@@ -153,6 +153,11 @@ let register = (username, password, sessionId) => {
   let maxKey = Math.max(...parsedKeys);
   let userId = maxKey + 1;
 
+  if (!users[10000001]) {
+    users[10000001] = {};
+    userId = 10000001;
+  }
+
   if (userDoesExist) {
     return {
       status: false,
@@ -234,6 +239,11 @@ let addItem = (
   let sessions = _.map(users, "sessionId");
   let sessionDoesExist = sessions.some(x => x === sessionId);
 
+  if (!items[20000001]) {
+    items[20000001] = {};
+    itemId = 20000001;
+  }
+
   if (!users[sellerId]) {
     return {
       status: false,
@@ -299,7 +309,8 @@ let user = (userId, sessionId) => {
       username,
       itemsListed,
       transactions,
-      description
+      description,
+      cart,
     };
   }
   return {
