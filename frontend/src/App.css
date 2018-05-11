@@ -5,7 +5,19 @@
 }
 
 body{
-  background-color: #2f2f2f;
+  background-color: #ffffff;
+}
+
+h3 {
+  color: #525252;
+}
+
+h4 {
+  color: #525252;
+}
+
+h5 {
+  color: #525252;
 }
 
 @media all and (min-width: 801px) {
@@ -101,7 +113,8 @@ h4 {
 
 .footer {
   grid-area: foot;
-  background-color: #2f2f2f !important;
+  background-color: #ffffff !important;
+  color: #525252;
   display: flex;
   justify-content: space-between;
 }
@@ -125,7 +138,7 @@ top: 2px;
 }
 
 .card{
-  background-color: #2f2f2f;
+  background-color: #ffffff;
   border: 0px;
   flex: auto;
   /* height: max-content; */
@@ -211,8 +224,8 @@ top: 2px;
 }
 
 .card-header {
-  background: #1d1d1d;
-
+  background: #2f2f2f;
+  color: white;
 }
 
 .itemImageContainer{
@@ -320,32 +333,27 @@ top: 2px;
 .userProfileContainer{
   grid-area: profileTop / profileLeft / profileBottom / rightSide;
   z-index: 2;
-  background-color: #2f2f2f;
+  background-color: #ffffff;
   display:flex;
 }
 
 .usernameH1{
+  margin-top: 30px;
   padding-left: 10px;
-  font-style: italic;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.548);
   text-align:left;
   background: #DF691A;
   /* border-radius: 0px 10px 30px 0px; */
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.438);
-  padding-right: 10px;
-  margin-right: 10px;
 }
 
 .profileItemHead{
- color: #EBEBEB;
+ background: white;
+ color: #525252;
  font-weight: bold;
- font-style: italic;
- text-shadow: 1px 1px 1px  rgba(0, 0, 0, 0.411);
 }
 
 .profileItemsContainer{
   grid-area: registerTop / registerLeft / registerBottom / rightSide;
-  background-color:#2f2f2f;
+  background-color:#ffffff;
   width: 75%;
   overflow: auto;
 }
@@ -481,11 +489,13 @@ a:hover{
 .sellForm{
 padding-left: 10%;
 padding-right: 10%;
+color: #525252;
+border: solid 1px grey;
 }
 
 .sellName{
+border: solid 1px grey;
 width: 100%;
-border-style: none;
 padding:5px;
 border-radius: 5px;
 margin-bottom: 5px;
@@ -495,7 +505,7 @@ margin-bottom: 5px;
   height: 160px;
 display: table;
 width:100%;
-border-style: none;
+border: solid 1px grey;
 padding:5px;
 border-radius: 5px;
 margin-bottom: -3%;
@@ -510,7 +520,7 @@ margin-bottom: -3%;
 }
 
 .sellQuantity{
-border-style: none;
+border: solid 1px grey;
 padding:5px;
 border-radius: 5px;
 width:95%;
@@ -518,7 +528,7 @@ width:95%;
 }
 
 .sellPrice{
-border-style: none;
+border: solid 1px grey;
 padding:5px;
 border-radius: 5px;
 width: 100%;
@@ -588,6 +598,7 @@ width: 100%;
 .cartContainer{
   grid-area: main;
   z-index: 2;
+  color: #525252;
 }
 
 .carTable{
@@ -607,6 +618,11 @@ width: 100%;
   padding-right: 30%;
 }
 
+.profileLeft {
+  max-width: min-content;
+  padding-right: 20px;
+  margin-top: 10px;
+}
 
 
 input::-webkit-outer-spin-button,
