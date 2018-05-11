@@ -11,7 +11,7 @@ body{
 @media all and (min-width: 801px) {
 .mainContainer {
   display: grid;
-  grid-template-rows: [navTop] 7vh [navBottom searchTop profileTop] 7vh [searchBottom mainTop] 1vh [loginTop] 1vh [registerTop] 75vh [registerBottom] 1vh [loginBottom] 1vh [mainBottom footerTop profileBottom] 7vh [footerBottom];
+  grid-template-rows: [navTop] 7vh [navBottom searchTop profileTop] 7vh [searchBottom mainTop] 1vh [loginTop] 1vh [registerTop] 77vh [registerBottom] 1vh [loginBottom] 1vh [mainBottom footerTop profileBottom] 5vh [footerBottom];
   grid-template-columns: [leftSide profileLeft] 20% [endUser] 5px [registerLeft] 5px [loginLeft] 1fr [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
@@ -91,7 +91,7 @@ body{
 
 .accountCreator{
   max-width:250px;
-  min-width:215px;
+  min-width:215px !important;
   filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.438))
 }
 
@@ -101,7 +101,7 @@ h4 {
 
 .footer {
   grid-area: foot;
-  background-color: #1d1d1d !important;
+  background-color: #2f2f2f !important;
   display: flex;
   justify-content: space-between;
 }
@@ -120,6 +120,7 @@ top: 2px;
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: stretch;
+  overflow: scroll;
 
 }
 
@@ -577,7 +578,7 @@ width: 100%;
     align-content: stretch;
   }
   .userCard {
-    display: none;
+    display: none !important;
     grid-area: inherit;
   }
 }
