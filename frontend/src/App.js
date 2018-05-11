@@ -53,6 +53,10 @@ class App extends Component {
         type: 'NEW_ITEMS',
         payload: items,
       });
+      this.props.dispatch({
+        type: 'CHANGE_SHOWN_ITEMS',
+        payload: items,
+    });
     });
   }
   renderItemDetails = (routerData) => {
@@ -168,6 +172,7 @@ const mapStateToProps = (state) =>({
   userId: state.user.userId,
   show: state.test.show,
   items: state.items,
+
 });
 
 const ConnectedApp = connect(mapStateToProps)(App);

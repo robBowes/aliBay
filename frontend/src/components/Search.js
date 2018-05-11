@@ -4,13 +4,14 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import _ from 'lodash';
+import {connect} from 'react-redux';
 
 let Bar = styled.div`
 `;
 
 class Search extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             searchContents: '',
         };
@@ -22,7 +23,12 @@ class Search extends Component {
             (x)=>x.itemName
             .toLowerCase()
             .includes(event.target.value.toLowerCase()));
-        this.props.changeShownItems(newItems);
+        // this.props.changeShownItems(newItems);
+        // console.log(newItems);
+        this.props.dispatch({
+            type: 'CHANGE_SHOWN_ITEMS',
+            payload: newItems,
+        });
     }
     handleSubmit = (event)=>{
         console.log('search');
@@ -60,4 +66,8 @@ class Search extends Component {
     }
 }
 
-export default Search;
+const mapStateToProps = (state) => ({
+    allItems: state.items,
+});
+
+export default connect(mapStateToProps)(Search);
