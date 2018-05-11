@@ -10,6 +10,13 @@ let Card = styled.div`
 `;
 
 class ItemCard extends Component {
+  renderPrice = () => {
+    let price = '';
+    if (this.props.item.price) {
+     price =( <p className='cardPrice'>  {'$ '+this.props.item.price.toLocaleString()} </p>);
+    }
+    return price;
+  }
   render() {
     return <Card className="card border-secondary mb2">
 
@@ -18,7 +25,7 @@ class ItemCard extends Component {
     {/* <div className="cardBody"> */}
     <div className='smallItemCard'>
     <img className="smallCardImage" src={this.props.item.filename} alt=""/>
-{/*     
+{/*
     </div>
     <div className="itemTextContainer">
     <h5 className="itemName">
@@ -28,9 +35,11 @@ class ItemCard extends Component {
         <br/>
     <h6 className='cardDescription'> {this.props.item.itemDescription} </h6>
     </div></div> */}
-   
 
-    <p className='cardPrice'>  {'$ '+this.props.item.price.toLocaleString()} </p></div>
+
+    {this.renderPrice()}
+
+    </div>
 
     </Link>
     </Card>;

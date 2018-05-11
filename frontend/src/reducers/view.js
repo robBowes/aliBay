@@ -3,6 +3,7 @@ export default (state= {
     show: false,
     register: false,
     cart: false,
+    blur: true,
 }
 , action) => {
     let newState = {...state};

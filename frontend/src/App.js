@@ -80,12 +80,6 @@ class App extends Component {
   toggleShowItem =()=>{
     this.setState({showItemDet: !this.state.showItemDet});
   }
-  toggleCreate = (event) => {
-    event.preventDefault();
-    this.props.dispatch({
-      type: 'TOGGLE_REGISTER',
-    });
-  }
 
   renderProfile = (routerData) =>{
     console.log(this.props);
@@ -105,7 +99,7 @@ class App extends Component {
       <NavBar
       className="navBar"
       handleLogout={this.handleLogout}
-      loggedIn={this.props.loggedIn}
+      // loggedIn={this.props.loggedIn}
       userId={this.props.userId}
       />
 
@@ -127,17 +121,14 @@ class App extends Component {
 
       <Login
       updateUserInfo={this.updateUserInfo}
-      toggleCreate={this.toggleCreate}
       loggedIn={this.props.loggedIn}/>
 
       <AccountCreation
-      toggleCreate={this.toggleCreate}
       register={this.props.register}
       updateUserInfo={this.updateUserInfo}
       />
 
       <ItemContainer/>
-
 
       <SellItems
       userId={this.state.userId}

@@ -20,13 +20,12 @@ class Navbar extends Component {
     this.props.dispatch({type: 'TOGGLE_CART'});
   }
   handleClick = (event)=>{
-    
-    this.props.dispatch({type: "DISABLE_CART"})
+    this.props.dispatch({type: 'DISABLE_CART'});
   }
   render() {
     return (
       <nav className="navBar navbar navbar-expand-lg navbar-dark bg-dark avbar-toggleable-md">
-        <Link className="navbar-brand" style={{ height: "100%" }} to="/" onClick={this.handleClick}>
+        <Link className="navbar-brand" style={{height: '100%'}} to="/" onClick={this.handleClick}>
           <img
             className="logo"
             src="/keybaylogo.png"
@@ -104,4 +103,8 @@ class Navbar extends Component {
   }
 }
 
-export default connect()(Navbar);
+const mapStateToProps = (state) => ({
+   loggedIn: state.view.loggedIn,
+});
+
+export default connect(mapStateToProps)(Navbar);

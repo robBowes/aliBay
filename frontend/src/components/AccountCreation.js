@@ -64,14 +64,16 @@ class AccountCreation extends Component {
         Register
         <button
         className="btn btn-primary"
-        onClick={this.props.toggleCreate}
+        onClick={()=>this.props.dispatch({
+            type: 'TOGGLE_REGISTER',
+          })}
         >X
         </button>
         </h2>
 
 
         <form
-        className="card-body"
+        className="card-body loginText"
         onSubmit={this.handleSubmit}>
 
         <label htmlFor="username1">Username</label> <br />

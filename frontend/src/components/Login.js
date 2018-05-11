@@ -47,87 +47,94 @@ class Login extends Component {
             'hidden login slideIn form-group':
             'login slideIn form-group' }>
 
-        <div
-        style={
-            {
-                maxWidth: '20rem',
-                minWidth: '15rem',
-                minHeight: '23rem',
+            <div
+            style={
+                {
+                    maxWidth: '20rem',
+                    minWidth: '15rem',
+                    minHeight: '23rem',
+                }
             }
-        }
-        className="card border-secondary">
-        <h2 className="card-header">Sign In</h2>
-        <form
-        className="card-body"
-        onSubmit={this.handleSubmit}>
+            className="card border-secondary loginText">
+            <h2 className="card-header">Sign In</h2>
+            <form
+            className="card-body"
+            onSubmit={this.handleSubmit}>
 
-        <p>Already a member? Login to manage your account!</p>
+            <p>Already a member? Login to manage your account!</p>
 
-        <label htmlFor="username">Username</label> <br />
+            <label htmlFor="username">Username</label> <br />
 
-        <input
-        className="form-text text-muted"
-        type="text"
-        id="username"
-        name="usernameValue"
-        onChange={this.handleChange}
-        value={this.state.usernameValue} />
+            <input
+            className="form-text text-muted"
+            type="text"
+            id="username"
+            name="usernameValue"
+            onChange={this.handleChange}
+            value={this.state.usernameValue} />
 
-        <label htmlFor="password">Password</label> <br/>
+            <label htmlFor="password">Password</label> <br/>
 
-        <input
-        className="form-password"
-        type="password"
-        id="password"
-        name="passwordValue"
-        onChange={this.handleChange}
-        value={this.state.passwordValue} />
-        <br />
+            <input
+            className="form-password"
+            type="password"
+            id="password"
+            name="passwordValue"
+            onChange={this.handleChange}
+            value={this.state.passwordValue} />
+            <br />
 
-        <input
-        className="btn btn-primary smallMargin"
-        type="submit" />
-        </form>
-        </div>
+            <input
+            className="btn btn-primary smallMargin"
+            type="submit" />
+            </form>
+            </div>
 
-        <div
-        style={
-            {
-                maxWidth: '20rem',
-                minWidth: '15rem',
-                minHeight: '23rem',
+            <div
+            style={
+                {
+                    maxWidth: '20rem',
+                    minWidth: '15rem',
+                    minHeight: '23rem',
+                }
             }
-        }
-        className="card border-secondary">
+            className="card border-secondary loginText">
 
-        <h2 className="card-header">Register</h2>
-        <form
-        className="card-body"
-        onSubmit={this.props.toggleCreate}>
+            <h2 className="card-header">Register</h2>
+            <div
+            className="card-body"
+            // onSubmit={this.props.toggleCreate}
+            >
 
-        <label htmlFor="register">
-        Register now to post, edit, and manage ads. It’s quick, easy, and free!
-        </label>
+            <label htmlFor="register">
+            Register now to post, edit, and manage ads. It’s quick, easy, and free!
+            </label>
 
-        <button
-        id="register"
-        className="btn btn-primary"
-        >
-        Create Account
-        </button>
-        </form>
-        </div>
-        </div>);
-    };
-}
+            <button
+            id="register"
+            className="btn btn-primary"
+            onClick={()=>{
+                this.props.dispatch({
+                    type: 'TOGGLE_REGISTER',
+                });
+            }}
+            >
+            Create Account
+            </button>
+            </div>
+            </div>
+            </div>);
+        };
+    }
 
-const mapStateToProps = (state) => ({
-    loggedIn: state.view.loggedIn,
-    show: state.view.show,
-    register: state.view.register,
+    const mapStateToProps = (state) => ({
+        loggedIn: state.view.loggedIn,
+        show: state.view.show,
+        register: state.view.register,
 
-});
+    });
 
-const connectedLogin = connect(mapStateToProps)(Login);
+    const connectedLogin = connect(mapStateToProps)(Login);
 
-export default connectedLogin;
+    export default connectedLogin;
+
