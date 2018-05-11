@@ -49,7 +49,6 @@ class App extends Component {
     .then((res)=>res.json())
     .then((data)=>{
       let items =itemsObjToArray(data.content);
-      // this.setState({items});
       this.props.dispatch({
         type: 'NEW_ITEMS',
         payload: items,
@@ -66,12 +65,9 @@ class App extends Component {
     getAllItems={this.getAllItems}
     items={this.props.items}
     id={routerData.match.params.id}
-    getItemById={getItemById}
-    toggleShowItem={this.toggleShowItem}/>;
+    getItemById={getItemById}/>;
   };
   updateUserInfo = (newUserInfo) => {
-    // this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
-    // console.log(newUserInfo);
     this.props.dispatch({
       type: 'LOGIN',
     });
@@ -80,18 +76,11 @@ class App extends Component {
       payload: newUserInfo.userId,
     });
   }
-  changeShownItems = (items) => {
-    this.setState({showItems: itemsObjToArray(items)});
-  };
-  toggleSellItem = () => {
-    this.setState({showSellItem: !this.state.showSellItem});
-  }
   toggleShowItem =()=>{
     this.setState({showItemDet: !this.state.showItemDet});
   }
   toggleCreate = (event) => {
     event.preventDefault();
-    // this.setState({register: !this.state.register});
     this.props.dispatch({
       type: 'TOGGLE_REGISTER',
     });
@@ -114,7 +103,6 @@ class App extends Component {
 
       <NavBar
       className="navBar"
-      toggleSellItem={this.toggleSellItem}
       handleLogout={this.handleLogout}
       loggedIn={this.props.loggedIn}
       userId={this.props.userId}
@@ -128,7 +116,6 @@ class App extends Component {
       }/>
 
       <Search
-      changeShownItems={this.changeShownItems}
       allItems={this.state.items}
       className='search' />
 
@@ -152,11 +139,9 @@ class App extends Component {
 
 
       <SellItems
-      toggleSellItem={this.toggleSellItem}
       userId={this.state.userId}
       getAllItems={this.getAllItems}
       showAllItems={this.showAllItems}
-      showSellItem={this.state.showSellItem}
       />
 
       <Cart

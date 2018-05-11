@@ -2,7 +2,7 @@ export default (state= {
     loggedIn: false,
     show: false,
     register: false,
-    cart: false
+    cart: false,
 }
 , action) => {
     let newState = {...state};
@@ -23,10 +23,10 @@ export default (state= {
         };
     } else if (action.type === 'TOGGLE_REGISTER') {
         newState.register = !state.register;
-    }
-    else if (action.type === 'TOGGLE_CART'){
-        newState.cart = !newState.cart
-
+    } else if (action.type === 'TOGGLE_CART') {
+        newState.cart = !newState.cart;
+    } else if (action.type === 'TOGGLE_SELL_ITEM') {
+        newState.showSellItem = !newState.showSellItem;
     }
     return newState;
 };
