@@ -590,6 +590,23 @@ width: 100%;
   z-index: 2;
 }
 
+.carTable{
+  max-height: 85%;
+  overflow: scroll;
+}
+
+.cartTotal{
+  font-size:15pt;
+  position: absolute;
+  right:0px;
+  bottom:9%;
+  background: #DF691A;
+  color:white;
+  font-weight: bold;
+  padding:2px;
+  padding-right: 30%;
+}
+
 
 
 input::-webkit-outer-spin-button,
