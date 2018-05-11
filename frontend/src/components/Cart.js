@@ -92,6 +92,7 @@ class Cart extends Component {
           </table>
         </div>
         <button className="btn btn-lg">CHECKOUT</button>
+        <StripeButton />
         <div className="cartTotal">{'$' + this.total(this.state.cart)}</div>
       </div>
     );
