@@ -52,10 +52,7 @@ class Profile extends Component {
         return this.getBoughtByTxn(x)[0];
         }
       }).filter((e)=>!!e);
-      itemsBought.reverse();
-      let itemsShow = itemsBought.reverse();
-      console.log(itemsShow);
-      return itemsShow.reverse();
+      return itemsBought;
   }
   getListedById = (id) => {
       return this.state.items.filter((item)=>{
