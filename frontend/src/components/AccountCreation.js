@@ -73,7 +73,7 @@ class AccountCreation extends Component {
 
 
         <form
-        className="card-body"
+        className="card-body loginText"
         onSubmit={this.handleSubmit}>
 
         <label htmlFor="username1">Username</label> <br />
