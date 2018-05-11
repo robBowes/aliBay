@@ -16,6 +16,7 @@ class AccountCreation extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
+        console.log(this.state.username, this.state.password);
         fetch('/register', {
             method: 'POST',
             body: JSON.stringify({
@@ -31,7 +32,8 @@ class AccountCreation extends Component {
                 // alert(parsedResponse.reason);
                 this.props.updateUserInfo(parsedResponse);
             } else {
-                // alert(parsedResponse.reason);
+                // console.log(parsedResponse);
+                alert(parsedResponse.reason);
             }
         });
     }

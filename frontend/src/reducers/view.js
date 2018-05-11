@@ -9,7 +9,7 @@ export default (state= {
         newState = {
             loggedIn: true,
             show: true,
-            register: true,
+            register: false,
         };
     } else if (action.type === 'LOGOUT') {
         newState = {
@@ -17,9 +17,11 @@ export default (state= {
             register: false,
             showLogIn: false,
             showSellItem: false,
-            userId: undefined,
+            // userId: undefined,
             show: false,
         };
+    } else if (action.type === 'TOGGLE_REGISTER') {
+        newState.register = !state.register;
     }
     return newState;
 };

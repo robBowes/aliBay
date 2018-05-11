@@ -68,9 +68,17 @@ class App extends Component {
     getItemById={getItemById}
     toggleShowItem={this.toggleShowItem}/>;
   };
-  // updateUserInfo = (newUserInfo) => {
-  //   this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
-  // }
+  updateUserInfo = (newUserInfo) => {
+    // this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
+    // console.log(newUserInfo);
+    this.props.dispatch({
+      type: 'LOGIN',
+    });
+    this.props.dispatch({
+      type: 'USER_ID',
+      payload: newUserInfo.userId,
+    });
+  }
   changeShownItems = (items) => {
     this.setState({showItems: itemsObjToArray(items)});
   };
@@ -82,7 +90,10 @@ class App extends Component {
   }
   toggleCreate = (event) => {
     event.preventDefault();
-    this.setState({register: !this.state.register});
+    // this.setState({register: !this.state.register});
+    this.props.dispatch({
+      type: 'TOGGLE_REGISTER',
+    });
   }
 
   renderProfile = (routerData) =>{
@@ -132,7 +143,7 @@ class App extends Component {
 
       <AccountCreation
       toggleCreate={this.toggleCreate}
-      register={this.state.register}
+      register={this.props.register}
       updateUserInfo={this.updateUserInfo}
       />
 
@@ -162,7 +173,7 @@ const mapStateToProps = (state) =>({
   userId: state.user.userId,
   show: state.view.show,
   items: state.items,
-
+  register: state.view.register,
 });
 
 const ConnectedApp = connect(mapStateToProps)(App);
