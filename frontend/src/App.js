@@ -98,7 +98,7 @@ class App extends Component {
       <NavBar
       className="navBar"
       handleLogout={this.handleLogout}
-      loggedIn={this.props.loggedIn}
+      // loggedIn={this.props.loggedIn}
       userId={this.props.userId}
       />
 
