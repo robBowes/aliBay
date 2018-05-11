@@ -19,7 +19,7 @@ class Navbar extends Component {
     className="navBar navbar navbar-expand-lg navbar-dark bg-dark avbar-toggleable-md">
 
     <Link className="navbar-brand" style={{height: '100%'}} to="/">
-    <img src="/keybaylogo.png" alt="the bay logo" style={{height: '90%'}}/>
+    <img className ="logo" src="/keybaylogo.png" alt="the bay logo" style={{height: '90%'}}/>
     </Link>
 
     <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style={{}}>

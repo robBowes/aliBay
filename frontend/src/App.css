@@ -4,6 +4,9 @@
   margin: 0;
 }
 
+body{
+  background-color: #2f2f2f;
+}
 
 @media all and (min-width: 801px) {
 .mainContainer {
@@ -13,11 +16,11 @@
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
   "user search search search search search  sidebar"
-  "user main   main   main   main   main    sidebar"
-  "user main   main   main   main   main    sidebar"
-  "user main   main   main   main   main    sidebar"
-  "user main   main   main   main   main    sidebar"
-  "user main   main   main   main   main    sidebar"
+  "user main   main   main   main   main    main"
+  "user main   main   main   main   main    main"
+  "user main   main   main   main   main    main"
+  "user main   main   main   main   main    main"
+  "user main   main   main   main   main    main"
   "foot foot   foot   foot   foot   foot    foot";
   /* height: 100vh; */
   width: 100vw;
@@ -64,8 +67,8 @@
 }
 .navBar {
   grid-area: nav;
-  z-index: 3;
-  background-color: #395065 !important;
+  z-index: 10;
+  background-color: #2f2f2f !important;
   /* background-color: tomato; */
   /* display: flex; */
   /* justify-content: space-between; */
@@ -89,7 +92,7 @@ h4 {
 
 .footer {
   grid-area: foot;
-  background-color: #395065 !important;
+  background-color: #1d1d1d !important;
   display: flex;
   justify-content: space-between;
 }
@@ -102,15 +105,25 @@ top: 2px;
 
 .itemContainer {
   grid-area: main;
-  overflow: scroll;
-  overflow-x: hidden;
+  /* overflow: scroll;
+  overflow-x: hidden; */
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: stretch;
+
+}
+
+.card{
+  background-color: #2f2f2f;
+  border: 0px;
+  flex: auto;
+  /* height: max-content; */
 }
 
 .cardBody{
   display:flex;
-  border: 1px solid rgb(112, 112, 112);
-    transition: all 0.5s ease-in-out;
-
+    transition: all 0.2s ease-in-out;
 }
 .itemName{
   margin-top: 10px;
@@ -135,7 +148,7 @@ top: 2px;
 }
 
 .cardPrice{
-  font-size:20pt;
+  font-size:15pt;
   position: absolute;
   right:0px;
   top:14px;
@@ -144,7 +157,6 @@ top: 2px;
   font-weight: bold;
   padding:2px;
   padding-right: 10px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.466);
       transition: all 0.5s ease-in-out;
 
 }
@@ -161,12 +173,17 @@ top: 2px;
 }
 
 .itemMainCard{
-  background:#2B3E50 ;
+  background: #212121;
   max-width: 100%;
   width:690px;
   position: relative;
-  
 }
+
+.card-header {
+  background: #1d1d1d;
+
+}
+
 .itemImageContainer{
  
   position: relative;
@@ -208,13 +225,17 @@ top: 2px;
 
 .itemDescription{
   display:block;
-  background-color:  rgb(45, 66, 85)  ;
+  background-color: rgb(33, 33, 33);
   margin: 12px;
   padding: 8px;
   max-height: 330px;
   width:100%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.397);
+  word-wrap: break-word;
+  max-width: 270px;
 }
+
+
 
 .xButton{
   position: absolute;
@@ -266,9 +287,9 @@ top: 2px;
 }
 
 .userProfileContainer{
-  grid-area: profileTop / profileLeft / profileBottom / profileRight;
-  z-index: 10000;
-  background-color: #2B3E50;
+  grid-area: profileTop / profileLeft / profileBottom / rightSide;
+  z-index: 2;
+  background-color: #2f2f2f;
   display:flex;
 }
 
@@ -292,8 +313,8 @@ top: 2px;
 }
 
 .profileItemsContainer{
-  grid-area: registerTop / registerLeft / registerBottom / registerRight;
-  background-color:#2B3E50;
+  grid-area: registerTop / registerLeft / registerBottom / rightSide;
+  background-color:#2f2f2f;
   width: 75%;
   overflow: auto;
 }
@@ -320,17 +341,16 @@ top: 2px;
 }
 
 .smallItemCard{
-  margin:10px;
+  margin:0px;
   position: relative;
   min-width:190px;
-  height:200px;
-  background: rgb(37, 54, 70);
+  height:190px;
+  background: #2b2b2b;
   justify-content: center;
   display: flex;
   flex-flow: column;
-  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.473);
-  max-width:190px;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .smallCardPrice{
@@ -365,7 +385,10 @@ top: 2px;
   margin-right: auto; 
    position: absolute;
   vertical-align: middle;
-  max-width:190px;
+  min-width:50px;
+  width: 100%;
+  height: auto;
+  max-width: fit-content;
 }
 
 .profileItemsLists{
@@ -387,23 +410,34 @@ color: inherit;
 }
 
 a{
-  background-color: #395065;
+  background-color: inherit;
+}
+
+#navbarColor02{
+  background-color: #1d1d1d;
+  padding-left: 10px;
+  margin-top: 5px;
 }
 
 a:hover{
   text-decoration: none;
+  color: inherit !important;
 }
 
 .cardBody:hover{
-  filter: brightness(1.05);
+  filter: brightness(1.08);
   text-decoration: none;
-  color: inherit;
-  background-color: rgb(78, 93, 109);
+  color: inherit !important;
+  background-color: rgb(47, 47, 47);
 }
+
+
+
 .navButtons {
   display: flex;
   justify-content: space-evenly;
 }
+
 .smallMargin {
   margin: 0.5rem;
 }
@@ -413,8 +447,8 @@ a:hover{
 }
 
 .sellForm{
-padding-left: 30px;
-padding-right: 30px;
+padding-left: 10%;
+padding-right: 10%;
 }
 
 .sellName{
@@ -422,32 +456,55 @@ width: 100%;
 border-style: none;
 padding:5px;
 border-radius: 5px;
+margin-bottom: 5px;
 }
 
 .sellDescription{
-height: 200px;
+  height: 160px;
+display: table;
 width:100%;
 border-style: none;
 padding:5px;
 border-radius: 5px;
+margin-bottom: -3%;
 }
 
 .bottomBox{
   display:flex;
 }
 
+.divideForm{
+  width: 50%;
+}
 
 .sellQuantity{
 border-style: none;
 padding:5px;
 border-radius: 5px;
+width:95%;
+
 }
 
 .sellPrice{
 border-style: none;
 padding:5px;
 border-radius: 5px;
+width: 100%;
 }
+
+.sellFile{
+  width: 90%;
+  margin-left: 0px !important;
+  margin-right: 10% !important;
+}
+
+.sellWidth{
+  padding-left:12%;
+   padding-right:12%;
+   margin-top: -4%;
+}
+
+
 
 @media only screen and (max-width: 1000px) {
     .cardPrice{
@@ -490,4 +547,17 @@ border-radius: 5px;
     display: none;
     grid-area: inherit;
   }
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
