@@ -65,7 +65,8 @@ class App extends Component {
     getAllItems={this.getAllItems}
     items={this.props.items}
     id={routerData.match.params.id}
-    getItemById={getItemById}/>;
+    getItemById={getItemById}
+    toggleShowItem={this.toggleShowItem}/>;
   };
   updateUserInfo = (newUserInfo) => {
     this.props.dispatch({
@@ -144,8 +145,8 @@ class App extends Component {
       showAllItems={this.showAllItems}
       />
 
-      <Cart
-      />
+      {this.props.cart?(<Cart
+      />):null}
 
       <Footer/>
       <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
@@ -163,6 +164,7 @@ const mapStateToProps = (state) =>({
   show: state.view.show,
   items: state.items,
   register: state.view.register,
+  cart: state.view.cart
 });
 
 const ConnectedApp = connect(mapStateToProps)(App);
