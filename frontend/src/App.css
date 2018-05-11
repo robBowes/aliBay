@@ -12,7 +12,7 @@ body{
 .mainContainer {
   display: grid;
   grid-template-rows: [navTop] 7vh [navBottom searchTop profileTop] 7vh [searchBottom mainTop] 1vh [loginTop] 1vh [registerTop] 75vh [registerBottom] 1vh [loginBottom] 1vh [mainBottom footerTop profileBottom] 7vh [footerBottom];
-  grid-template-columns: [leftSide profileLeft] 15% [endUser] 5px [registerLeft] 5px [loginLeft] 1fr [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
+  grid-template-columns: [leftSide profileLeft] 20% [endUser] 5px [registerLeft] 5px [loginLeft] 1fr [loginRight] 5px [registerRight] 5px [rightColumn profileRight] 10% [rightSide];
   grid-template-areas: 
   "nav  nav    nav    nav    nav    nav    nav"
   "user search search search search search  search"
@@ -84,7 +84,8 @@ body{
 .userCard {
   grid-area: user;
   z-index: 0;
-  margin: 10px;
+  margin: 35px;
+  padding: 5px;
   word-wrap: break-word;
 }
 
@@ -359,9 +360,8 @@ top: 2px;
 
 .userCardImage{
   display:block;
-  margin:0px;
-  margin-top:30px;
-    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.507));
+  margin-bottom: 20px;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.507));
   border-radius: 300px;
   width: 100%;
   height: relative;
@@ -549,8 +549,8 @@ width: 100%;
 }
 @media only screen and (max-width: 1050px) {
     .userCardImage{
-    height:60px;
-      width: 60px;
+    height:auto;
+      width: 100%;
       border: 2px solid white;
         transition: all 0.3s ease-in-out;
 
