@@ -42,12 +42,6 @@ class Login extends Component {
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
     }
-    // componentWillReceiveProps = (props) => {
-    //     let newClass = props.login.login ?
-    //     'hidden login slideIn form-group':
-    //     'login slideIn form-group';
-    //     this.setState({classes: newClass.split(' ')});
-    // }
     render() {
         return (<div className={this.props.loggedIn ?
             'hidden login slideIn form-group':
@@ -136,5 +130,4 @@ const mapStateToProps = (state) => ({
 
 const connectedLogin = connect(mapStateToProps)(Login);
 
-// export default Login;
 export default connectedLogin;

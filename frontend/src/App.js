@@ -92,8 +92,9 @@ class App extends Component {
     });
   }
   renderProfile = (routerData) =>{
+    console.log(this.props);
     if (this.props.loggedIn) {
-      return <Profile userId={routerData.match.params.userId} items={this.state.items}/>;
+      return <Profile userId={routerData.match.params.userId} items={this.props.items}/>;
     } else {
       <Link to={'/'}/>;
     }
@@ -110,7 +111,7 @@ class App extends Component {
       toggleSellItem={this.toggleSellItem}
       handleLogout={this.handleLogout}
       loggedIn={this.props.loggedIn}
-      userId={this.state.userId}
+      userId={this.props.userId}
       />
 
       <div
@@ -141,9 +142,7 @@ class App extends Component {
       updateUserInfo={this.updateUserInfo}
       />
 
-      <ItemContainer
-      // items={this.state.showItems}
-      />
+      <ItemContainer/>
 
 
       <SellItems
@@ -168,6 +167,7 @@ const mapStateToProps = (state) =>({
   loggedIn: state.test.loggedIn,
   userId: state.user.userId,
   show: state.test.show,
+  items: state.items,
 });
 
 const ConnectedApp = connect(mapStateToProps)(App);
