@@ -8,6 +8,7 @@ let itemsObjToArray = (items) => {
 };
 
 let getItemById = (items, x) => {
+    if (!items) return;
     return items.filter((item)=>{
         return item.itemId === x;
     })[0];

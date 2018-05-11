@@ -14,6 +14,7 @@ import Footer from './components/Footer.js';
 import SellItems from './components/SellItems.js';
 import ItemContainer from './components/ItemContainer';
 import Profile from './components/Profile.js';
+import {connect} from 'react-redux';
 
 class App extends Component {
   constructor() {
@@ -44,24 +45,28 @@ class App extends Component {
     return fetch('/allItems', {
       credentials: 'same-origin',
     })
-    .then((res)=>res.json())    
+    .then((res)=>res.json())
     .then((data)=>{
       let items =itemsObjToArray(data.content);
-      this.setState({items});
+      // this.setState({items});
+      this.props.dispatch({
+        type: 'NEW_ITEMS',
+        payload: items,
+      });
     });
   }
   renderItemDetails = (routerData) => {
     return <ItemDetails
     itemDet={this.state.showItemDet}
     getAllItems={this.getAllItems}
-    items={this.state.items}
+    items={this.props.items}
     id={routerData.match.params.id}
     getItemById={getItemById}
     toggleShowItem={this.toggleShowItem}/>;
   };
-  updateUserInfo = (newUserInfo) => {
-    this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
-  }
+  // updateUserInfo = (newUserInfo) => {
+  //   this.setState({loggedIn: true, userId: newUserInfo.userId, show: true, register: false});
+  // }
   changeShownItems = (items) => {
     this.setState({showItems: itemsObjToArray(items)});
   };
@@ -69,7 +74,7 @@ class App extends Component {
     this.setState({showSellItem: !this.state.showSellItem});
   }
   toggleShowItem =()=>{
-    this.setState({showItemDet: !this.state.showItemDet})
+    this.setState({showItemDet: !this.state.showItemDet});
   }
   toggleCreate = (event) => {
     event.preventDefault();
@@ -78,7 +83,7 @@ class App extends Component {
   handleLogout = () => {
     document.cookie='';
     this.setState({
-      loggedIn: false,
+      // loggedIn: false,
       register: false,
       showLogIn: false,
       showSellItem: false,
@@ -87,8 +92,9 @@ class App extends Component {
     });
   }
   renderProfile = (routerData) =>{
-    if (this.state.loggedIn) {
-      return <Profile userId={routerData.match.params.userId} items={this.state.items}/>;
+    console.log(this.props);
+    if (this.props.loggedIn) {
+      return <Profile userId={routerData.match.params.userId} items={this.props.items}/>;
     } else {
       <Link to={'/'}/>;
     }
@@ -104,14 +110,14 @@ class App extends Component {
       className="navBar"
       toggleSellItem={this.toggleSellItem}
       handleLogout={this.handleLogout}
-      loggedIn={this.state.loggedIn}
-      userId={this.state.userId}
+      loggedIn={this.props.loggedIn}
+      userId={this.props.userId}
       />
 
       <div
       className='blurFrame'
       style={
-        {'backgroundColor': (!this.state.loggedIn || this.state.showSellItem || this.state.showItemDet)?
+        {'backgroundColor': (!this.props.loggedIn || this.state.showSellItem || this.state.showItemDet)?
         'rgba(0, 0, 0, 0.514':'rgba(0, 0, 0, 0'}
       }/>
 
@@ -122,13 +128,13 @@ class App extends Component {
 
       <UserCard
       className="userCard"
-      userId={this.state.userId}
-      show={this.state.show}/>
+      userId={this.props.userId}
+      show={this.props.show}/>
 
       <Login
       updateUserInfo={this.updateUserInfo}
       toggleCreate={this.toggleCreate}
-      loggedIn={this.state.loggedIn}/>
+      loggedIn={this.props.loggedIn}/>
 
       <AccountCreation
       toggleCreate={this.toggleCreate}
@@ -136,7 +142,7 @@ class App extends Component {
       updateUserInfo={this.updateUserInfo}
       />
 
-      <ItemContainer items={this.state.showItems}/>
+      <ItemContainer/>
 
 
       <SellItems
@@ -156,4 +162,14 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) =>({
+  loggedIn: state.test.loggedIn,
+  userId: state.user.userId,
+  show: state.test.show,
+  items: state.items,
+});
+
+const ConnectedApp = connect(mapStateToProps)(App);
+
+export default ConnectedApp;

@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import ItemCard from './ItemCard.js';
 import {itemsObjToArray, getItemById} from '../utils.js';
+import {connect} from 'react-redux';
 
 let renderAllItems = (item, index) => {
     // This function will render <ItemCard/> components for each Item
@@ -23,12 +24,20 @@ class ItemContainer extends Component {
         this.setState({items: props.items});
     }
     render() {
+        // console.log(this.props);
         return (
             <div className='itemContainer'>
-            {this.state.items.map(renderAllItems)}
+            {this.props.items?this.props.items.map(renderAllItems):null}
             </div>
         );
     }
 }
 
-export default ItemContainer;
+const mapStateToProps = (state) => {
+    // console.log(state);
+    return {items: state.items};
+};
+
+const ConnectedItemContainer = connect(mapStateToProps)(ItemContainer);
+
+export default ConnectedItemContainer;
