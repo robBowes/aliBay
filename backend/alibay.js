@@ -303,6 +303,8 @@ let user = (userId, sessionId) => {
   let transactions = users[userId]["transactions"];
   let description = users[userId]["description"];
 
+  if (!(user[userId]['cart'])) user[userId]['cart'] = {}
+
   if (userId in users && sessionDoesExist) {
     return {
       status: true,
