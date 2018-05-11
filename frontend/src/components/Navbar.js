@@ -19,10 +19,14 @@ class Navbar extends Component {
     event.preventDefault();
     this.props.dispatch({type: 'TOGGLE_CART'});
   }
+  handleClick = (event)=>{
+    
+    this.props.dispatch({type: "DISABLE_CART"})
+  }
   render() {
     return (
       <nav className="navBar navbar navbar-expand-lg navbar-dark bg-dark avbar-toggleable-md">
-        <Link className="navbar-brand" style={{height: '100%'}} to="/">
+        <Link className="navbar-brand" style={{ height: "100%" }} to="/" onClick={this.handleClick}>
           <img
             className="logo"
             src="/keybaylogo.png"

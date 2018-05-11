@@ -29,6 +29,9 @@ export default (state= {
     } else if (action.type === 'TOGGLE_SELL_ITEM') {
         newState.showSellItem = !newState.showSellItem;
     }
+    else if(action.type==="DISABLE_CART"){
+        newState.cart = false
+    }
     return newState;
 };
 

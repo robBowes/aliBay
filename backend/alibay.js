@@ -7,17 +7,17 @@ let items = {};
 let transactions = {};
 
 let pullData = () => {
-  let userData = fs.readJsonSync('./data/users.json');
-  users = JSON.parse(userData)
-  let itemData = fs.readJsonSync('./data/items.json');
-  items = JSON.parse(itemData)
-  let transactionData = fs.readJsonSync('./data/transactions.json');
-  transactions = JSON.parse(transactionData)  
-}
+  let userData = fs.readJsonSync("./data/users.json");
+  users = JSON.parse(userData);
+  let itemData = fs.readJsonSync("./data/items.json");
+  items = JSON.parse(itemData);
+  let transactionData = fs.readJsonSync("./data/transactions.json");
+  transactions = JSON.parse(transactionData);
+};
 
-pullData()
+pullData();
 
-console.log(users,items,transactions)
+console.log(users, items, transactions);
 
 // let users = {
 //   10000001: {
@@ -94,7 +94,7 @@ console.log(users,items,transactions)
 // };
 
 let backupData = () => {
-  console.log("\n <-----BACKING UP DATA-----> \n")
+  console.log("\n <-----BACKING UP DATA-----> \n");
   fs.writeJson("./data/users.json", JSON.stringify(users), err => {
     console.log("Writing Users err: ", err);
   });
@@ -206,66 +206,6 @@ let item = itemId => {
   };
 };
 
-let buy = (itemId, quantity, sessionId) => {
-  let sessions = _.map(users, "sessionId");
-  let sessionDoesExist = sessions.some(x => x === sessionId);
-
-  if (!items[itemId]) {
-    return {
-      status: false,
-      reason: "Invalid itemId"
-    };
-  }
-
-  if (!sessionDoesExist) {
-    return {
-      status: false,
-      reason: "Invalid sessionId"
-    };
-  }
-
-  // let keys = Object.keys(transactions);
-  // let parsedKeys = keys.map(x => parseInt(x));
-  // let maxKey = Math.max(...parsedKeys);
-  // let transactionId = maxKey + 1;
-  let sellerId = items[itemId]["sellerId"];
-  let buyerId = _.findKey(users, x => x["sessionId"] === sessionId);
-  let price = items[itemId]["price"];
-
-
-  // for the checkout function
-  // transactions[transactionId] = {
-  //   sellerId,
-  //   buyerId,
-  //   itemId,
-  //   quantity,
-  //   price
-  // };
-
-  items[itemId]["quantity"] = items[itemId]["quantity"] - 1;
-  // users[buyerId]["transactions"] = users[buyerId]["transactions"].concat(
-  //   transactionId
-  // );
-  // users[sellerId]["transactions"] = users[sellerId]["transactions"].concat(
-  //   transactionId
-  // );
-
-
-  if (!(users[buyerId]['cart'])||!(users[buyerId]['cart'][itemId])) {
-    users[buyerId]['cart'] = {}
-    users[buyerId]['cart'][itemId] = 0
-  }
-
-  users[buyerId]['cart'][itemId] = users[buyerId]['cart'][itemId] + 1
-
-  console.log(users[buyerId])
-
-  return {
-    status: true,
-    reason: "Item added to cart"
-  };
-};
-
 let search = query => {
   let allItems = { ...items };
   let filteredItems = _.pickBy(items, x =>
@@ -285,7 +225,7 @@ let addItem = (
   sellerId,
   price,
   sessionId,
-  filename,
+  filename
 ) => {
   let keys = Object.keys(items);
   let parsedKeys = keys.map(x => parseInt(x));
@@ -308,11 +248,12 @@ let addItem = (
       reason: "Invalid sessionId"
     };
   }
-  
-  users[sellerId]['itemsListed'] =  users[sellerId]['itemsListed'].concat(itemId)
 
+  users[sellerId]["itemsListed"] = users[sellerId]["itemsListed"].concat(
+    itemId
+  );
 
-  console.log("ADDING ITEM FILENAME: ", filename)
+  console.log("ADDING ITEM FILENAME: ", filename);
 
   items[itemId] = {
     itemName,
@@ -321,7 +262,7 @@ let addItem = (
     sellerId,
     sellerName,
     price,
-    filename,
+    filename
   };
   return {
     status: true,
@@ -329,8 +270,7 @@ let addItem = (
   };
 };
 
-console.log(items)
-
+console.log(items);
 
 let user = (userId, sessionId) => {
   let sessions = _.map(users, "sessionId");
@@ -399,9 +339,9 @@ let images = (image, filename, sessionId) => {
       reason: "Invalid sessionId"
     };
   }
-  console.log("IM TRYING TO UPLOAD", filename)
-  return fs.writeFile('./data/images/'+filename, image)
-}
+  console.log("IM TRYING TO UPLOAD", filename);
+  return fs.writeFile("./data/images/" + filename, image);
+};
 
 let description = (userId, newDescription, sessionId) => {
   let sessions = _.map(users, "sessionId");
@@ -421,8 +361,8 @@ let description = (userId, newDescription, sessionId) => {
   }
 
   if (userId in users && sessionDoesExist) {
-    users[userId]['description'] = newDescription;
-    console.log(users[userId])
+    users[userId]["description"] = newDescription;
+    console.log(users[userId]);
     return {
       status: true,
       reason: "Description successfully updated!"
@@ -435,6 +375,111 @@ let description = (userId, newDescription, sessionId) => {
   };
 };
 
+let buy = (itemId, quantity, sessionId) => {
+  let sessions = _.map(users, "sessionId");
+  let sessionDoesExist = sessions.some(x => x === sessionId);
+
+  if (!items[itemId]) {
+    return {
+      status: false,
+      reason: "Invalid itemId"
+    };
+  }
+
+  if (!sessionDoesExist) {
+    return {
+      status: false,
+      reason: "Invalid sessionId"
+    };
+  }
+
+  let sellerId = items[itemId]["sellerId"];
+  let buyerId = _.findKey(users, x => x["sessionId"] === sessionId);
+  let price = items[itemId]["price"];
+
+  items[itemId]["quantity"] = items[itemId]["quantity"] - 1;
+
+  if (!users[buyerId]["cart"] || !users[buyerId]["cart"][itemId]) {
+    users[buyerId]["cart"] = {};
+    users[buyerId]["cart"][itemId] = 0;
+  }
+
+  users[buyerId]["cart"][itemId] = users[buyerId]["cart"][itemId] + 1;
+
+  console.log(users[buyerId]);
+
+  return {
+    status: true,
+    reason: "Item added to cart"
+  };
+};
+
+let checkout = (sessionId) => {
+  let sessions = _.map(users, "sessionId"); 
+  let sessionDoesExist = sessions.some(x => x === sessionId);
+
+  if (!sessionDoesExist) { 
+    return {
+      status: false,
+      reason: "Invalid sessionId"
+    };
+  }
+
+  let buyerId = _.findKey(users, x => x["sessionId"] === sessionId);
+
+  if (!(users[buyerId]['cart'])){
+     users[buyerId]['cart'] = {};
+  }
+
+  let itemIds = Object.keys(users[buyerId]['cart'])
+
+  itemIds.forEach(x=>{
+    let sellerId = items[x]["sellerId"];
+    let price = items[x]["price"];
+    let keys = Object.keys(transactions);
+    let parsedKeys = keys.map(x => parseInt(x));
+    let maxKey = Math.max(...parsedKeys);
+    let transactionId = maxKey + 1;
+
+    transactions[transactionId] = {
+      sellerId,
+      buyerId,
+      itemId,
+      quantity,
+      price
+    };
+
+    if (!users[buyerId]['cart']) {
+      users[buyerId]['cart'] = {};
+    }
+
+    if (!users[buyerId]['transactions']) {
+      users[buyerId]['transactions'] = [];
+    }
+
+    users[buyerId]["transactions"] = users[buyerId]["transactions"].concat(
+      transactionId
+    );
+
+    users[sellerId]["transactions"] = users[sellerId]["transactions"].concat(
+      transactionId
+    );
+    
+  })
+
+  if (buyerId in users && sessionDoesExist) {
+    users[buyerId]["cart"] = {};
+    return {
+      status: true,
+      reason: "Checkout Complete"
+    };
+  }
+
+  return {
+    status: false,
+    reason: "unknown error"
+  };
+};
 
 module.exports = {
   login,
@@ -448,4 +493,5 @@ module.exports = {
   getTransactions,
   images,
   description,
+  checkout
 };
