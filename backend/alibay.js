@@ -224,33 +224,45 @@ let buy = (itemId, quantity, sessionId) => {
     };
   }
 
-  let keys = Object.keys(transactions);
-  let parsedKeys = keys.map(x => parseInt(x));
-  let maxKey = Math.max(...parsedKeys);
-  let transactionId = maxKey + 1;
+  // let keys = Object.keys(transactions);
+  // let parsedKeys = keys.map(x => parseInt(x));
+  // let maxKey = Math.max(...parsedKeys);
+  // let transactionId = maxKey + 1;
   let sellerId = items[itemId]["sellerId"];
   let buyerId = _.findKey(users, x => x["sessionId"] === sessionId);
   let price = items[itemId]["price"];
 
-  transactions[transactionId] = {
-    sellerId,
-    buyerId,
-    itemId,
-    quantity,
-    price
-  };
+
+  // for the checkout function
+  // transactions[transactionId] = {
+  //   sellerId,
+  //   buyerId,
+  //   itemId,
+  //   quantity,
+  //   price
+  // };
 
   items[itemId]["quantity"] = items[itemId]["quantity"] - 1;
-  users[buyerId]["transactions"] = users[buyerId]["transactions"].concat(
-    transactionId
-  );
-  users[sellerId]["transactions"] = users[sellerId]["transactions"].concat(
-    transactionId
-  );
+  // users[buyerId]["transactions"] = users[buyerId]["transactions"].concat(
+  //   transactionId
+  // );
+  // users[sellerId]["transactions"] = users[sellerId]["transactions"].concat(
+  //   transactionId
+  // );
+
+
+  if (!(users[buyerId]['cart'])||!(users[buyerId]['cart'][itemId])) {
+    users[buyerId]['cart'] = {}
+    users[buyerId]['cart'][itemId] = 0
+  }
+
+  users[buyerId]['cart'][itemId] = users[buyerId]['cart'][itemId] + 1
+
+  console.log(users[buyerId])
 
   return {
     status: true,
-    reason: "purchase successful"
+    reason: "Item added to cart"
   };
 };
 
