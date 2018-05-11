@@ -10,17 +10,19 @@ export default (state= {
         newState = {
             loggedIn: true,
             show: true,
-            register: true,
-        };    
+            register: false,
+        };
     } else if (action.type === 'LOGOUT') {
         newState = {
             loggedIn: false,
             register: false,
             showLogIn: false,
             showSellItem: false,
-            userId: undefined,
+            // userId: undefined,
             show: false,
         };
+    } else if (action.type === 'TOGGLE_REGISTER') {
+        newState.register = !state.register;
     }
     else if (action.type === 'TOGGLE_CART'){
         newState.cart = !newState.cart
