@@ -174,7 +174,8 @@ let register = (username, password, sessionId) => {
       sessionId: sessionId,
       signupDate: Date.now(),
       description: "",
-      lastLoginDate: Date.now()
+      lastLoginDate: Date.now(),
+      cart: {}
     };
     console.log(users);
     return {
