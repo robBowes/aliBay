@@ -3,6 +3,7 @@
 */
 
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class AccountCreation extends Component {
     constructor(props) {
@@ -108,4 +109,4 @@ class AccountCreation extends Component {
     }
 }
 
-export default AccountCreation;
+export default connect()(AccountCreation);

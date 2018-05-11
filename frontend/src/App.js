@@ -155,7 +155,8 @@ const mapStateToProps = (state) =>({
   show: state.view.show,
   items: state.items,
   register: state.view.register,
-  cart: state.view.cart
+  cart: state.view.cart,
+  view: state.view,
 });
 
 const ConnectedApp = connect(mapStateToProps)(App);
