@@ -51,7 +51,9 @@ class SellItems extends Component {
         console.log(data);
         this.setState({response: data.reason});
       });
-    this.props.toggleSellItem();
+    this.props.dispatch({
+      type: 'TOGGLE_SELL_ITEM',
+    });
     this.props.getAllItems().then(() => {
       this.props.showAllItems();
     });
@@ -177,6 +179,7 @@ class SellItems extends Component {
 
 const mapStateToProps = (state) => ({
   userId: state.user.userId,
+  showSellItem: state.view.showSellItem,
 });
 
 export default connect(mapStateToProps)(SellItems);

@@ -2,22 +2,22 @@
  * A navigation bar to show at the top of every page
  */
 
-import React, { Component } from "react";
-import styledComponent from "styled-components";
-import { Link, Router, BrowserRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import styledComponent from 'styled-components';
+import {Link, Router, BrowserRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 let Nav = styledComponent.nav`
 
 `;
 
-const btn = "btn btn-info";
-const disabledBtn = "btn btn-info disabled";
+const btn = 'btn btn-info';
+const disabledBtn = 'btn btn-info disabled';
 
 class Navbar extends Component {
   toggleCart = (event) =>{
     event.preventDefault();
-    this.props.dispatch({ type: "TOGGLE_CART" });
+    this.props.dispatch({type: 'TOGGLE_CART'});
   }
   handleClick = (event)=>{
     
@@ -31,7 +31,7 @@ class Navbar extends Component {
             className="logo"
             src="/keybaylogo.png"
             alt="the bay logo"
-            style={{ height: "90%" }}
+            style={{height: '90%'}}
           />
         </Link>
 
@@ -61,7 +61,9 @@ class Navbar extends Component {
 
             <li // style={{height: '100%'}}
               className="nav-item active"
-              onClick={this.props.toggleSellItem}
+              onClick={()=>this.props.dispatch({
+                type: 'TOGGLE_SELL_ITEM',
+              })}
             >
               <Link className="nav-link" href="#" to="/">
                 Sell Item
@@ -76,8 +78,8 @@ class Navbar extends Component {
                 href="#"
                 to={
                   !this.props.loggedIn
-                    ? "/"
-                    : "/profile/user" + this.props.userId
+                    ? '/'
+                    : '/profile/user' + this.props.userId
                 }
               >
                 My Profile
@@ -87,8 +89,8 @@ class Navbar extends Component {
             <li
               className="nav-item " // style={{height: '100%'}}
               onClick={() => {
-                this.props.dispatch({ type: "LOGOUT" });
-                document.cookie = "";
+                this.props.dispatch({type: 'LOGOUT'});
+                document.cookie = '';
               }}
             >
               <Link className="nav-link" href="#" to="/">

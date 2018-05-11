@@ -111,4 +111,9 @@ app.post("/description", (req, res) => {
   res.send(JSON.stringify(alibay.description(userId, newDescription,  sessionId)));
 });
 
+app.get("/checkout", (req, res) => {
+  let sessionId = req.headers.cookie;
+  res.send(JSON.stringify(alibay.checkout(sessionId)));
+});
+
 app.listen(4000, () => console.log("Listening on port 4000!"));
