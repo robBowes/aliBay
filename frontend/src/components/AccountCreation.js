@@ -48,7 +48,7 @@ class AccountCreation extends Component {
         return <div className={this.state.classes.join(' ')}>
 
         <div
-        className="card border-secondary" >
+        className="card border-secondary accountCreator" >
 
         <h2
         className="card-header"
@@ -91,6 +91,7 @@ class AccountCreation extends Component {
         type="password"
         id="password1" />
 
+        <br />
         <br />
 
         <input

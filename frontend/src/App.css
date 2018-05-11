@@ -42,7 +42,9 @@ body{
   grid-area: registerTop / registerLeft / registerBottom / registerRight;
   z-index: 4;
   /* background-color: re; */
-  padding: 5rem;
+  padding-left:40%;
+  padding-right:40%;
+  
 }
 .hidden {
   /* display: none; */
@@ -86,6 +88,12 @@ body{
   word-wrap: break-word;
 }
 
+.accountCreator{
+  max-width:250px;
+  min-width:215px;
+  filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.438))
+}
+
 h4 {
   font-size: 15px;
 }
@@ -119,6 +127,25 @@ top: 2px;
   border: 0px;
   flex: auto;
   /* height: max-content; */
+}
+
+.card:last-child{
+  flex-grow: 0.25;
+  width: 33%;
+  height: auto;
+  min-width: 190px;
+}
+
+.smallItemCard{
+  margin:0px;
+  position: relative;
+  min-height:190px;
+  background: #2b2b2b;
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .cardBody{
@@ -343,7 +370,7 @@ top: 2px;
 .smallItemCard{
   margin:0px;
   position: relative;
-  min-width:190px;
+  min-width: 190px;
   height:190px;
   background: #2b2b2b;
   justify-content: center;
@@ -375,6 +402,11 @@ top: 2px;
    padding-right: 10px;
   border-radius:0px 7px 7px 0px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.466);
+  max-height:33px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
 
 }
 
@@ -385,10 +417,9 @@ top: 2px;
   margin-right: auto; 
    position: absolute;
   vertical-align: middle;
-  min-width:50px;
+  min-width:190px;
   width: 100%;
   height: auto;
-  max-width: fit-content;
 }
 
 .profileItemsLists{

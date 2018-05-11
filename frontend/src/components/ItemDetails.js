@@ -57,7 +57,9 @@ class ItemDetails extends Component {
     // this.setState({ classes: newClass.split(" ") });
   };
    componentDidMount = () => {
-     setTimeout(() => this.setState({classes: ['itemDetails', 'slideIn']}), 400);
+                 this.state.item.quantity === 0 ? (document.getElementById("buy").disabled = true) : null;
+
+     setTimeout(() => this.setState({ classes: ["itemDetails",  "slideIn"] }), 400);
   };
 
 
