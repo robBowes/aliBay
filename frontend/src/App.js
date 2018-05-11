@@ -79,12 +79,6 @@ class App extends Component {
   toggleShowItem =()=>{
     this.setState({showItemDet: !this.state.showItemDet});
   }
-  toggleCreate = (event) => {
-    event.preventDefault();
-    this.props.dispatch({
-      type: 'TOGGLE_REGISTER',
-    });
-  }
 
   renderProfile = (routerData) =>{
     console.log(this.props);
@@ -126,17 +120,14 @@ class App extends Component {
 
       <Login
       updateUserInfo={this.updateUserInfo}
-      toggleCreate={this.toggleCreate}
       loggedIn={this.props.loggedIn}/>
 
       <AccountCreation
-      toggleCreate={this.toggleCreate}
       register={this.props.register}
       updateUserInfo={this.updateUserInfo}
       />
 
       <ItemContainer/>
-
 
       <SellItems
       userId={this.state.userId}
@@ -144,8 +135,7 @@ class App extends Component {
       showAllItems={this.showAllItems}
       />
 
-      <Cart
-      />
+      <Cart/>
 
       <Footer/>
       <Route exact={true} path='/item/:id' render={this.renderItemDetails} />
