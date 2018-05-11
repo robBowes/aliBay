@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import styledComponent from 'styled-components';
 import {Link, Router, BrowserRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 let Nav = styledComponent.nav`
 
@@ -55,7 +56,14 @@ class Navbar extends Component {
     <li
     className="nav-item "
     // style={{height: '100%'}}
-    onClick={this.props.handleLogout}>
+    onClick={
+      ()=>{
+        this.props.dispatch({
+          type: 'LOGOUT',
+        });
+        document.cookie='';
+      }
+    }>
     <Link className="nav-link" href='#' to="/">
     Log out
     </Link>
@@ -67,4 +75,6 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+
+export default connect()(Navbar);
+

@@ -3,14 +3,24 @@ export default (state= {
     show: false,
     register: false,
 }
-    , action) => {
+, action) => {
     let newState = {...state};
     if (action.type === 'LOGIN') {
-newState = {
-        loggedIn: true,
-        show: true,
-        register: true,
-    };
-}
+        newState = {
+            loggedIn: true,
+            show: true,
+            register: true,
+        };
+    } else if (action.type === 'LOGOUT') {
+        newState = {
+            loggedIn: false,
+            register: false,
+            showLogIn: false,
+            showSellItem: false,
+            userId: undefined,
+            show: false,
+        };
+    }
     return newState;
 };
+

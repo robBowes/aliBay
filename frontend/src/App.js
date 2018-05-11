@@ -84,17 +84,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({register: !this.state.register});
   }
-  handleLogout = () => {
-    document.cookie='';
-    this.setState({
-      // loggedIn: false,
-      register: false,
-      showLogIn: false,
-      showSellItem: false,
-      userId: undefined,
-      show: false,
-    });
-  }
+
   renderProfile = (routerData) =>{
     console.log(this.props);
     if (this.props.loggedIn) {
