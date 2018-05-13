@@ -1,6 +1,6 @@
 /**
- * Makes a search request to the server
- */
+* Makes a search request to the server
+*/
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import _ from 'lodash';
@@ -22,16 +22,20 @@ class Search extends Component {
         let newItems = _.filter(this.props.allItems,
             (x)=>x.itemName
             .toLowerCase()
-            .includes(event.target.value.toLowerCase()));
-        // this.props.changeShownItems(newItems);
-        // console.log(newItems);
+            .includes(event.target.value.toLowerCase())
+        );
         this.props.dispatch({
             type: 'CHANGE_SHOWN_ITEMS',
             payload: newItems,
         });
     }
+    sort = (event) => {
+        this.props.dispatch({
+            type: 'CHANGE_ORDER',
+            payload: event.target.value,
+        });
+    }
     handleSubmit = (event)=>{
-        console.log('search');
         event.preventDefault();
         fetch('/search', {
             method: 'POST',
@@ -48,19 +52,25 @@ class Search extends Component {
     render() {
         return (
             <Bar className="search">
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                    className="form-control"
-                    style={{width: '50%', display: 'inline'}}
-                    type='text'
-                    placeholder='Search'
-                    value={this.state.searchContents}
-                    onChange={this.handleChange}/>
-                    <input
-                    className ="btn btn-primary"
-                    id = "search-button"
-                    type='submit' />
-                </form>
+            <form onSubmit={this.handleSubmit}>
+            <div class="search-container">
+            <input
+            className="form-control search-bar"
+            style={{width: '50%', display: 'inline'}}
+            type='text'
+            placeholder='Search'
+            value={this.state.searchContents}
+            onChange={this.handleChange}/>
+            <div class="form-group">
+            <select class="custom-select" onChange={this.sort}>
+            <option selected="" >Sort By Price</option>
+            <option value="low" >Low to High</option>
+            <option value="high">High to Low</option>
+            {/* <option value="3">Three</option> */}
+            </select>
+            </div>
+            </div>
+            </form>
             </Bar>
         );
     }
@@ -68,6 +78,8 @@ class Search extends Component {
 
 const mapStateToProps = (state) => ({
     allItems: state.items,
+    displayItems: state.displayItems,
 });
 
 export default connect(mapStateToProps)(Search);
+

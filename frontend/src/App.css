@@ -123,8 +123,8 @@ h4 {
 
 .form-control {
 width: 100% !important;
-position: relative;
-top: 2px;
+/* position: relative; */
+/* top: 2px; */
 }
 
 .itemContainer {
@@ -209,6 +209,12 @@ top: 2px;
   width: 100%;
   margin: 0px;
   margin-top: 10px;
+}
+.search-container {
+  display: flex;
+}
+.search-bar {
+  height: calc(2.25rem + 2px);
 }
 
 .itemDetails {

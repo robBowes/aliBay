@@ -5,6 +5,7 @@ export default (state= {
     cart: false,
     blur: true,
     showSellItem: false,
+    order: 'any',
 }
 , action) => {
     let newState = {...state};
@@ -30,6 +31,8 @@ export default (state= {
         newState.showSellItem = !newState.showSellItem;
     } else if (action.type==='DISABLE_CART') {
         newState.cart = false;
+    } else if (action.type === 'CHANGE_ORDER') {
+        newState.order = action.payload;
     }
     return newState;
 };

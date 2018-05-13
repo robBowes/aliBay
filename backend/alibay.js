@@ -423,7 +423,7 @@ let buy = (itemId, quantity, sessionId) => {
 
   users[buyerId]["cart"][itemId] = users[buyerId]["cart"][itemId] + 1;
 
-  console.log(users[buyerId]);
+  console.log(users[buyerId]["cart"])
 
   return {
     status: true,

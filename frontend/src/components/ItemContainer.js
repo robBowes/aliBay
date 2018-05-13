@@ -1,42 +1,43 @@
 /**
- * Holds the list of items to be displayed to the user
- */
+* Holds the list of items to be displayed to the user
+*/
 
 import React, {Component} from 'react';
 import ItemCard from './ItemCard.js';
 import {itemsObjToArray, getItemById} from '../utils.js';
 import {connect} from 'react-redux';
 
-let renderAllItems = (item, index) => {
-    // This function will render <ItemCard/> components for each Item
-    // in item array
-    return <ItemCard item={item} key={'item'+index}/>;
-  };
 
 class ItemContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: props.items,
-        };
-    }
-    componentWillReceiveProps = (props) => {
-        this.setState({items: props.items});
-    }
+    renderAllItems = () => {
+        // This function will render <ItemCard/> components for each Item
+        // in item array
+        let items = this.props.items;
+        if (this.props.order === 'low' || this.props.order === 'high') {
+            items = items.sort((a, b)=>{
+                let ret = this.props.order === 'low'?
+                parseInt(a.price)-parseInt(b.price) :
+                parseInt(b.price)-parseInt(a.price);
+                return ret;
+            });
+        }
+        return (items.map((item, index)=>(
+            <ItemCard item={item} key={'item'+index}/>
+        )));
+    };
     render() {
-        // console.log(this.props);
         return (
             <div className='itemContainer'>
-            {this.props.items?this.props.items.map(renderAllItems):null}
+            {this.props.items?this.renderAllItems():null}
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return {
         items: state.displayItems,
+        order: state.view.order,
     };
 };
 
