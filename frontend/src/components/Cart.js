@@ -9,10 +9,10 @@ class Cart extends Component {
         super();
         this.state={
             cart: [],
+            loading: true,
         };
     }
   getCart = () => {
-    console.log(this.props.userId);
     return fetch('/user', {
       method: 'POST',
       credentials: 'same-origin',
@@ -20,15 +20,13 @@ class Cart extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-
         this.props.dispatch({type: 'UPDATE_CART', payload: data.cart});
+        this.setState({loading: false});
       })
      ;
   };
 
   renderCartById = () => {
-      console.log(this.props.items);
     if (!this.props.items) {
         return;
     }
@@ -39,14 +37,13 @@ class Cart extends Component {
             return y.itemId === x;
         });
     });
-    console.log(cartItems);
     return cartItems[0];
   };
   trify = (x, k) => {
     return (
       <tr>
         <td>
-          <img style={{'max-width': '100px'}} src={x.filename} />
+          <img style={{'maxWidth': '100px'}} src={x.filename} />
         </td>
         <td>{x.itemName}</td>
         <td>{'$' + x.price}</td>
@@ -63,18 +60,19 @@ class Cart extends Component {
   }
 
   total = (x) => {
-    console.log(x);
     if (x.length >= 1) {
       return x.reduce((a, b) => {
-        console.log(a.price, b.price);
         return a + parseInt(b.price) * parseInt(this.props.items[b.itemId]);
       }, 0);
     }
     return 0;
   };
   render() {
-    console.log(this.props);
-    return (
+    return this.state.loading? <div className="userProfileContainer slideIn"
+    style={
+      {'backgroundColor': 'rgba(0, 0, 0, 0.514'}
+    }>
+    </div>:(
       <div
         style={{display: this.props.show ? 'block' : 'none'}}
         className="cartContainer card"
@@ -82,6 +80,8 @@ class Cart extends Component {
         <div className="carTable">
           CART
           <table style={{width: '100%'}}>
+          <tbody>
+
             <tr>
               <th />
               <th>NAME</th>
@@ -89,6 +89,7 @@ class Cart extends Component {
               <th>QUANTITY</th>
             </tr>
             {this.state.cart?this.state.cart.map(this.trify):null}
+          </tbody>
           </table>
         </div>
         <button className="btn btn-lg">CHECKOUT</button>

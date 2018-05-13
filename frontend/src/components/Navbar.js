@@ -1,6 +1,6 @@
 /**
- * A navigation bar to show at the top of every page
- */
+* A navigation bar to show at the top of every page
+*/
 
 import React, {Component} from 'react';
 import styledComponent from 'styled-components';
@@ -29,87 +29,87 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navBar navbar navbar-expand-lg navbar-dark bg-dark avbar-toggleable-md">
-        <Link className="navbar-brand" style={{height: '100%'}} to="/" onClick={this.handleClick}>
-          <img
-            className="logo"
-            src="/keybaylogo.png"
-            alt="the bay logo"
-            style={{height: '90%'}}
-          />
-        </Link>
+      <Link className="navbar-brand" style={{height: '100%'}} to="/" onClick={this.handleClick}>
+      <img
+      className="logo"
+      src="/keybaylogo.png"
+      alt="the bay logo"
+      style={{height: '90%'}}
+      />
+      </Link>
 
-        <button
-          className="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarColor02"
-          aria-controls="navbarColor02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          style={{}}
-        >
-          <span className="navbar-toggler-icon " />
-        </button>
+      <button
+      className="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarColor02"
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      style={{}}
+      >
+      <span className="navbar-toggler-icon " />
+      </button>
 
-        <div className="navbar-collapse collapse" id="navbarColor02">
-          <ul className="navbar-nav ml-auto">
-            <li // style={{height: '100%'}}
-              className={()=>this.activeItem('cart')}
-              onClick={this.toggleCart}
-            >
-              <Link className="nav-link" href="#" to="/">
-                My Cart
-              </Link>
-            </li>
+      <div className="navbar-collapse collapse" id="navbarColor02">
+      <ul className="navbar-nav ml-auto">
 
-            <li // style={{height: '100%'}}
-              className={()=>this.activeItem('showSellItemx')}
-              onClick={()=>this.props.dispatch({
-                type: 'TOGGLE_SELL_ITEM',
-              })}
-            >
-              <Link className="nav-link" href="#" to="/">
-                Sell Item
-              </Link>
-            </li>
+      <li
+      // className={()=>this.activeItem('cart')}
+      onClick={this.toggleCart} >
+      <Link className="nav-link" href="#" to="/">
+      My Cart
+      </Link>
+      </li>
 
-            <li // style={{height: '100%'}}
-              className="nav-item"
-            >
-              <Link
-                className="nav-link"
-                href="#"
-                to={
-                  !this.props.loggedIn
-                    ? '/'
-                    : '/profile/user' + this.props.userId
-                }
-              >
-                My Profile
-              </Link>
-            </li>
+      <li
+      // className={()=>this.activeItem('showSellItem')}
+      onClick={()=>this.props.dispatch({
+        type: 'TOGGLE_SELL_ITEM',
+      })}
+      >
+      <Link className="nav-link" href="#" to="/">
+      Sell Item
+      </Link>
+      </li>
 
-            <li
-              className="nav-item " // style={{height: '100%'}}
-              onClick={() => {
-                this.props.dispatch({type: 'LOGOUT'});
-                document.cookie = '';
-              }}
-            >
-              <Link className="nav-link" href="#" to="/">
-                Log out
-              </Link>
-            </li>
-          </ul>
-        </div>
+      <li // style={{height: '100%'}}
+      className="nav-item"
+      >
+      <Link
+      className="nav-link"
+      href="#"
+      to={
+        !this.props.loggedIn
+        ? '/'
+        : '/profile/user' + this.props.userId
+      }
+      >
+      My Profile
+      </Link>
+      </li>
+
+      <li
+      className="nav-item " // style={{height: '100%'}}
+      onClick={() => {
+        this.props.dispatch({type: 'LOGOUT'});
+        document.cookie = '';
+      }}
+      >
+      <Link className="nav-link" href="#" to="/">
+      Log out
+      </Link>
+      </li>
+      </ul>
+      </div>
       </nav>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-   loggedIn: state.view.loggedIn,
-   view: state.view,
+  loggedIn: state.view.loggedIn,
+  view: state.view,
 });
 
 export default connect(mapStateToProps)(Navbar);

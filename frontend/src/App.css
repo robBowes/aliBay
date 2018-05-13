@@ -6,6 +6,8 @@
 
 body{
   background-color: #ffffff;
+  transition: all 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
 }
 
 h3 {
@@ -594,7 +596,7 @@ width: 100%;
 
 .cartContainer{
   grid-area: main;
-  z-index: 2;
+  z-index: 0;
   color: #525252;
 }
 

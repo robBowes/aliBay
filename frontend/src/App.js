@@ -106,7 +106,7 @@ class App extends Component {
       <div
       className='blurFrame'
       style={
-        {'backgroundColor': (!this.props.loggedIn || this.state.showSellItem || this.state.showItemDet)?
+        {'backgroundColor': (!this.props.loggedIn || this.props.view.showSellItem || this.state.showItemDet)?
         'rgba(0, 0, 0, 0.514':'rgba(0, 0, 0, 0'}
       }/>
 
